@@ -24,9 +24,10 @@ public List<User> getUser(){
 @RequestMapping(value="/chercherUsers", method=RequestMethod.GET)
 public Page<User>chercher(
 		@RequestParam(name="mc",defaultValue="") String mc,
+		@RequestParam(name="mp",defaultValue="") String mp,
 		@RequestParam(name="page",defaultValue="0") int page,
 		@RequestParam(name="size",defaultValue="5")int size){
-	return userRepository.chercher("%"+mc+"%",new PageRequest(page,size));
+	return userRepository.chercher("%"+mc+"%","%"+mp+"%",new PageRequest(page,size));
 }
 @RequestMapping(value="/users/{id}", method=RequestMethod.GET)
 public User getUser(@PathVariable Long id){
