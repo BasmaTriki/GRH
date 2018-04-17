@@ -1,12 +1,34 @@
 package pfe.projet.entities;
 
-import java.util.*;
-
-/** @pdOid 4e09aa2b-e3f5-49e6-b2f8-ecbaa96d971f */
-public class Privilege {
-   /** @pdOid 09fd30ca-3b67-4fd5-abf4-2192ed6fc5e4 */
-   public int idP;
-   /** @pdOid 49a7dae0-7841-4dac-95e4-4b37d88e6b34 */
-   public String designation;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+@Entity
+public class Privilege implements Serializable {
+	@Id 
+	@GeneratedValue
+   private int idP;
+   private String designation;
+   private int qtestock;
+   
+public int getQtestock() {
+	return qtestock;
+}
+public void setQtestock(int qtestock) {
+	this.qtestock = qtestock;
+}
+public int getIdP() {
+	return idP;
+}
+public void setIdP(int idP) {
+	this.idP = idP;
+}
+public String getDesignation() {
+	return designation;
+}
+public void setDesignation(String designation) {
+	this.designation = designation;
+}
 
 }

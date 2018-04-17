@@ -1,13 +1,37 @@
 package pfe.projet.entities;
 
+import java.io.Serializable;
 import java.util.*;
 
-/** @pdOid c8e6aaa2-4e82-4104-8a57-389ac6e85710 */
-public class DiplomePersonnel {
-   /** @pdOid 5b7fc8e4-9c1c-41a5-a7e5-4ff1686dc304 */
-   public Date date;
-   
-   public Personnel personnelA;
-   public Diplome diplomeB;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+@Entity
+public class DiplomePersonnel implements Serializable {
+	@Temporal(TemporalType.DATE)
+   private Date date;
+    @EmbeddedId
+   private ClefPrimaireD ck;
+	
+public Date getDate() {
+	return date;
+}
+public void setDate(Date date) {
+	this.date = date;
+}
+
+public ClefPrimaireD getCk() {
+	return ck;
+}
+public void setCk(ClefPrimaireD ck) {
+	this.ck = ck;
+}
+public DiplomePersonnel() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 
 }
