@@ -9,8 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
 @Query("select u from User u where u.login like :x and u.motpasse like :y")
 	public Page<User>chercher(@Param("x") String mc,@Param("x") String mp,Pageable pageable);
+@Query("select u from User u where u.login like :x and u.motpasse like :y")
+public Page<User>chercheUser(@Param("x") String mc,@Param("x") String mp);
 
 }

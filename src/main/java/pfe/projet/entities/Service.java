@@ -1,51 +1,42 @@
 package pfe.projet.entities;
 
+import java.io.Serializable;
 import java.util.*;
 
-/** @pdOid 4a96c1db-7723-436f-bc09-ec18dfbcd650 */
-public class Service {
-   /** @pdOid 96fbcf3c-4146-4861-a355-bc3a99f185c0 */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+@Entity
+public class Service implements Serializable {
+	@Id 
+	@GeneratedValue
    private int idServ;
-   
-   /** @pdRoleInfo migr=no name=Administratif assc=association14 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
-   public java.util.Collection<Administratif> administratif;
-   
-   
-   /** @pdGenerated default getter */
-   public java.util.Collection<Administratif> getAdministratif() {
+	@OneToMany
+   public Collection<Administratif> administratif;
+   public Collection<Administratif> getAdministratif() {
       if (administratif == null)
-         administratif = new java.util.HashSet<Administratif>();
+         administratif = new HashSet<Administratif>();
       return administratif;
    }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorAdministratif() {
+   public Iterator getIteratorAdministratif() {
       if (administratif == null)
-         administratif = new java.util.HashSet<Administratif>();
+         administratif = new HashSet<Administratif>();
       return administratif.iterator();
    }
-   
-   /** @pdGenerated default setter
-     * @param newAdministratif */
-   public void setAdministratif(java.util.Collection<Administratif> newAdministratif) {
+   public void setAdministratif(Collection<Administratif> newAdministratif) {
       removeAllAdministratif();
-      for (java.util.Iterator iter = newAdministratif.iterator(); iter.hasNext();)
+      for (Iterator iter = newAdministratif.iterator(); iter.hasNext();)
          addAdministratif((Administratif)iter.next());
    }
-   
-   /** @pdGenerated default add
-     * @param newAdministratif */
    public void addAdministratif(Administratif newAdministratif) {
       if (newAdministratif == null)
          return;
       if (this.administratif == null)
-         this.administratif = new java.util.HashSet<Administratif>();
+         this.administratif = new HashSet<Administratif>();
       if (!this.administratif.contains(newAdministratif))
          this.administratif.add(newAdministratif);
    }
-   
-   /** @pdGenerated default remove
-     * @param oldAdministratif */
    public void removeAdministratif(Administratif oldAdministratif) {
       if (oldAdministratif == null)
          return;
@@ -53,11 +44,18 @@ public class Service {
          if (this.administratif.contains(oldAdministratif))
             this.administratif.remove(oldAdministratif);
    }
-   
-   /** @pdGenerated default removeAll */
    public void removeAllAdministratif() {
       if (administratif != null)
          administratif.clear();
    }
+
+public int getIdServ() {
+	return idServ;
+}
+
+public void setIdServ(int idServ) {
+	this.idServ = idServ;
+}
+   
 
 }

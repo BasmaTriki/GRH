@@ -1,16 +1,67 @@
 package pfe.projet.entities;
 
+import java.io.Serializable;
 import java.util.*;
 
-/** @pdOid d2d6f637-b0ee-46ca-887f-27cba945ea54 */
-public class Conges {
-   /** @pdOid bb363f55-bf76-4eda-bdb4-d3d07acc0665 */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Conges implements Serializable {
+	@Id 
+	@GeneratedValue
    private int idCong;
-   /** @pdOid 236f4305-800a-43a2-95dc-a4d579f91228 */
+	@Temporal(TemporalType.DATE)
    private Date dateDebut;
-   /** @pdOid 6f92ba0b-0de6-406c-be85-a3210bfc280d */
+	@Temporal(TemporalType.DATE)
    private Date dateFin;
-   /** @pdOid 51321b88-bbc1-4eea-8a72-dafb8c02ea80 */
    private boolean reprise;
+   @ManyToOne
+   @JoinColumn(name="matricule",referencedColumnName="matricule")
+   private Personnel personnel;
+   @ManyToOne
+   @JoinColumn(name="id_typeCng",referencedColumnName="idCg")
+   private TypeConge typeconge;
+public TypeConge getTypeconge() {
+	return typeconge;
+}
+public void setTypeconge(TypeConge typeconge) {
+	this.typeconge = typeconge;
+}
+public int getIdCong() {
+	return idCong;
+}
+public void setIdCong(int idCong) {
+	this.idCong = idCong;
+}
+public Date getDateDebut() {
+	return dateDebut;
+}
+public void setDateDebut(Date dateDebut) {
+	this.dateDebut = dateDebut;
+}
+public Date getDateFin() {
+	return dateFin;
+}
+public void setDateFin(Date dateFin) {
+	this.dateFin = dateFin;
+}
+public boolean isReprise() {
+	return reprise;
+}
+public void setReprise(boolean reprise) {
+	this.reprise = reprise;
+}
+public Personnel getPersonnel() {
+	return personnel;
+}
+public void setPersonnel(Personnel personnel) {
+	this.personnel = personnel;
+}
 
 }
