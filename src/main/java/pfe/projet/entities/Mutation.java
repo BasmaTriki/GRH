@@ -1,14 +1,51 @@
 package pfe.projet.entities;
 
+import java.io.Serializable;
 import java.util.*;
-
-/** @pdOid 33080619-5deb-4b5d-b824-19b8d95e3745 */
-public class Mutation {
-   /** @pdOid a6bf2973-b39d-4edf-a4fb-8c34af29ffec */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+@Entity
+public class Mutation implements Serializable {
+	@Id 
+	@GeneratedValue
    private int idMut;
-   /** @pdOid c0d9ed92-2a51-48ee-bb0f-1264b35253da */
    private String orgAcceuil;
-   /** @pdOid 73965ba2-7898-4a63-92ff-e5ce0c837892 */
-   private java.lang.Object typeMutation;
+   @ManyToOne
+   @JoinColumn(name="matricule",referencedColumnName="matricule")
+   private Personnel personnel;
+   @ManyToOne
+   @JoinColumn(name="id_type_mut",referencedColumnName="code")
+   private TypeMutation typemutation;
+public Mutation() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+public TypeMutation getTypemutation() {
+	return typemutation;
+}
+public void setTypemutation(TypeMutation typemutation) {
+	this.typemutation = typemutation;
+}
+public int getIdMut() {
+	return idMut;
+}
+public void setIdMut(int idMut) {
+	this.idMut = idMut;
+}
+public String getOrgAcceuil() {
+	return orgAcceuil;
+}
+public void setOrgAcceuil(String orgAcceuil) {
+	this.orgAcceuil = orgAcceuil;
+}
+public Personnel getPersonnel() {
+	return personnel;
+}
+public void setPersonnel(Personnel personnel) {
+	this.personnel = personnel;
+}
 
 }

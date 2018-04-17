@@ -27,7 +27,7 @@ public class DemoApplication implements CommandLineRunner  {
 		//userRepository.save(new User("Marwa","BenBrahim","directeur",df.parse("20/10/2017"),"Marwa@gmail.com"));
 		//userRepository.save(new User("Basma","Triki","directeur",df.parse("12/01/2018"),"BT@gmail.com"));
 	    userRepository.findAll().forEach(c->{
-		System.out.println(c.getLogin());
+		System.out.println(c.getCk().getLogin());
 		});
 	}
 }

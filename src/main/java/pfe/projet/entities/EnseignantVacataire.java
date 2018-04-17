@@ -1,12 +1,29 @@
 package pfe.projet.entities;
 
+import java.io.Serializable;
 import java.util.*;
 
-/** @pdOid 58a66c3b-9083-4c0e-bdea-2c60123a679a */
-public class EnseignantVacataire extends Enseignant {
-   /** @pdOid ae485985-3260-4061-aaeb-26fdcf401dcd */
-   public Date dateDebut;
-   /** @pdOid ac50d243-5b78-43e1-8c37-b9356a6d4bb4 */
-   public Date dateFin;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+@Entity
+public class EnseignantVacataire extends Enseignant implements Serializable {
+	@Temporal(TemporalType.DATE)
+	public Date dateDebut;
+	@Temporal(TemporalType.DATE)
+	public Date dateFin;
+   public Date getDateDebut() {
+		return dateDebut;
+	}
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+	public Date getDateFin() {
+		return dateFin;
+	}
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
 
 }

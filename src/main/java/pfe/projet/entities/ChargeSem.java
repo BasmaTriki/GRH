@@ -1,16 +1,59 @@
 package pfe.projet.entities;
 
+import java.io.Serializable;
 import java.util.*;
 
-/** @pdOid 0cd19bbc-8c0b-4e45-bc25-f5e1feb62d33 */
-public class ChargeSem {
-   /** @pdOid 2a6700b6-7a1e-44ba-9e7b-a078d8ae5630 */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+@Entity
+public class ChargeSem implements Serializable {
+	@Id 
+	@GeneratedValue
+   private int id;
    private int nbHeure;
-   /** @pdOid 368cb9ab-e757-4cd9-8959-4d93b7ce0f9c */
+   @Temporal(TemporalType.DATE)
    private Date dateDebut;
-   /** @pdOid 6d94e869-0830-4ece-bc17-c2476ae7ab9c */
-   private Date dateFin;
-   
+   @Temporal(TemporalType.DATE)
+   private Date dateFin; 
+   @ManyToOne
+   @JoinColumn(name="matricule",referencedColumnName="matricule")
    public EnseignantLibre enseignantLibreB;
+
+public int getNbHeure() {
+	return nbHeure;
+}
+
+public void setNbHeure(int nbHeure) {
+	this.nbHeure = nbHeure;
+}
+
+public Date getDateDebut() {
+	return dateDebut;
+}
+
+public void setDateDebut(Date dateDebut) {
+	this.dateDebut = dateDebut;
+}
+
+public Date getDateFin() {
+	return dateFin;
+}
+
+public void setDateFin(Date dateFin) {
+	this.dateFin = dateFin;
+}
+
+public EnseignantLibre getEnseignantLibreB() {
+	return enseignantLibreB;
+}
+
+public void setEnseignantLibreB(EnseignantLibre enseignantLibreB) {
+	this.enseignantLibreB = enseignantLibreB;
+}
 
 }
