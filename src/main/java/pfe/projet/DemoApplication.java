@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import pfe.projet.dao.UserRepository;
+import pfe.projet.entities.ClePrimaire;
+import pfe.projet.entities.Personnel;
 import pfe.projet.entities.User;
 
 
@@ -23,8 +25,14 @@ public class DemoApplication implements CommandLineRunner  {
 	@Override
 	public void run(String... arg0) throws Exception {
 		// TODO Auto-generated method stub
-		//DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
-		//userRepository.save(new User("Marwa","BenBrahim","directeur",df.parse("20/10/2017"),"Marwa@gmail.com"));
+		DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
+		ClePrimaire ck=new ClePrimaire("Marwa","BenBrahim");
+		Personnel p=new Personnel();
+		p.setMatricule(23456788);
+		p.setNom("Marwa");
+		p.setPrenom("Basma");
+		User u=new User(ck,df.parse("12/01/2018"),p);
+		userRepository.save(u);
 		//userRepository.save(new User("Basma","Triki","directeur",df.parse("12/01/2018"),"BT@gmail.com"));
 	    userRepository.findAll().forEach(c->{
 		System.out.println(c.getCk().getLogin());

@@ -11,6 +11,11 @@ public class ClePrimaire implements Serializable {
 	public String getLogin() {
 		return login;
 	}
+	public ClePrimaire(String login, String motpasse) {
+		super();
+		this.login = login;
+		this.motpasse = motpasse;
+	}
 	public ClePrimaire() {
 		super();
 		// TODO Auto-generated constructor stub

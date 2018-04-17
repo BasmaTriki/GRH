@@ -1,4 +1,5 @@
 package pfe.projet.web;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,18 +24,17 @@ public List<User> getUser(){
 }
 @RequestMapping(value="/chercherUsers", method=RequestMethod.GET)
 public Page<User>chercher(
-		@RequestParam(name="mc",defaultValue="") String mc,
-		@RequestParam(name="mp",defaultValue="") String mp,
+		@RequestParam(required = false) Date date,
 		@RequestParam(name="page",defaultValue="0") int page,
 		@RequestParam(name="size",defaultValue="5")int size){
-	return userRepository.chercher("%"+mc+"%","%"+mp+"%",new PageRequest(page,size));
+	return userRepository.chercher(date,new PageRequest(page,size));
 }
-@RequestMapping(value="/chercheUser", method=RequestMethod.GET)
+/*@RequestMapping(value="/chercheUser", method=RequestMethod.GET)
 public Page<User>chercherUser(
 		@RequestParam(name="mc",defaultValue="") String mc,
 		@RequestParam(name="mp",defaultValue="") String mp){
 	return userRepository.chercheUser("%"+mc+"%","%"+mp+"%");
-}
+}*/
 @RequestMapping(value="/users/{id}", method=RequestMethod.GET)
 public User getUser(@PathVariable String login){
 return userRepository.findOne(login);
