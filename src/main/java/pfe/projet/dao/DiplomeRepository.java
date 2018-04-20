@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import pfe.projet.entities.EnseignantPermanent;
+import pfe.projet.entities.Diplome;
 
-public interface EnseignantPermanentRepository extends JpaRepository<EnseignantPermanent, Long> {
-	@Query("select e from EnseignantPermanent e where e.nom = :x")
-	public Page<EnseignantPermanent>chercher(@Param("x") String nom,Pageable pageable);
+public interface DiplomeRepository extends JpaRepository<Diplome, Long> {
+	@Query("select d from Diplome d where d.titre = :x")
+	public Page<Diplome>chercher(@Param("x") String nom,Pageable pageable);
 }

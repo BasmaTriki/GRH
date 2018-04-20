@@ -4,14 +4,17 @@ import java.util.Date;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 public class User implements Serializable{
-@EmbeddedId
-private ClePrimaire ck;
+	@Id
+	private String login;
+	private String motpasse;
+	
 @Temporal(TemporalType.DATE) 
 private Date datecreation;
 @ManyToOne
@@ -21,17 +24,24 @@ public User() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public ClePrimaire getCk() {
-	return ck;
+public String getLogin() {
+	return login;
 }
-public User(ClePrimaire ck, Date datecreation, Personnel personnel) {
+public void setLogin(String login) {
+	this.login = login;
+}
+public String getMotpasse() {
+	return motpasse;
+}
+public void setMotpasse(String motpasse) {
+	this.motpasse = motpasse;
+}
+public User(String login, String motpasse, Date datecreation, Personnel personnel) {
 	super();
-	this.ck = ck;
+	this.login = login;
+	this.motpasse = motpasse;
 	this.datecreation = datecreation;
 	this.personnel = personnel;
-}
-public void setCk(ClePrimaire ck) {
-	this.ck = ck;
 }
 public Personnel getPersonnel() {
 	return personnel;

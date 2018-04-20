@@ -6,10 +6,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import pfe.projet.entities.Grade;
 
-import pfe.projet.entities.EnseignantPermanent;
-
-public interface EnseignantPermanentRepository extends JpaRepository<EnseignantPermanent, Long> {
-	@Query("select e from EnseignantPermanent e where e.nom = :x")
-	public Page<EnseignantPermanent>chercher(@Param("x") String nom,Pageable pageable);
+public interface GradeRepository extends JpaRepository<Grade, Long> {
+	@Query("select g from Grade g where g.titre = :x")
+	public Page<Grade>chercher(@Param("x") String nom,Pageable pageable);
 }

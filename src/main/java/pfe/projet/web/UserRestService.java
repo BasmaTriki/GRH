@@ -50,7 +50,7 @@ public boolean supprimer(@PathVariable String login){
 }
 @RequestMapping(value="/users/{login}", method=RequestMethod.PUT)
 public User save(@PathVariable String login,@RequestBody User u){
-    u.getCk().setLogin(login);
+    u.setLogin(login);
 	return userRepository.save(u);
 }
 }

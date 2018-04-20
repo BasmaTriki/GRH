@@ -1,5 +1,4 @@
 package pfe.projet.web;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +24,7 @@ public class EnseignantPermanentRestService {
 		public List<EnseignantPermanent> getEnseignants(){
 			return enseignantRepository.findAll();
 		}
-		@RequestMapping(value="/chercherUsers", method=RequestMethod.GET)
+		@RequestMapping(value="/chercherEnseignantPermanent", method=RequestMethod.GET)
 		public Page<EnseignantPermanent>chercher(
 				@RequestParam(name="mc",defaultValue="")String mc,
 				@RequestParam(name="page",defaultValue="0") int page,
