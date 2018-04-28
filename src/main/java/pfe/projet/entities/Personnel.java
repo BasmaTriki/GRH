@@ -14,70 +14,39 @@ import javax.persistence.TemporalType;
 @Entity
 public class Personnel implements Serializable {
 	@Id
-   public long matricule;
-   public long cin;
-   public String nom;
-   public String prenom;
-   public String telephone;
-   public String email;
+   private long matricule;
+   private long cin;
+   private String nom;
+   private String prenom;
+   private String telephone;
+   private String email;
    @Temporal(TemporalType.DATE)
-   public Date datenaissance;
-   public String lieuNaissance;
-   public String adresse;
-   public int codepostal;
-   public String sexe;
-   public String rib;
-   public String etatCivil;
+   private Date datenaissance;
+   private String lieuNaissance;
+   private String adresse;
+   private int codepostal;
+   private String sexe;
+   private String rib;
+   private String etatCivil;
+   private String nomConjoint;
+   private String profConjoint;
+public String getNomConjoint() {
+	return nomConjoint;
+}
+public void setNomConjoint(String nomConjoint) {
+	this.nomConjoint = nomConjoint;
+}
+public String getProfConjoint() {
+	return profConjoint;
+}
+public void setProfConjoint(String profConjoint) {
+	this.profConjoint = profConjoint;
+}
    @OneToMany(mappedBy ="personnel",cascade =CascadeType.ALL)
-   public Collection<Conges> conges;
+   private Collection<Conges> conges;
    @OneToMany(mappedBy ="personnel",cascade =CascadeType.ALL)
    public Collection<Mutation> mutation;
-   public Collection<Conges> getConges() {
-      if (conges == null)
-         conges = new HashSet<Conges>();
-      return conges;
-   }
-   public Iterator getIteratorConges() {
-      if (conges == null)
-         conges = new java.util.HashSet<Conges>();
-      return conges.iterator();
-   }
-   public void setConges(java.util.Collection<Conges> newConges) {
-      removeAllConges();
-      for (Iterator iter = newConges.iterator(); iter.hasNext();)
-         addConges((Conges)iter.next());
-   }
-   public void addConges(Conges newConges) {
-      if (newConges == null)
-         return;
-      if (this.conges == null)
-         this.conges = new java.util.HashSet<Conges>();
-      if (!this.conges.contains(newConges))
-         this.conges.add(newConges);
-   }
-   public void removeConges(Conges oldConges) {
-      if (oldConges == null)
-         return;
-      if (this.conges != null)
-         if (this.conges.contains(oldConges))
-            this.conges.remove(oldConges);
-   }
-   public void removeAllConges() {
-      if (conges != null)
-         conges.clear();
-   }
-   public Collection<Mutation> getMutation() {
-      if (mutation == null)
-         mutation = new HashSet<Mutation>();
-      return mutation;
-   }
-   public Iterator getIteratorMutation() {
-      if (mutation == null)
-         mutation = new HashSet<Mutation>();
-      return mutation.iterator();
-   }
-   
-   public long getMatricule() {
+      public long getMatricule() {
 	return matricule;
 }
 
@@ -180,29 +149,17 @@ public String getEtatCivil() {
 public void setEtatCivil(String etatCivil) {
 	this.etatCivil = etatCivil;
 }
-   public void setMutation(Collection<Mutation> newMutation) {
-      removeAllMutation();
-      for (Iterator iter = newMutation.iterator(); iter.hasNext();)
-         addMutation((Mutation)iter.next());
-   }
-   public void addMutation(Mutation newMutation) {
-      if (newMutation == null)
-         return;
-      if (this.mutation == null)
-         this.mutation = new java.util.HashSet<Mutation>();
-      if (!this.mutation.contains(newMutation))
-         this.mutation.add(newMutation);
-   }
-   public void removeMutation(Mutation oldMutation) {
-      if (oldMutation == null)
-         return;
-      if (this.mutation != null)
-         if (this.mutation.contains(oldMutation))
-            this.mutation.remove(oldMutation);
-   }
-   public void removeAllMutation() {
-      if (mutation != null)
-         mutation.clear();
-   }
+public Collection<Conges> getConges() {
+	return conges;
+}
+public void setConges(Collection<Conges> conges) {
+	this.conges = conges;
+}
+public Collection<Mutation> getMutation() {
+	return mutation;
+}
+public void setMutation(Collection<Mutation> mutation) {
+	this.mutation = mutation;
+}
 
 }

@@ -38,39 +38,11 @@ public int getAnneeFin() {
 public void setAnneeFin(int anneeFin) {
 	this.anneeFin = anneeFin;
 }
-   public Collection<Semestre> getSemestre() {
-      if (semestre == null)
-         semestre = new java.util.HashSet<Semestre>();
-      return semestre;
-   }
-   public Iterator getIteratorSemestre() {
-      if (semestre == null)
-         semestre = new java.util.HashSet<Semestre>();
-      return semestre.iterator();
-   }
-   public void setSemestre(java.util.Collection<Semestre> newSemestre) {
-      removeAllSemestre();
-      for (Iterator iter = newSemestre.iterator(); iter.hasNext();)
-         addSemestre((Semestre)iter.next());
-   }
-   public void addSemestre(Semestre newSemestre) {
-      if (newSemestre == null)
-         return;
-      if (this.semestre == null)
-         this.semestre = new java.util.HashSet<Semestre>();
-      if (!this.semestre.contains(newSemestre))
-         this.semestre.add(newSemestre);
-   }
-   public void removeSemestre(Semestre oldSemestre) {
-      if (oldSemestre == null)
-         return;
-      if (this.semestre != null)
-         if (this.semestre.contains(oldSemestre))
-            this.semestre.remove(oldSemestre);
-   }
-   public void removeAllSemestre() {
-      if (semestre != null)
-         semestre.clear();
-   }
+public Collection<Semestre> getSemestre() {
+	return semestre;
+}
+public void setSemestre(Collection<Semestre> semestre) {
+	this.semestre = semestre;
+}
 
 }

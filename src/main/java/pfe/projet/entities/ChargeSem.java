@@ -23,6 +23,39 @@ public class ChargeSem implements Serializable {
    @ManyToOne
    @JoinColumn(name="matricule",referencedColumnName="matricule")
    public EnseignantLibre enseignantLibreB;
+   @ManyToOne
+   @JoinColumn(name="semestre", referencedColumnName="idSem")
+   private Semestre semestre;
+
+public ChargeSem(int nbHeure, Date dateDebut, Date dateFin, EnseignantLibre enseignantLibreB, Semestre semestre) {
+	super();
+	this.nbHeure = nbHeure;
+	this.dateDebut = dateDebut;
+	this.dateFin = dateFin;
+	this.enseignantLibreB = enseignantLibreB;
+	this.semestre = semestre;
+}
+
+public ChargeSem() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+public int getId() {
+	return id;
+}
+
+public void setId(int id) {
+	this.id = id;
+}
+
+public Semestre getSemestre() {
+	return semestre;
+}
+
+public void setSemestre(Semestre semestre) {
+	this.semestre = semestre;
+}
 
 public int getNbHeure() {
 	return nbHeure;

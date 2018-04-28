@@ -51,11 +51,11 @@ public void setNbMaxJrs(int nbMaxJrs) {
 	this.nbMaxJrs = nbMaxJrs;
 }
 
-public java.util.Collection<Conges> getConges() {
+public Collection<Conges> getConges() {
 	return conges;
 }
 
-public void setConges(java.util.Collection<Conges> conges) {
+public void setConges(Collection<Conges> conges) {
 	this.conges = conges;
 }
 

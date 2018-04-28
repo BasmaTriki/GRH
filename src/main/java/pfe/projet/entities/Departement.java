@@ -10,14 +10,14 @@ import javax.persistence.OneToMany;
 public class Departement  implements Serializable {
 	@Id 
 	@GeneratedValue
-   private int idDep;
+   private long idDep;
    private String nomDep;
    @OneToMany
    public Collection<Enseignant> enseignant;
-public int getIdDep() {
+public long getIdDep() {
 	return idDep;
 }
-public void setIdDep(int idDep) {
+public void setIdDep(long idDep) {
 	this.idDep = idDep;
 }
 public String getNomDep() {

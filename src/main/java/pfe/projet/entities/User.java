@@ -6,7 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
@@ -17,7 +17,7 @@ public class User implements Serializable{
 	
 @Temporal(TemporalType.DATE) 
 private Date datecreation;
-@ManyToOne
+@OneToOne
 @JoinColumn(name="matricule",referencedColumnName="matricule")
 public Personnel personnel;
 public User() {

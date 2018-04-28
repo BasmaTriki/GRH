@@ -13,6 +13,12 @@ public class Semestre implements Serializable  {
 	@Id 
 	@GeneratedValue
    private int idSem;
+   private String description;
+   @OneToMany
+  public Collection<ChargeSem> chargeSem;
+   @ManyToOne
+   @JoinColumn(name="id_annee",referencedColumnName="id")
+   private AnneeUniversitaire anneeuniversitaire;
    public AnneeUniversitaire getAnneeuniversitaire() {
 		return anneeuniversitaire;
 	}
@@ -20,14 +26,6 @@ public class Semestre implements Serializable  {
 	public void setAnneeuniversitaire(AnneeUniversitaire anneeuniversitaire) {
 		this.anneeuniversitaire = anneeuniversitaire;
 	}
-
-
-private String description;
-   @OneToMany
-   public Collection<ChargeSem> chargeSem;
-   @ManyToOne
-   @JoinColumn(name="id_annee",referencedColumnName="id")
-   private AnneeUniversitaire anneeuniversitaire;
 public int getIdSem() {
 	return idSem;
 }
