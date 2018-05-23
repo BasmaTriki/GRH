@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 public class ChargeAnnee implements Serializable{
 	@Id 
 	@GeneratedValue
-   private int id;
+   private long id;
    private int nbHeure;
    @ManyToOne
    @JoinColumn(name="matricule",referencedColumnName="matricule")
@@ -32,11 +32,11 @@ public ChargeAnnee(int nbHeure, EnseignantFonctionnaireEtat enseignantFoncEtat, 
 	this.enseignantFoncEtat = enseignantFoncEtat;
 	this.anneeuniversitaire = anneeuniversitaire;
 }
-public int getId() {
+public long getId() {
 	return id;
 }
-public void setId(int id) {
-	this.id = id;
+public void setId(long id2) {
+	this.id = id2;
 }
 public int getNbHeure() {
 	return nbHeure;

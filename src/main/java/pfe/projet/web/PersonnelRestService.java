@@ -38,7 +38,7 @@ public class PersonnelRestService {
 		return userRepository.chercheUser("%"+mc+"%","%"+mp+"%");
 	}*/
 	//Retourner une seul personne
-	@RequestMapping(value="/Personnel/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/Personnel/{matricule}", method=RequestMethod.GET)
 	public Personnel getPersonnel(@PathVariable long matricule){
 	return personnelRepository.findOne(matricule);
 	}
@@ -48,13 +48,13 @@ public class PersonnelRestService {
 	return personnelRepository.save(p);
 	}
 	//Supprimer une Personnel
-	@RequestMapping(value="/Personnel/{matricule}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/SupprimerPersonnel/{matricule}", method=RequestMethod.DELETE)
 	public boolean supprimer(@PathVariable long matricule){
 		personnelRepository.delete(matricule);
 		return true;
 	}
 	//mettre à jour une Personnel
-	@RequestMapping(value="/Personnel/{matricule}", method=RequestMethod.PUT)
+	@RequestMapping(value="/ModifierPersonnel/{matricule}", method=RequestMethod.PUT)
 	public Personnel save(@PathVariable  long matricule,@RequestBody Personnel p){
 	    p.setMatricule(matricule);
 		return personnelRepository.save(p);

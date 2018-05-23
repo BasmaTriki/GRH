@@ -11,13 +11,14 @@ import javax.persistence.OneToMany;
 public class Service implements Serializable {
 	@Id 
 	@GeneratedValue
-   private int idServ;
+   private long idServ;
+	String nom;
 	@OneToMany
    public Collection<Administratif> administratif;
-public int getIdServ() {
+public long getIdServ() {
 	return idServ;
 }
-public void setIdServ(int idServ) {
+public void setIdServ(long idServ) {
 	this.idServ = idServ;
 }
 public Collection<Administratif> getAdministratif() {

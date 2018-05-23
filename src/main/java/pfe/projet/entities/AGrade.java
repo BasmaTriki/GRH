@@ -14,16 +14,23 @@ import javax.persistence.TemporalType;
 public class AGrade implements Serializable {
 	@Id 
 	@GeneratedValue
-	private int id_agrade;
-	public int getId_agrade() {
+	private long id_agrade;
+	@Temporal(TemporalType.DATE)
+	public Date dateEvaluation;
+	@ManyToOne
+	@JoinColumn(name="id_grade",referencedColumnName="id")
+	public Grade grade;
+	@ManyToOne
+	@JoinColumn(name="matricule",referencedColumnName="matricule")
+	private Personnel personnel;
+	public long getId_agrade() {
 		return id_agrade;
 	}
 
-	public void setId_agrade(int id_agrade) {
+	public void setId_agrade(long id_agrade) {
 		this.id_agrade = id_agrade;
 	}
-	@Temporal(TemporalType.DATE)
-   public Date dateEvaluation;
+
 	
    public Date getDateEvaluation() {
 	return dateEvaluation;
@@ -33,19 +40,14 @@ public void setDateEvaluation(Date dateEvaluation) {
 	this.dateEvaluation = dateEvaluation;
 }
 
-public Grade getGradeB() {
-	return gradeB;
+public Grade getGrade() {
+	return grade;
 }
 
-public void setGradeB(Grade gradeB) {
-	this.gradeB = gradeB;
+public void setGrade(Grade grade) {
+	this.grade = grade;
 }
-@ManyToOne
-@JoinColumn(name="id",referencedColumnName="id")
-public Grade gradeB;
-@ManyToOne
-@JoinColumn(name="matricule",referencedColumnName="matricule")
-private Personnel personnel;
+
 
 public Personnel getPersonnel() {
 	return personnel;

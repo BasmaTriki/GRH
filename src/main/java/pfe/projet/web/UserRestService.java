@@ -24,32 +24,26 @@ public List<User> getUser(){
 }
 @RequestMapping(value="/chercherUsers", method=RequestMethod.GET)
 public Page<User>chercher(
-		@RequestParam(required = false) Date date,
+		@RequestParam(name="mc",defaultValue="") String mc,
 		@RequestParam(name="page",defaultValue="0") int page,
 		@RequestParam(name="size",defaultValue="5")int size){
-	return userRepository.chercher(date,new PageRequest(page,size));
+	return userRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 }
-/*@RequestMapping(value="/chercheUser", method=RequestMethod.GET)
-public Page<User>chercherUser(
-		@RequestParam(name="mc",defaultValue="") String mc,
-		@RequestParam(name="mp",defaultValue="") String mp){
-	return userRepository.chercheUser("%"+mc+"%","%"+mp+"%");
-}*/
-@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
+@RequestMapping(value="/users/{login}", method=RequestMethod.GET)
 public User getUser(@PathVariable String login){
 return userRepository.findOne(login);
 }
-@RequestMapping(value="/users", method=RequestMethod.POST)
+@RequestMapping(value="/AjouterUsers", method=RequestMethod.POST)
 public User save(@RequestBody User u){
 return userRepository.save(u);
 }
-@RequestMapping(value="/users/{login}", method=RequestMethod.DELETE)
+@RequestMapping(value="/SupprimerUsers/{login}", method=RequestMethod.DELETE)
 public boolean supprimer(@PathVariable String login){
 	userRepository.delete(login);
 	return true;
 }
-@RequestMapping(value="/users/{login}", method=RequestMethod.PUT)
-public User save(@PathVariable String login,@RequestBody User u){
+@RequestMapping(value="/ModifierUsers/{login}", method=RequestMethod.PUT)
+public User update(@PathVariable String login,@RequestBody User u){
     u.setLogin(login);
 	return userRepository.save(u);
 }

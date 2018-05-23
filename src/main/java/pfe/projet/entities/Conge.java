@@ -12,31 +12,55 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Conges implements Serializable {
+public class Conge implements Serializable {
 	@Id 
 	@GeneratedValue
-   private int idCong;
+   private long idCong;
 	@Temporal(TemporalType.DATE)
    private Date dateDebut;
 	@Temporal(TemporalType.DATE)
    private Date dateFin;
    private boolean reprise;
+   private String valide;
+   private int nbJourRest;
    @ManyToOne
    @JoinColumn(name="matricule",referencedColumnName="matricule")
    private Personnel personnel;
    @ManyToOne
    @JoinColumn(name="id_typeCng",referencedColumnName="idCg")
    private TypeConge typeconge;
+   
+public String getValide() {
+	return valide;
+}
+public void setValide(String valide) {
+	this.valide = valide;
+}
+
+   public int getNbJourRest() {
+	return nbJourRest;
+}
+public void setNbJourRest(int nbJourRest) {
+	this.nbJourRest = nbJourRest;
+}
+@Temporal(TemporalType.DATE)
+   private Date dateReprise;
+public Date getDateReprise() {
+	return dateReprise;
+}
+public void setDateReprise(Date dateReprise) {
+	this.dateReprise = dateReprise;
+}
 public TypeConge getTypeconge() {
 	return typeconge;
 }
 public void setTypeconge(TypeConge typeconge) {
 	this.typeconge = typeconge;
 }
-public int getIdCong() {
+public long getIdCong() {
 	return idCong;
 }
-public void setIdCong(int idCong) {
+public void setIdCong(long idCong) {
 	this.idCong = idCong;
 }
 public Date getDateDebut() {
@@ -63,5 +87,4 @@ public Personnel getPersonnel() {
 public void setPersonnel(Personnel personnel) {
 	this.personnel = personnel;
 }
-
 }

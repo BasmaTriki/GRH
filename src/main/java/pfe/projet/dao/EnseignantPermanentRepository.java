@@ -10,6 +10,6 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.EnseignantPermanent;
 
 public interface EnseignantPermanentRepository extends JpaRepository<EnseignantPermanent, Long> {
-	@Query("select e from EnseignantPermanent e where e.nom = :x")
+	@Query("select e from EnseignantPermanent e where e.nom like :x")
 	public Page<EnseignantPermanent>chercher(@Param("x") String nom,Pageable pageable);
 }

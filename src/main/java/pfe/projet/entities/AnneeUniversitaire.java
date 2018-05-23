@@ -11,15 +11,15 @@ import javax.persistence.OneToMany;
 public class AnneeUniversitaire implements Serializable {
 	@Id 
 	@GeneratedValue
-   private int id;
+   private long id;
    private int anneeDebut;
    private int anneeFin;
    @OneToMany
-   public Collection<Semestre> semestre;
-   public int getId() {
+   public Collection<Semestre> semestres;
+   public long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(long id) {
 	this.id = id;
 }
 
@@ -38,11 +38,11 @@ public int getAnneeFin() {
 public void setAnneeFin(int anneeFin) {
 	this.anneeFin = anneeFin;
 }
-public Collection<Semestre> getSemestre() {
-	return semestre;
+public Collection<Semestre> getSemestres() {
+	return semestres;
 }
-public void setSemestre(Collection<Semestre> semestre) {
-	this.semestre = semestre;
+public void setSemestres(Collection<Semestre> semestres) {
+	this.semestres = semestres;
 }
 
 }

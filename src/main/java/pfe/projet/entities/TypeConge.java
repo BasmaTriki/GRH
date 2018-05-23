@@ -13,11 +13,11 @@ public class TypeConge implements Serializable {
 	@Id 
 	@GeneratedValue
    private long idCg;
-   private String nomCng;
+   private String libelle;
    private String description;
    private int nbMaxJrs;
-   @OneToMany(mappedBy ="typeconge",cascade =CascadeType.ALL)
-   public Collection<Conges> conges;
+   @OneToMany
+   public Collection<Conge>conges;
 
 public long getIdCg() {
 	return idCg;
@@ -27,12 +27,13 @@ public void setIdCg(long idCg) {
 	this.idCg = idCg;
 }
 
-public String getNomCng() {
-	return nomCng;
+
+public String getLibelle() {
+	return libelle;
 }
 
-public void setNomCng(String nomCng) {
-	this.nomCng = nomCng;
+public void setLibelle(String libelle) {
+	this.libelle = libelle;
 }
 
 public String getDescription() {
@@ -51,11 +52,11 @@ public void setNbMaxJrs(int nbMaxJrs) {
 	this.nbMaxJrs = nbMaxJrs;
 }
 
-public Collection<Conges> getConges() {
+public Collection<Conge> getConges() {
 	return conges;
 }
 
-public void setConges(Collection<Conges> conges) {
+public void setConges(Collection<Conge> conges) {
 	this.conges = conges;
 }
 

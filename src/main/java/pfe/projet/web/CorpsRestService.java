@@ -31,9 +31,9 @@ public class CorpsRestService {
 			return corpsRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 		}
 		//Retourner un seul Corps
-		@RequestMapping(value="/Corps/{id}", method=RequestMethod.GET)
-		public Corps getOneCorps(@PathVariable long idCps){
-		return corpsRepository.findOne(idCps);
+		@RequestMapping(value="/Corps/{idcps}", method=RequestMethod.GET)
+		public Corps getOneCorps(@PathVariable long idcps){
+		return corpsRepository.findOne(idcps);
 		}
 		//Ajouter un Corps
 		@RequestMapping(value="/AjouterCorps", method=RequestMethod.POST)

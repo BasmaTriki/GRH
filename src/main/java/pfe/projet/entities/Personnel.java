@@ -2,15 +2,12 @@ package pfe.projet.entities;
 
 import java.io.Serializable;
 import java.util.*;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
 @Entity
 public class Personnel implements Serializable {
 	@Id
@@ -18,6 +15,7 @@ public class Personnel implements Serializable {
    private long cin;
    private String nom;
    private String prenom;
+   private String nompere;
    private String telephone;
    private String email;
    @Temporal(TemporalType.DATE)
@@ -30,6 +28,18 @@ public class Personnel implements Serializable {
    private String etatCivil;
    private String nomConjoint;
    private String profConjoint;
+   @OneToMany
+   private Collection<Conge> conges;
+   @OneToMany
+   public Collection<Mutation> mutation;
+   @OneToMany
+	private Collection<Periode> periodes;
+public Collection<Periode> getPeriodes() {
+	return periodes;
+}
+public void setPeriodes(Collection<Periode> periodes) {
+	this.periodes = periodes;
+}
 public String getNomConjoint() {
 	return nomConjoint;
 }
@@ -42,11 +52,7 @@ public String getProfConjoint() {
 public void setProfConjoint(String profConjoint) {
 	this.profConjoint = profConjoint;
 }
-   @OneToMany(mappedBy ="personnel",cascade =CascadeType.ALL)
-   private Collection<Conges> conges;
-   @OneToMany(mappedBy ="personnel",cascade =CascadeType.ALL)
-   public Collection<Mutation> mutation;
-      public long getMatricule() {
+public long getMatricule() {
 	return matricule;
 }
 
@@ -149,10 +155,10 @@ public String getEtatCivil() {
 public void setEtatCivil(String etatCivil) {
 	this.etatCivil = etatCivil;
 }
-public Collection<Conges> getConges() {
+public Collection<Conge> getConges() {
 	return conges;
 }
-public void setConges(Collection<Conges> conges) {
+public void setConges(Collection<Conge> conges) {
 	this.conges = conges;
 }
 public Collection<Mutation> getMutation() {
@@ -160,6 +166,12 @@ public Collection<Mutation> getMutation() {
 }
 public void setMutation(Collection<Mutation> mutation) {
 	this.mutation = mutation;
+}
+public String getNompere() {
+	return nompere;
+}
+public void setNompere(String nompere) {
+	this.nompere = nompere;
 }
 
 }

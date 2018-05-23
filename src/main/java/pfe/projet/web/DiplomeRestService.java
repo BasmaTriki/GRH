@@ -30,14 +30,8 @@ public class DiplomeRestService {
 				@RequestParam(name="size",defaultValue="5")int size){
 			return diplomeRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 		}
-		/*@RequestMapping(value="/chercheUser", method=RequestMethod.GET)
-		public Page<User>chercherUser(
-				@RequestParam(name="mc",defaultValue="") String mc,
-				@RequestParam(name="mp",defaultValue="") String mp){
-			return userRepository.chercheUser("%"+mc+"%","%"+mp+"%");
-		}*/
 		//Retourner un seul diplome
-		@RequestMapping(value="/Diplome/{id}", method=RequestMethod.GET)
+		@RequestMapping(value="/Diplome/{idDip}", method=RequestMethod.GET)
 		public Diplome getDiplome(@PathVariable long idDip){
 		return diplomeRepository.findOne(idDip);
 		}

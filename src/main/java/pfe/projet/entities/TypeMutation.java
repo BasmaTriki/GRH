@@ -12,16 +12,14 @@ public class TypeMutation implements Serializable {
 	
 	@Id
 	@GeneratedValue
-   private int code;
+   private long code;
    private String designation;
-   @OneToMany
-   private Collection<Mutation> mutation;
-   
-   public int getCode() {
+    
+   public long getCode() {
 	return code;
 }
 
-public void setCode(int code) {
+public void setCode(long code) {
 	this.code = code;
 }
 
@@ -31,14 +29,6 @@ public String getDesignation() {
 
 public void setDesignation(String designation) {
 	this.designation = designation;
-}
-
-public Collection<Mutation> getMutation() {
-	return mutation;
-}
-
-public void setMutation(Collection<Mutation> mutation) {
-	this.mutation = mutation;
 }
 
 }

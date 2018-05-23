@@ -32,7 +32,7 @@ public class DepartementRestService {
 			return departementRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 		}
 		//Retourner un seul Departement
-		@RequestMapping(value="/Departement/{id}", method=RequestMethod.GET)
+		@RequestMapping(value="/Departement/{idDep}", method=RequestMethod.GET)
 		public Departement getDepartement(@PathVariable long idDep){
 		return departementRepository.findOne(idDep);
 		}

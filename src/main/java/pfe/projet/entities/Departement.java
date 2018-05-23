@@ -14,6 +14,12 @@ public class Departement  implements Serializable {
    private String nomDep;
    @OneToMany
    public Collection<Enseignant> enseignant;
+   public Collection<Enseignant> getEnseignant() {
+	return enseignant;
+}
+public void setEnseignant(Collection<Enseignant> enseignant) {
+	this.enseignant = enseignant;
+}
 public long getIdDep() {
 	return idDep;
 }

@@ -20,11 +20,9 @@ public class Enseignant extends Personnel implements Serializable {
     public Departement departement;
 	@OneToMany(mappedBy="enseignant", cascade=CascadeType.ALL)
 	public Collection<Enfant> enfants;
-	
 	@ManyToOne
 	@JoinColumn(name="idcps",referencedColumnName="idcps")
     public Corps corps;
-  
 public Collection<Enfant> getEnfants() {
 		return enfants;
 	}
