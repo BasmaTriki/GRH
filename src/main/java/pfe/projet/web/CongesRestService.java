@@ -33,6 +33,22 @@ public class CongesRestService {
 			@RequestParam(name="size",defaultValue="5")int size){
 		return congeRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 	}
+	@RequestMapping(value="/chercherCongesP", method=RequestMethod.GET)
+	public Page<Conge>chercherPerso(
+			@RequestParam(name="mc",defaultValue="0")long mc,
+			@RequestParam(name="page",defaultValue="0") int page,
+			@RequestParam(name="size",defaultValue="5")int size){
+		return congeRepository.chercherPerso(mc,new PageRequest(page,size));
+	}
+	@RequestMapping(value="/chercherNbJourParType", method=RequestMethod.GET)
+	public Page<Conge>chercherNbJour(
+			@RequestParam(name="mc",defaultValue="0")long mc,
+			@RequestParam(name="mt",defaultValue="")String mt,
+			@RequestParam(name="page",defaultValue="0") int page,
+			@RequestParam(name="size",defaultValue="5")int size)
+	{
+		return congeRepository.chercherNbJour(mc,"%"+mt+"%",new PageRequest(page,size));
+	}
 	//Retourner un seul congé
 	@RequestMapping(value="/conge/{id}", method=RequestMethod.GET)
 	public Conge getOneConge(@PathVariable long idCong){

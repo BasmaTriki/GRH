@@ -22,11 +22,11 @@ public class EnfantRestService {
 	@Autowired
 	private EnfantRepository enfantRepository;
 	//Retourner la liste des enfants
-	@RequestMapping(value="/Enfant", method=RequestMethod.GET)
+	@RequestMapping(value="/Enfants", method=RequestMethod.GET)
 	public List<Enfant> getEnseignants(){
 		return enfantRepository.findAll();
 	}
-	@RequestMapping(value="/chercherEnfantt", method=RequestMethod.GET)
+	@RequestMapping(value="/chercherEnfant", method=RequestMethod.GET)
 	public Page<Enfant>chercher(
 			@RequestParam(name="mc",defaultValue="")String mc,
 			@RequestParam(name="page",defaultValue="0") int page,
@@ -35,8 +35,8 @@ public class EnfantRestService {
 	}
 
 	//Retourner un seul enfant
-	@RequestMapping(value="/Enfant/{id}", method=RequestMethod.GET)
-	public Enfant getEnseignant(@PathVariable long num){
+	@RequestMapping(value="/Enfant/{num}", method=RequestMethod.GET)
+	public Enfant getEnfant(@PathVariable long num){
 	return enfantRepository.findOne(num);
 	}
 	//Ajouter un enfant
@@ -45,13 +45,13 @@ public class EnfantRestService {
 	return enfantRepository.save(e);
 	}
 	//Supprimer un enfant
-	@RequestMapping(value="/Enfant/{num}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/SupprimerEnfant/{num}", method=RequestMethod.DELETE)
 	public boolean supprimer(@PathVariable long num){
 		enfantRepository.delete(num);
 		return true;
 	}
 	//mettre à jour un Enfant
-	@RequestMapping(value="/Enfant/{num}", method=RequestMethod.PUT)
+	@RequestMapping(value="/ModifierEnfant/{num}", method=RequestMethod.PUT)
 	public Enfant save(@PathVariable  long num,@RequestBody Enfant e){
 	    e.setNum(num);
 		return enfantRepository.save(e);

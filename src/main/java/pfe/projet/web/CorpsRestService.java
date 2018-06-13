@@ -41,15 +41,15 @@ public class CorpsRestService {
 		return corpsRepository.save(c);
 		}
 		//Supprimer un Corps
-		@RequestMapping(value="/SupprimerCorps/{id}", method=RequestMethod.DELETE)
-		public boolean supprimer(@PathVariable long id){
-			corpsRepository.delete(id);
+		@RequestMapping(value="/SupprimerCorps/{idcps}", method=RequestMethod.DELETE)
+		public boolean supprimer(@PathVariable long idcps){
+			corpsRepository.delete(idcps);
 			return true;
 		}
 		//mettre à jour un Corps
-		@RequestMapping(value="/ModifierCorps/{id}", method=RequestMethod.PUT)
-		public Corps save(@PathVariable  long id,@RequestBody Corps c){
-		    c.setIdcps(id);
+		@RequestMapping(value="/ModifierCorps/{idcps}", method=RequestMethod.PUT)
+		public Corps save(@PathVariable  long idcps,@RequestBody Corps c){
+		    c.setIdcps(idcps);
 			return corpsRepository.save(c);
 		}
 		

@@ -14,9 +14,11 @@ public class TypeConge implements Serializable {
 	@GeneratedValue
    private long idCg;
    private String libelle;
-   private String description;
    private int nbMaxJrs;
-   @OneToMany
+   private boolean autorisation;
+
+
+@OneToMany(cascade={CascadeType.ALL})
    public Collection<Conge>conges;
 
 public long getIdCg() {
@@ -36,14 +38,6 @@ public void setLibelle(String libelle) {
 	this.libelle = libelle;
 }
 
-public String getDescription() {
-	return description;
-}
-
-public void setDescription(String description) {
-	this.description = description;
-}
-
 public int getNbMaxJrs() {
 	return nbMaxJrs;
 }
@@ -60,5 +54,11 @@ public void setConges(Collection<Conge> conges) {
 	this.conges = conges;
 }
 
+public boolean isAutorisation() {
+	return autorisation;
+}
 
+public void setAutorisation(boolean autorisation) {
+	this.autorisation = autorisation;
+}
 }

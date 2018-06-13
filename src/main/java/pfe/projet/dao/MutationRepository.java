@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.Mutation;
 
 public interface MutationRepository extends JpaRepository<Mutation, Long> {
-	@Query("select m from Mutation m where m.orgAccueil like :x")
+	@Query("select m from Mutation m where m.organismeAccueil.libelleOrg like :x")
 	public Page<Mutation>chercher(@Param("x") String org_accueil,Pageable pageable); 
 
 }

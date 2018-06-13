@@ -28,6 +28,9 @@ public class Personnel implements Serializable {
    private String etatCivil;
    private String nomConjoint;
    private String profConjoint;
+   private boolean etat;
+   @OneToMany
+	private Collection<Enfant>enfants;
    @OneToMany
    private Collection<Conge> conges;
    @OneToMany
@@ -172,6 +175,18 @@ public String getNompere() {
 }
 public void setNompere(String nompere) {
 	this.nompere = nompere;
+}
+public boolean isEtat() {
+	return etat;
+}
+public void setEtat(boolean etat) {
+	this.etat = etat;
+}
+public Collection<Enfant> getEnfants() {
+	return enfants;
+}
+public void setEnfants(Collection<Enfant> enfants) {
+	this.enfants = enfants;
 }
 
 }

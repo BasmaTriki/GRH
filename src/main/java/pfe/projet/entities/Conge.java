@@ -22,7 +22,7 @@ public class Conge implements Serializable {
    private Date dateFin;
    private boolean reprise;
    private String valide;
-   private int nbJourRest;
+   private int nbJour;
    @ManyToOne
    @JoinColumn(name="matricule",referencedColumnName="matricule")
    private Personnel personnel;
@@ -33,15 +33,14 @@ public class Conge implements Serializable {
 public String getValide() {
 	return valide;
 }
+public int getNbJour() {
+	return nbJour;
+}
+public void setNbJour(int nbJour) {
+	this.nbJour = nbJour;
+}
 public void setValide(String valide) {
 	this.valide = valide;
-}
-
-   public int getNbJourRest() {
-	return nbJourRest;
-}
-public void setNbJourRest(int nbJourRest) {
-	this.nbJourRest = nbJourRest;
 }
 @Temporal(TemporalType.DATE)
    private Date dateReprise;

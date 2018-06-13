@@ -12,9 +12,6 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Enseignant extends Personnel implements Serializable {
-
-   private String specialite;
-   private String etat;
 	@ManyToOne
 	@JoinColumn(name="idDep",referencedColumnName="idDep")
     public Departement departement;
@@ -23,7 +20,10 @@ public class Enseignant extends Personnel implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idcps",referencedColumnName="idcps")
     public Corps corps;
-public Collection<Enfant> getEnfants() {
+	@ManyToOne
+	@JoinColumn(name="id_Sp",referencedColumnName="idSp")
+    public Specialite specialite;
+    public Collection<Enfant> getEnfants() {
 		return enfants;
 	}
 	public void setEnfants(Collection<Enfant> enfants) {
@@ -41,17 +41,11 @@ public Departement getDepartement() {
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
-public String getSpecialite() {
-	return specialite;
-}
-public void setSpecialite(String specialite) {
-	this.specialite = specialite;
-}
-public String getEtat() {
-	return etat;
-}
-public void setEtat(String etat) {
-	this.etat = etat;
-}
+public Specialite getSpecialite() {
+		return specialite;
+	}
+	public void setSpecialite(Specialite specialite) {
+		this.specialite = specialite;
+	}
 
 }

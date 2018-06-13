@@ -17,7 +17,7 @@ private String nom;
 private Date date_nais;
 @ManyToOne
 @JoinColumn(name="matricule",referencedColumnName="matricule")
-private Enseignant enseignant;
+private Personnel personnel;
 public Enfant() {
 	super();
 	// TODO Auto-generated constructor stub
@@ -40,4 +40,11 @@ public Date getDate_nais() {
 public void setDate_nais(Date date_nais) {
 	this.date_nais = date_nais;
 }
+public Personnel getPersonnel() {
+	return personnel;
+}
+public void setPersonnel(Personnel personnel) {
+	this.personnel = personnel;
+}
+
 }

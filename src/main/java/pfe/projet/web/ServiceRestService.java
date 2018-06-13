@@ -23,7 +23,7 @@ public class ServiceRestService {
 	private ServiceRepository serviceRepository;
 	//Retourner la liste des Services
 	@RequestMapping(value="/Services", method=RequestMethod.GET)
-	public List<Service> getService(){
+	public List<Service> getServices(){
 		return serviceRepository.findAll();
 	}
 	@RequestMapping(value="/chercherService", method=RequestMethod.GET)
@@ -34,8 +34,8 @@ public class ServiceRestService {
 		return serviceRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 	}
 	//Retourner un seul Service
-	@RequestMapping(value="/Service/{id}", method=RequestMethod.GET)
-	public Service getDepartement(@PathVariable long idServ){
+	@RequestMapping(value="/Service/{idServ}", method=RequestMethod.GET)
+	public Service getService(@PathVariable long idServ){
 	return serviceRepository.findOne(idServ);
 	}
 	//Ajouter un Service
@@ -44,13 +44,13 @@ public class ServiceRestService {
 	return serviceRepository.save(s);
 	}
 	//Supprimer un service
-	@RequestMapping(value="/SupprimerService/{id}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long id){
-		serviceRepository.delete(id);
+	@RequestMapping(value="/SupprimerService/{idServ}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idServ){
+		serviceRepository.delete(idServ);
 		return true;
 	}
 	//mettre à jour un Service
-	@RequestMapping(value="/ModifierService/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="/ModifierService/{idServ}", method=RequestMethod.PUT)
 	public Service save(@PathVariable  long idServ,@RequestBody Service s){
 	    s.setIdServ(idServ);
 		return serviceRepository.save(s);

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pfe.projet.dao.AGradeRepository;
 import pfe.projet.entities.AGrade;
+import pfe.projet.entities.Grade;
 @RestController
 @CrossOrigin("*")
 public class AGradeRestService {
@@ -26,10 +27,10 @@ public class AGradeRestService {
 		}
 		@RequestMapping(value="/chercherAGrade", method=RequestMethod.GET)
 		public Page<AGrade>chercher(
-				@RequestParam(required = false)Date mc,
+				@RequestParam(name="mc",defaultValue="")String mc,
 				@RequestParam(name="page",defaultValue="0") int page,
 				@RequestParam(name="size",defaultValue="5")int size){
-			return agradeRepository.chercher(mc,new PageRequest(page,size));
+			return agradeRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 		}
 		//Retourner un seul AGrade
 		@RequestMapping(value="/AGrade/{id_agrade}", method=RequestMethod.GET)
