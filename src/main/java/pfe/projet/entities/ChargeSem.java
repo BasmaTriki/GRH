@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 public class ChargeSem implements Serializable {
 	@Id 
 	@GeneratedValue
-   private long id;
+   private long idChargeS;
    private int nbHeure;
    @Temporal(TemporalType.DATE)
    private Date dateDebut;
@@ -35,13 +35,12 @@ public void setNbHeure(int nbHeure) {
 public Date getDateDebut() {
 	return dateDebut;
 }
-
-public long getId() {
-	return id;
+public long getIdChargeS() {
+	return idChargeS;
 }
 
-public void setId(long id) {
-	this.id = id;
+public void setIdChargeS(long idChargeS) {
+	this.idChargeS = idChargeS;
 }
 
 public void setDateDebut(Date dateDebut) {

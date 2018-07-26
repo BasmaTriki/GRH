@@ -31,6 +31,11 @@ public class DiplomePersonnelRestService {
 				@RequestParam(name="size",defaultValue="5")int size){
 			return diplomePersonnelRepository.chercher(date,new PageRequest(page,size));
 		}
+		@RequestMapping(value="/chercherPersonnelDiplome", method=RequestMethod.GET)
+		public List<DiplomePersonnel>chercherDiplome(
+				@RequestParam(name="mc",defaultValue="0") long mat){
+			return diplomePersonnelRepository.chercherDipPersonnel(mat);
+		}
 		//Retourner un seul diplome
 		@RequestMapping(value="/DiplomePersonnel/{id_DipP}", method=RequestMethod.GET)
 		public DiplomePersonnel getDiplomePersonnel(@PathVariable long id_DipP){

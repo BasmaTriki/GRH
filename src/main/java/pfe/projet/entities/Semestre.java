@@ -17,7 +17,7 @@ public class Semestre implements Serializable  {
    @OneToMany
    public Collection<ChargeSem> chargeSem;
    @ManyToOne
-   @JoinColumn(name="id_annee",referencedColumnName="id")
+   @JoinColumn(name="id_annee",referencedColumnName="idAnnee")
    private AnneeUniversitaire anneeuniversitaire;
    public AnneeUniversitaire getAnneeuniversitaire() {
 		return anneeuniversitaire;

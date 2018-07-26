@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.Corps;
 
 public interface CorpsRepository extends JpaRepository<Corps, Long> {
-	@Query("select c from Corps c where c.libelle = :x")
+	@Query("select c from Corps c where c.libelle like :x")
 	public Page<Corps>chercher(@Param("x") String libelle,Pageable pageable);
 }

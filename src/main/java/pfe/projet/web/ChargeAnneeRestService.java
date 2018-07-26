@@ -32,9 +32,9 @@ public class ChargeAnneeRestService {
 		return chargeAnneeRepository.chercher(date,new PageRequest(page,size));
 	}*/
 	//Retourner une seule ChargeAnnee
-	@RequestMapping(value="/chargeAnnee/{id}", method=RequestMethod.GET)
-	public ChargeAnnee getOneChargeAnnee(@PathVariable long id){
-	return chargeAnneeRepository.findOne(id);
+	@RequestMapping(value="/chargeAnnee/{idChargeAnn}", method=RequestMethod.GET)
+	public ChargeAnnee getOneChargeAnnee(@PathVariable long idChargeAnn){
+	return chargeAnneeRepository.findOne(idChargeAnn);
 	}
 	//Ajouter une ChargeAnnee
 	@RequestMapping(value="/AjouterChargeAnnee", method=RequestMethod.POST)
@@ -42,15 +42,15 @@ public class ChargeAnneeRestService {
 	return chargeAnneeRepository.save(au);
 	}
 	//Supprimer une ChargeAnnee
-	@RequestMapping(value="/SupprimerChargeAnnee/{id}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long id){
-		chargeAnneeRepository.delete(id);
+	@RequestMapping(value="/SupprimerChargeAnnee/{idChargeAnn}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idChargeAnn){
+		chargeAnneeRepository.delete(idChargeAnn);
 		return true;
 	}
 	//mettre à jour une ChargeAnnee
-	@RequestMapping(value="/ModifierChargeAnnee/{id}", method=RequestMethod.PUT)
-	public ChargeAnnee save(@PathVariable  long id,@RequestBody ChargeAnnee au){
-	    au.setId(id);
+	@RequestMapping(value="/ModifierChargeAnnee/{idChargeAnn}", method=RequestMethod.PUT)
+	public ChargeAnnee save(@PathVariable  long idChargeAnn,@RequestBody ChargeAnnee au){
+	    au.setIdChargeAnn(idChargeAnn);
 		return chargeAnneeRepository.save(au);
 	}
 

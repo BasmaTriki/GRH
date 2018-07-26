@@ -31,9 +31,14 @@ public class EnfantRestService {
 			@RequestParam(name="mc",defaultValue="")String mc,
 			@RequestParam(name="page",defaultValue="0") int page,
 			@RequestParam(name="size",defaultValue="5")int size){
-		return enfantRepository.chercher("%"+mc+"%",new PageRequest(page,size));
+		return enfantRepository.chercher(""+mc+"%",new PageRequest(page,size));
 	}
-
+	@RequestMapping(value="/chercherPersonnelEnfant", method=RequestMethod.GET)
+	public List<Enfant>chercherPersonnelEnfant(
+			@RequestParam(name="mc",defaultValue="0")long mat)
+	{
+		return enfantRepository.chercherEnfantEnseig(mat);
+	}
 	//Retourner un seul enfant
 	@RequestMapping(value="/Enfant/{num}", method=RequestMethod.GET)
 	public Enfant getEnfant(@PathVariable long num){

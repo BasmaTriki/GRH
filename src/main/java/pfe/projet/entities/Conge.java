@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.exolab.castor.types.DateTime;
 
 @Entity
 public class Conge implements Serializable {
@@ -29,7 +32,32 @@ public class Conge implements Serializable {
    @ManyToOne
    @JoinColumn(name="id_typeCng",referencedColumnName="idCg")
    private TypeConge typeconge;
-   
+   private String certaficat;
+   @Temporal(TemporalType.DATE)
+   private Date dateReprise;
+   @Temporal(TemporalType.TIMESTAMP)
+   private Calendar dateCreationConge;
+   private String adresseConge;
+   private String telephoneConge;
+
+public Calendar getDateCreationConge() {
+	return dateCreationConge;
+}
+public void setDateCreationConge(Calendar dateCreationConge) {
+	this.dateCreationConge = dateCreationConge;
+}
+public String getAdresseConge() {
+	return adresseConge;
+}
+public void setAdresseConge(String adresseConge) {
+	this.adresseConge = adresseConge;
+}
+public String getTelephoneConge() {
+	return telephoneConge;
+}
+public void setTelephoneConge(String telephoneConge) {
+	this.telephoneConge = telephoneConge;
+}
 public String getValide() {
 	return valide;
 }
@@ -42,8 +70,7 @@ public void setNbJour(int nbJour) {
 public void setValide(String valide) {
 	this.valide = valide;
 }
-@Temporal(TemporalType.DATE)
-   private Date dateReprise;
+
 public Date getDateReprise() {
 	return dateReprise;
 }
@@ -86,4 +113,11 @@ public Personnel getPersonnel() {
 public void setPersonnel(Personnel personnel) {
 	this.personnel = personnel;
 }
+public String getCertaficat() {
+	return certaficat;
+}
+public void setCertaficat(String certaficat) {
+	this.certaficat = certaficat;
+}
+
 }

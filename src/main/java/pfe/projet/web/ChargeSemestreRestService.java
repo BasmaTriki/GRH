@@ -35,9 +35,9 @@ public class ChargeSemestreRestService {
 		return chargeSemestreRepository.chercher(mc,new PageRequest(page,size));
 	}
 	//Retourner un seul chargSemestre
-	@RequestMapping(value="/ChargeSemestre/{id}", method=RequestMethod.GET)
-	public ChargeSem getOneChargeSemestre(@PathVariable long id){
-	return chargeSemestreRepository.findOne(id);
+	@RequestMapping(value="/ChargeSemestre/{idChargeS}", method=RequestMethod.GET)
+	public ChargeSem getOneChargeSemestre(@PathVariable long idChargeS){
+	return chargeSemestreRepository.findOne(idChargeS);
 	}
 	//Ajouter un chargeSemestre
 	@RequestMapping(value="/AjouterChargeSemestre", method=RequestMethod.POST)
@@ -45,15 +45,15 @@ public class ChargeSemestreRestService {
 	return chargeSemestreRepository.save(cs);
 	}
 	//Supprimer un chargeSemestre
-	@RequestMapping(value="/SupprimerChargeSemestre/{id}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long id){
-		chargeSemestreRepository.delete(id);
+	@RequestMapping(value="/SupprimerChargeSemestre/{idChargeS}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idChargeS){
+		chargeSemestreRepository.delete(idChargeS);
 		return true;
 	}
 	//mettre à jour un chargeSemestre
-	@RequestMapping(value="/ModifierChargeSemestre/{id}", method=RequestMethod.PUT)
-	public ChargeSem save(@PathVariable  long id,@RequestBody ChargeSem cs){
-	    cs.setId(id);
+	@RequestMapping(value="/ModifierChargeSemestre/{idChargeS}", method=RequestMethod.PUT)
+	public ChargeSem save(@PathVariable  long idChargeS,@RequestBody ChargeSem cs){
+	    cs.setIdChargeS(idChargeS);
 		return chargeSemestreRepository.save(cs);
 	}
 

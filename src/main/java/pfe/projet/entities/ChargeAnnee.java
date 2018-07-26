@@ -14,13 +14,13 @@ import javax.persistence.TemporalType;
 public class ChargeAnnee implements Serializable{
 	@Id 
 	@GeneratedValue
-   private long id;
+   private long idChargeAnn;
    private int nbHeure;
    @ManyToOne
    @JoinColumn(name="matricule",referencedColumnName="matricule")
    public EnseignantFonctionnaireEtat enseignantFoncEtat;
    @ManyToOne
-   @JoinColumn(name="id_annee",referencedColumnName="id")
+   @JoinColumn(name="id_annee",referencedColumnName="idAnnee")
    private AnneeUniversitaire anneeuniversitaire;
 public ChargeAnnee() {
 	super();
@@ -32,11 +32,12 @@ public ChargeAnnee(int nbHeure, EnseignantFonctionnaireEtat enseignantFoncEtat, 
 	this.enseignantFoncEtat = enseignantFoncEtat;
 	this.anneeuniversitaire = anneeuniversitaire;
 }
-public long getId() {
-	return id;
+
+public long getIdChargeAnn() {
+	return idChargeAnn;
 }
-public void setId(long id2) {
-	this.id = id2;
+public void setIdChargeAnn(long idChargeAnn) {
+	this.idChargeAnn = idChargeAnn;
 }
 public int getNbHeure() {
 	return nbHeure;

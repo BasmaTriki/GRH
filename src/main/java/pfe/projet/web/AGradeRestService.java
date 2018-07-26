@@ -25,6 +25,11 @@ public class AGradeRestService {
 		public List<AGrade> getAGrade(){
 			return agradeRepository.findAll();
 		}
+		@RequestMapping(value="/chercherPersonnelGrade", method=RequestMethod.GET)
+		public List<AGrade>chercherPersonnelGrade(
+				@RequestParam(name="mc",defaultValue="0")long mat){
+			return agradeRepository.chercherGrade(mat);
+		}
 		@RequestMapping(value="/chercherAGrade", method=RequestMethod.GET)
 		public Page<AGrade>chercher(
 				@RequestParam(name="mc",defaultValue="")String mc,

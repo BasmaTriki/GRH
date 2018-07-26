@@ -11,16 +11,17 @@ import javax.persistence.OneToMany;
 public class AnneeUniversitaire implements Serializable {
 	@Id 
 	@GeneratedValue
-   private long id;
+   private long idAnnee;
    private int anneeDebut;
    private int anneeFin;
    @OneToMany
    public Collection<Semestre> semestres;
-   public long getId() {
-	return id;
+public long getIdAnnee() {
+	return idAnnee;
 }
-public void setId(long id) {
-	this.id = id;
+
+public void setIdAnnee(long idAnnee) {
+	this.idAnnee = idAnnee;
 }
 
 public int getAnneeDebut() {

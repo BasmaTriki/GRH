@@ -15,20 +15,12 @@ public class Enseignant extends Personnel implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idDep",referencedColumnName="idDep")
     public Departement departement;
-	@OneToMany(mappedBy="enseignant", cascade=CascadeType.ALL)
-	public Collection<Enfant> enfants;
 	@ManyToOne
 	@JoinColumn(name="idcps",referencedColumnName="idcps")
     public Corps corps;
 	@ManyToOne
 	@JoinColumn(name="id_Sp",referencedColumnName="idSp")
     public Specialite specialite;
-    public Collection<Enfant> getEnfants() {
-		return enfants;
-	}
-	public void setEnfants(Collection<Enfant> enfants) {
-		this.enfants = enfants;
-	}
 	public Corps getCorps() {
 		return corps;
 	}

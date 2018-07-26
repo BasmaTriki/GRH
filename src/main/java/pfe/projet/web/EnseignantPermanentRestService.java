@@ -29,14 +29,22 @@ public class EnseignantPermanentRestService {
 				@RequestParam(name="mc",defaultValue="")String mc,
 				@RequestParam(name="page",defaultValue="0") int page,
 				@RequestParam(name="size",defaultValue="5")int size){
-			return enseignantRepository.chercher("%"+mc+"%",new PageRequest(page,size));
+			return enseignantRepository.chercher(""+mc+"%",new PageRequest(page,size));
 		}
-		/*@RequestMapping(value="/chercheUser", method=RequestMethod.GET)
-		public Page<User>chercherUser(
-				@RequestParam(name="mc",defaultValue="") String mc,
-				@RequestParam(name="mp",defaultValue="") String mp){
-			return userRepository.chercheUser("%"+mc+"%","%"+mp+"%");
-		}*/
+		@RequestMapping(value="/chercherEnseignantPrenom", method=RequestMethod.GET)
+		public Page<EnseignantPermanent>chercherPrenom(
+				@RequestParam(name="mp",defaultValue="")String mp,
+				@RequestParam(name="page",defaultValue="0") int page,
+				@RequestParam(name="size",defaultValue="5")int size){
+			return enseignantRepository.chercherPrenom("%"+mp+"%",new PageRequest(page,size));
+		}
+		@RequestMapping(value="/chercherEnseignantDepartement", method=RequestMethod.GET)
+		public Page<EnseignantPermanent>chercherDepartement(
+				@RequestParam(name="mc",defaultValue="0")long mc,
+				@RequestParam(name="page",defaultValue="0") int page,
+				@RequestParam(name="size",defaultValue="5")int size){
+			return enseignantRepository.chercherEnsgDepartement(mc,new PageRequest(page,size));
+		}
 		//Retourner une seul personne
 		@RequestMapping(value="/EnseignantPermanent/{matricule}", method=RequestMethod.GET)
 		public EnseignantPermanent getEnseignant(@PathVariable long matricule){

@@ -19,24 +19,37 @@ import pfe.projet.entities.Personnel;
 public class PersonnelRestService {
 	@Autowired
 	private PersonnelRepository personnelRepository;
-	//Retourner la list des Personnes
+	//Retourner la list des Personnels
 	@RequestMapping(value="/Personnels", method=RequestMethod.GET)
 	public List<Personnel> getPersonnel(){
 		return personnelRepository.findAll();
 	}
-	/*@RequestMapping(value="/chercherUsers", method=RequestMethod.GET)
-	public Page<Personnel>chercher(
-			@RequestParam(required = false) Date date,
-			@RequestParam(name="page",defaultValue="0") int page,
-			@RequestParam(name="size",defaultValue="5")int size){
-		return userRepository.chercher(date,new PageRequest(page,size));
-	}*/
-	/*@RequestMapping(value="/chercheUser", method=RequestMethod.GET)
-	public Page<User>chercherUser(
-			@RequestParam(name="mc",defaultValue="") String mc,
-			@RequestParam(name="mp",defaultValue="") String mp){
-		return userRepository.chercheUser("%"+mc+"%","%"+mp+"%");
-	}*/
+	@RequestMapping(value="/chercherPersonnel", method=RequestMethod.GET)
+	public List<Personnel>chercher(
+			@RequestParam(name="mc",defaultValue="true") boolean etat)
+	{
+		return personnelRepository.chercherPersonnel(etat);
+	}
+	@RequestMapping(value="/chercherPersonnelLogin", method=RequestMethod.GET)
+	public Personnel chercherLogin(
+			@RequestParam(name="mc",defaultValue="") String log,
+			@RequestParam(name="mp",defaultValue="") String motpass)
+	{
+		return personnelRepository.chercherPersonnelLogin(log+"", motpass+"");
+	}
+	@RequestMapping(value="/chercherTypePersonnel", method=RequestMethod.GET)
+	public String chercherType(
+			@RequestParam(name="mc",defaultValue="0") long mat){
+		return personnelRepository.chercherType(mat);
+	}
+	@RequestMapping(value="/chercherPersonnelActif", method=RequestMethod.GET)
+	public Page<Personnel> chercherPers(
+	@RequestParam(name="mc",defaultValue="")String mc,
+	@RequestParam(name="page",defaultValue="0") int page,
+	@RequestParam(name="size",defaultValue="5")int size)
+	{
+		return personnelRepository.chercherPers(""+mc+"%",new PageRequest(page,size));
+	}
 	//Retourner une seul personne
 	@RequestMapping(value="/Personnel/{matricule}", method=RequestMethod.GET)
 	public Personnel getPersonnel(@PathVariable long matricule){
@@ -56,8 +69,20 @@ public class PersonnelRestService {
 	//mettre à jour une Personnel
 	@RequestMapping(value="/ModifierPersonnel/{matricule}", method=RequestMethod.PUT)
 	public Personnel save(@PathVariable  long matricule,@RequestBody Personnel p){
-	    p.setMatricule(matricule);
-		return personnelRepository.save(p);
+		Personnel updateble = personnelRepository.findOne(matricule);
+		updateble.setMatricule(matricule);
+		updateble.setCin(p.getCin());
+		updateble.setAdresse(p.getAdresse());
+		updateble.setNom(p.getNom());
+		updateble.setPrenom(p.getPrenom());
+		updateble.setEmail(p.getEmail());
+		updateble.setLieuNaissance(p.getLieuNaissance());
+		updateble.setTelephone(p.getTelephone());
+		updateble.setEtat(p.isEtat());
+		updateble.setDatenaissance(p.getDatenaissance());
+		updateble.setLogin(p.getLogin());
+		updateble.setMotpasse(p.getMotpasse());
+		return personnelRepository.save(updateble);
 	}
 	
 

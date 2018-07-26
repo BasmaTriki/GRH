@@ -22,7 +22,7 @@ public class EnseignantFonctionnaireEtatRestService {
 	@Autowired
 	private EnseignantFonctionnaireEtatRepository enseignantFonctionnaireEtatRepository;
 	//Retourner la liste des enseignants FonctionnaireEtats
-	@RequestMapping(value="/EnseignantsFonctionnaireEtat", method=RequestMethod.GET)
+	@RequestMapping(value="/EnseignantsFonctionnaireEtats", method=RequestMethod.GET)
 	public List<EnseignantFonctionnaireEtat> getEnseignants(){
 		return enseignantFonctionnaireEtatRepository.findAll();
 	}
@@ -35,9 +35,9 @@ public class EnseignantFonctionnaireEtatRestService {
 	}
 
 	//Retourner un seul enseignant FonctionnaireEtat
-	@RequestMapping(value="/EnseignantFonctionnaireEtat/{id}", method=RequestMethod.GET)
-	public EnseignantFonctionnaireEtat getEnseignant(@PathVariable long matricule){
-	return enseignantFonctionnaireEtatRepository.findOne(matricule);
+	@RequestMapping(value="/EnseignantFonctionnaireEtat/{cin}", method=RequestMethod.GET)
+	public EnseignantFonctionnaireEtat getEnseignant(@PathVariable long cin){
+	return enseignantFonctionnaireEtatRepository.findOne(cin);
 	}
 	//Ajouter un enseignant FonctionnaireEtat
 	@RequestMapping(value="/AjouterEnseignantFonctionnaireEtat", method=RequestMethod.POST)
@@ -45,15 +45,15 @@ public class EnseignantFonctionnaireEtatRestService {
 	return enseignantFonctionnaireEtatRepository.save(p);
 	}
 	//Supprimer un enseignant FonctionnaireEtat
-	@RequestMapping(value="/EnseignantFonctionnaireEtat/{matricule}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long matricule){
-		enseignantFonctionnaireEtatRepository.delete(matricule);
+	@RequestMapping(value="/SupprimerEnseignantFonctionnaireEtat/{cin}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long cin){
+		enseignantFonctionnaireEtatRepository.delete(cin);
 		return true;
 	}
 	//mettre à jour un Enseignant FonctionnaireEtat
-	@RequestMapping(value="/EnseignantFonctionnaireEtat/{matricule}", method=RequestMethod.PUT)
-	public EnseignantFonctionnaireEtat save(@PathVariable  long matricule,@RequestBody EnseignantFonctionnaireEtat e){
-	    e.setMatricule(matricule);
+	@RequestMapping(value="/ModifierEnseignantFonctionnaireEtat/{cin}", method=RequestMethod.PUT)
+	public EnseignantFonctionnaireEtat save(@PathVariable  long cin,@RequestBody EnseignantFonctionnaireEtat e){
+	    e.setMatricule(cin);
 		return enseignantFonctionnaireEtatRepository.save(e);
 	}
 }

@@ -41,16 +41,23 @@ public class CongesRestService {
 		return congeRepository.chercherPerso(mc,new PageRequest(page,size));
 	}
 	@RequestMapping(value="/chercherNbJourParType", method=RequestMethod.GET)
-	public Page<Conge>chercherNbJour(
+	public int chercherNbJour(
 			@RequestParam(name="mc",defaultValue="0")long mc,
-			@RequestParam(name="mt",defaultValue="")String mt,
-			@RequestParam(name="page",defaultValue="0") int page,
-			@RequestParam(name="size",defaultValue="5")int size)
+			@RequestParam(name="mt",defaultValue="0")long mt)
 	{
-		return congeRepository.chercherNbJour(mc,"%"+mt+"%",new PageRequest(page,size));
+		return congeRepository.chercherNbJour(mc,mt);
 	}
+	@RequestMapping(value="/chercherCongeAutoriser", method=RequestMethod.GET)
+	public Page<Conge>chercherCongeAutoriser(
+			@RequestParam(name="mc",defaultValue="true")boolean mc,
+			@RequestParam(name="mp",defaultValue="")String mp,
+			@RequestParam(name="page",defaultValue="0") int page,
+			@RequestParam(name="size",defaultValue="5")int size){
+		return congeRepository.chercherCongeAutoriser(mc,""+mp+"%",new PageRequest(page,size));
+	}
+	
 	//Retourner un seul congé
-	@RequestMapping(value="/conge/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/conge/{idCong}", method=RequestMethod.GET)
 	public Conge getOneConge(@PathVariable long idCong){
 	return congeRepository.findOne(idCong);
 	}

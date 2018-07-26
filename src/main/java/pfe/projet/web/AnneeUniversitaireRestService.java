@@ -34,9 +34,9 @@ public class AnneeUniversitaireRestService {
 		return anneeUniversitaireRepository.chercher(mc,new PageRequest(page,size));
 	}
 	//Retourner une seule AnneeUniversitaire
-	@RequestMapping(value="/anneeUniversitaire/{id}", method=RequestMethod.GET)
-	public AnneeUniversitaire getOneAnneeUniversitaire(@PathVariable long id){
-	return anneeUniversitaireRepository.findOne(id);
+	@RequestMapping(value="/anneeUniversitaire/{idAnnee}", method=RequestMethod.GET)
+	public AnneeUniversitaire getOneAnneeUniversitaire(@PathVariable long idAnnee){
+	return anneeUniversitaireRepository.findOne(idAnnee);
 	}
 	//Ajouter une AnneeUniversitaire
 	@RequestMapping(value="/AjouterAnneeUniversitaire", method=RequestMethod.POST)
@@ -44,15 +44,15 @@ public class AnneeUniversitaireRestService {
 	return anneeUniversitaireRepository.save(au);
 	}
 	//Supprimer une AnneeUniversitaire
-	@RequestMapping(value="/SupprimerAnneeUniversitaire/{id}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long id){
-		anneeUniversitaireRepository.delete(id);
+	@RequestMapping(value="/SupprimerAnneeUniversitaire/{idAnnee}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idAnnee){
+		anneeUniversitaireRepository.delete(idAnnee);
 		return true;
 	}
 	//mettre à jour une AnneeUniversitaire
-	@RequestMapping(value="/ModifierAnneeUniversitaire/{id}", method=RequestMethod.PUT)
-	public AnneeUniversitaire save(@PathVariable  long id,@RequestBody AnneeUniversitaire au){
-	    au.setId(id);
+	@RequestMapping(value="/ModifierAnneeUniversitaire/{idAnnee}", method=RequestMethod.PUT)
+	public AnneeUniversitaire save(@PathVariable  long idAnnee,@RequestBody AnneeUniversitaire au){
+	    au.setIdAnnee(idAnnee);
 		return anneeUniversitaireRepository.save(au);
 	}
 

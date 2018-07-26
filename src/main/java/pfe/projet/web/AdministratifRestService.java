@@ -30,12 +30,13 @@ public class AdministratifRestService {
 				@RequestParam(name="size",defaultValue="5")int size){
 			return administratifRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 		}
-		/*@RequestMapping(value="/chercheUser", method=RequestMethod.GET)
-		public Page<User>chercherUser(
-				@RequestParam(name="mc",defaultValue="") String mc,
-				@RequestParam(name="mp",defaultValue="") String mp){
-			return userRepository.chercheUser("%"+mc+"%","%"+mp+"%");
-		}*/
+		@RequestMapping(value="/chercherAdministratifPrenom", method=RequestMethod.GET)
+		public Page<Administratif>chercherPrenom(
+				@RequestParam(name="mp",defaultValue="")String mp,
+				@RequestParam(name="page",defaultValue="0") int page,
+				@RequestParam(name="size",defaultValue="5")int size){
+			return administratifRepository.chercherPrenom("%"+mp+"%",new PageRequest(page,size));
+		}
 		//Retourner une seul personne
 		@RequestMapping(value="/Administratif/{matricule}", method=RequestMethod.GET)
 		public Administratif getEnseignant(@PathVariable long matricule){

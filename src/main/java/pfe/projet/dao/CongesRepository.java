@@ -12,6 +12,8 @@ public interface CongesRepository extends JpaRepository<Conge, Long> {
 	public Page<Conge>chercher(@Param("x") String valide,Pageable pageable);
 	@Query("select c from Conge c where c.personnel.matricule = :x")
 	public Page<Conge>chercherPerso(@Param("x") long mat,Pageable pageable);
-	@Query("select c from Conge c where c.personnel.matricule = :x and c.typeconge.libelle like :y")
-	public Page<Conge> chercherNbJour(@Param("x") long mat,@Param("y")String libelle,Pageable pageable);
+	@Query(value="select SUM(c.nb_jour) from Conge c where c.matricule = :x and c.id_type_cng = :y",nativeQuery = true)
+	public Integer chercherNbJour(@Param("x") long mat,@Param("y")long idCg);
+	@Query("select c from Conge c where c.typeconge.autorisation = :x and c.valide like :y")
+	public Page<Conge>chercherCongeAutoriser(@Param("x")boolean auto,@Param("y")String valide,Pageable pageable);
 }

@@ -1,5 +1,7 @@
 package pfe.projet.dao;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +12,8 @@ import pfe.projet.entities.Enfant;
 
 
 public interface EnfantRepository  extends JpaRepository<Enfant, Long> {
-		@Query("select e from Enfant e where e.nom = :x")
+		@Query("select e from Enfant e where e.nom like :x")
 		public Page<Enfant>chercher(@Param("x") String nom,Pageable pageable);
+		@Query("select e from Enfant e where e.personnel.matricule = :x")
+		public List<Enfant>chercherEnfantEnseig(@Param("x")long mat);
 }

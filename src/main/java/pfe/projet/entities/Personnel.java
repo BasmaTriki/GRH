@@ -3,8 +3,12 @@ package pfe.projet.entities;
 import java.io.Serializable;
 import java.util.*;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +33,10 @@ public class Personnel implements Serializable {
    private String nomConjoint;
    private String profConjoint;
    private boolean etat;
+   @Column(unique=true)
+   private String login;
+   @Column(unique=true)
+   private String motpasse;
    @OneToMany
 	private Collection<Enfant>enfants;
    @OneToMany
@@ -37,6 +45,18 @@ public class Personnel implements Serializable {
    public Collection<Mutation> mutation;
    @OneToMany
 	private Collection<Periode> periodes;
+   @ManyToOne
+   @JoinColumn(name="idRole",referencedColumnName="idRole")
+   private Role role;
+   @Lob
+   private byte[]photo; 
+  
+public Role getRole() {
+	return role;
+}
+public void setRole(Role role) {
+	this.role = role;
+}
 public Collection<Periode> getPeriodes() {
 	return periodes;
 }
@@ -179,6 +199,18 @@ public void setNompere(String nompere) {
 public boolean isEtat() {
 	return etat;
 }
+public String getLogin() {
+	return login;
+}
+public void setLogin(String login) {
+	this.login = login;
+}
+public String getMotpasse() {
+	return motpasse;
+}
+public void setMotpasse(String motpasse) {
+	this.motpasse = motpasse;
+}
 public void setEtat(boolean etat) {
 	this.etat = etat;
 }
@@ -188,5 +220,14 @@ public Collection<Enfant> getEnfants() {
 public void setEnfants(Collection<Enfant> enfants) {
 	this.enfants = enfants;
 }
-
+public void addMutation(Mutation mut)
+{
+	this.mutation.add(mut);
+}
+public byte[] getPhoto() {
+	return photo;
+}
+public void setPhoto(byte[] photo) {
+	this.photo = photo;
+}
 }
