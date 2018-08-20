@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -15,24 +16,38 @@ import javax.persistence.TemporalType;
 @Entity
 public class Personnel implements Serializable {
 	@Id
+	@GeneratedValue
+   private long idPers;
    private long matricule;
    private long cin;
    private String nom;
+   private String nomAr;
    private String prenom;
+   private String prenomAr;
    private String nompere;
+   private String nompereAr;
    private String telephone;
    private String email;
    @Temporal(TemporalType.DATE)
    private Date datenaissance;
    private String lieuNaissance;
+   private String lieuNaissanceAr;
    private String adresse;
+   private String adresseAr;
    private int codepostal;
    private String sexe;
+   private String sexeAr;
    private String rib;
    private String etatCivil;
    private String nomConjoint;
    private String profConjoint;
-   private boolean etat;
+   private String etatCivilAr;
+   private String nomConjointAr;
+   private String profConjointAr;
+   @JoinColumn(name="id_Org",referencedColumnName="idOrg")
+   private Organisme organismeOrigine;
+   @Temporal(TemporalType.DATE)
+   private Date dateEntree;
    @Column(unique=true)
    private String login;
    @Column(unique=true)
@@ -48,9 +63,18 @@ public class Personnel implements Serializable {
    @ManyToOne
    @JoinColumn(name="idRole",referencedColumnName="idRole")
    private Role role;
+   @ManyToOne
+   @JoinColumn(name="id_etat",referencedColumnName="idEtat")
+   private Etat etat;
    @Lob
    private byte[]photo; 
   
+public long getIdPers() {
+	return idPers;
+}
+public void setIdPers(long idPers) {
+	this.idPers = idPers;
+}
 public Role getRole() {
 	return role;
 }
@@ -196,9 +220,6 @@ public String getNompere() {
 public void setNompere(String nompere) {
 	this.nompere = nompere;
 }
-public boolean isEtat() {
-	return etat;
-}
 public String getLogin() {
 	return login;
 }
@@ -211,9 +232,7 @@ public String getMotpasse() {
 public void setMotpasse(String motpasse) {
 	this.motpasse = motpasse;
 }
-public void setEtat(boolean etat) {
-	this.etat = etat;
-}
+
 public Collection<Enfant> getEnfants() {
 	return enfants;
 }
@@ -230,4 +249,77 @@ public byte[] getPhoto() {
 public void setPhoto(byte[] photo) {
 	this.photo = photo;
 }
+public Etat getEtat() {
+	return etat;
+}
+public void setEtat(Etat etat) {
+	this.etat = etat;
+}
+public String getNomAr() {
+	return nomAr;
+}
+public void setNomAr(String nomAr) {
+	this.nomAr = nomAr;
+}
+public String getPrenomAr() {
+	return prenomAr;
+}
+public void setPrenomAr(String prenomAr) {
+	this.prenomAr = prenomAr;
+}
+public String getNompereAr() {
+	return nompereAr;
+}
+public void setNompereAr(String nompereAr) {
+	this.nompereAr = nompereAr;
+}
+public String getLieuNaissanceAr() {
+	return lieuNaissanceAr;
+}
+public void setLieuNaissanceAr(String lieuNaissanceAr) {
+	this.lieuNaissanceAr = lieuNaissanceAr;
+}
+public String getAdresseAr() {
+	return adresseAr;
+}
+public void setAdresseAr(String adresseAr) {
+	this.adresseAr = adresseAr;
+}
+public String getEtatCivilAr() {
+	return etatCivilAr;
+}
+public void setEtatCivilAr(String etatCivilAr) {
+	this.etatCivilAr = etatCivilAr;
+}
+public String getNomConjointAr() {
+	return nomConjointAr;
+}
+public void setNomConjointAr(String nomConjointAr) {
+	this.nomConjointAr = nomConjointAr;
+}
+public String getProfConjointAr() {
+	return profConjointAr;
+}
+public void setProfConjointAr(String profConjointAr) {
+	this.profConjointAr = profConjointAr;
+}
+public Organisme getOrganismeOrigine() {
+	return organismeOrigine;
+}
+public void setOrganismeOrigine(Organisme organismeOrigine) {
+	this.organismeOrigine = organismeOrigine;
+}
+public String getSexeAr() {
+	return sexeAr;
+}
+public void setSexeAr(String sexeAr) {
+	this.sexeAr = sexeAr;
+}
+public Date getDateEntree() {
+	return dateEntree;
+}
+public void setDateEntree(Date dateEntree) {
+	this.dateEntree = dateEntree;
+}
+
 }

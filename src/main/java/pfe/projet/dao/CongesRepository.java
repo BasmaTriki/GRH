@@ -1,5 +1,7 @@
 package pfe.projet.dao;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,12 +10,12 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.Conge;
 
 public interface CongesRepository extends JpaRepository<Conge, Long> {
-	@Query("select c from Conge c where c.valide like :x")
+	@Query("select c from Conge c where c.valide like :x and c.personnel.etat.idEtat=1")
 	public Page<Conge>chercher(@Param("x") String valide,Pageable pageable);
-	@Query("select c from Conge c where c.personnel.matricule = :x")
+	@Query("select c from Conge c where c.personnel.idPers = :x and c.personnel.etat.idEtat=1")
 	public Page<Conge>chercherPerso(@Param("x") long mat,Pageable pageable);
-	@Query(value="select SUM(c.nb_jour) from Conge c where c.matricule = :x and c.id_type_cng = :y",nativeQuery = true)
+	@Query("select SUM(c.nbJour) from Conge c where c.personnel.idPers = :x and c.typeconge.idCg = :y and (c.valide like 'accepte' or c.valide like 'validé')")
 	public Integer chercherNbJour(@Param("x") long mat,@Param("y")long idCg);
-	@Query("select c from Conge c where c.typeconge.autorisation = :x and c.valide like :y")
+	@Query("select c from Conge c where c.typeconge.autorisation = :x and c.valide like :y and c.personnel.etat.idEtat=1")
 	public Page<Conge>chercherCongeAutoriser(@Param("x")boolean auto,@Param("y")String valide,Pageable pageable);
 }

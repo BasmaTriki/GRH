@@ -16,17 +16,8 @@ public class Enseignant extends Personnel implements Serializable {
 	@JoinColumn(name="idDep",referencedColumnName="idDep")
     public Departement departement;
 	@ManyToOne
-	@JoinColumn(name="idcps",referencedColumnName="idcps")
-    public Corps corps;
-	@ManyToOne
 	@JoinColumn(name="id_Sp",referencedColumnName="idSp")
     public Specialite specialite;
-	public Corps getCorps() {
-		return corps;
-	}
-	public void setCorps(Corps corps) {
-		this.corps = corps;
-	}
 public Departement getDepartement() {
 		return departement;
 	}

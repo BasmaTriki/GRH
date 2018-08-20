@@ -10,6 +10,8 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.Diplome;
 
 public interface DiplomeRepository extends JpaRepository<Diplome, Long> {
-	@Query("select d from Diplome d where d.titre = :x")
+	@Query("select d from Diplome d where d.titreDip like :x")
 	public Page<Diplome>chercher(@Param("x") String nom,Pageable pageable);
+	@Query("select d from Diplome d where d.titreDipAr like :x")
+	public Page<Diplome>chercherAr(@Param("x") String nom,Pageable pageable);
 }

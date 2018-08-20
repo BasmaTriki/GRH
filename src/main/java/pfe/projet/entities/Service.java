@@ -12,7 +12,8 @@ public class Service implements Serializable {
 	@Id 
 	@GeneratedValue
     private long idServ;
-	private String libelle;
+	private String libelleServ;
+	private String libelleServAr;
 	@OneToMany
    public Collection<Administratif> administratif;
 
@@ -32,11 +33,18 @@ public Collection<Administratif> getAdministratif() {
 public void setAdministratif(Collection<Administratif> administratif) {
 	this.administratif = administratif;
 }
-public String getLibelle() {
-	return libelle;
+public String getLibelleServ() {
+	return libelleServ;
 }
-public void setLibelle(String libelle) {
-	this.libelle = libelle;
+public void setLibelleServ(String libelleServ) {
+	this.libelleServ = libelleServ;
 }
+public String getLibelleServAr() {
+	return libelleServAr;
+}
+public void setLibelleServAr(String libelleServAr) {
+	this.libelleServAr = libelleServAr;
+}
+
 
 }

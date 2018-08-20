@@ -21,7 +21,7 @@ public class AGrade implements Serializable {
 	@JoinColumn(name="id_grade",referencedColumnName="id")
 	public Grade grade;
 	@ManyToOne
-	@JoinColumn(name="matricule",referencedColumnName="matricule")
+	@JoinColumn(name="id_pers",referencedColumnName="idPers")
 	private Personnel personnel;
 	public long getId_agrade() {
 		return id_agrade;

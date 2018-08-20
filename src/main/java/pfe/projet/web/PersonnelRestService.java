@@ -26,7 +26,7 @@ public class PersonnelRestService {
 	}
 	@RequestMapping(value="/chercherPersonnel", method=RequestMethod.GET)
 	public List<Personnel>chercher(
-			@RequestParam(name="mc",defaultValue="true") boolean etat)
+			@RequestParam(name="mc",defaultValue="1") int etat)
 	{
 		return personnelRepository.chercherPersonnel(etat);
 	}
@@ -48,12 +48,12 @@ public class PersonnelRestService {
 	@RequestParam(name="page",defaultValue="0") int page,
 	@RequestParam(name="size",defaultValue="5")int size)
 	{
-		return personnelRepository.chercherPers(""+mc+"%",new PageRequest(page,size));
+		return personnelRepository.chercherPersCompte(""+mc+"%",new PageRequest(page,size));
 	}
 	//Retourner une seul personne
-	@RequestMapping(value="/Personnel/{matricule}", method=RequestMethod.GET)
-	public Personnel getPersonnel(@PathVariable long matricule){
-	return personnelRepository.findOne(matricule);
+	@RequestMapping(value="/Personnel/{idPers}", method=RequestMethod.GET)
+	public Personnel getPersonnel(@PathVariable long idPers){
+	return personnelRepository.findOne(idPers);
 	}
 	//Ajouter une personnel
 	@RequestMapping(value="/AjouterPersonnel", method=RequestMethod.POST)
@@ -61,24 +61,38 @@ public class PersonnelRestService {
 	return personnelRepository.save(p);
 	}
 	//Supprimer une Personnel
-	@RequestMapping(value="/SupprimerPersonnel/{matricule}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long matricule){
-		personnelRepository.delete(matricule);
+	@RequestMapping(value="/SupprimerPersonnel/{idPers}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idPers){
+		personnelRepository.delete(idPers);
 		return true;
 	}
 	//mettre à jour une Personnel
-	@RequestMapping(value="/ModifierPersonnel/{matricule}", method=RequestMethod.PUT)
-	public Personnel save(@PathVariable  long matricule,@RequestBody Personnel p){
-		Personnel updateble = personnelRepository.findOne(matricule);
-		updateble.setMatricule(matricule);
+	@RequestMapping(value="/ModifierPersonnel/{idPers}", method=RequestMethod.PUT)
+	public Personnel save(@PathVariable  long idPers,@RequestBody Personnel p){
+		Personnel updateble = personnelRepository.findOne(idPers);
+		updateble.setIdPers(idPers);
+		updateble.setMatricule(p.getMatricule());
 		updateble.setCin(p.getCin());
 		updateble.setAdresse(p.getAdresse());
 		updateble.setNom(p.getNom());
 		updateble.setPrenom(p.getPrenom());
 		updateble.setEmail(p.getEmail());
 		updateble.setLieuNaissance(p.getLieuNaissance());
+		updateble.setNomAr(p.getNomAr());
+		updateble.setPrenomAr(p.getPrenomAr());
+		updateble.setLieuNaissanceAr(p.getLieuNaissanceAr());
+		updateble.setAdresseAr(p.getAdresseAr());
 		updateble.setTelephone(p.getTelephone());
-		updateble.setEtat(p.isEtat());
+		updateble.setEtat(p.getEtat());
+		updateble.setRole(p.getRole());
+		updateble.setEtatCivil(p.getEtatCivil());
+		updateble.setEtatCivilAr(p.getEtatCivilAr());
+		updateble.setRib(p.getRib());
+		updateble.setNomConjoint(p.getNomConjoint());
+		updateble.setProfConjoint(p.getProfConjoint());
+		updateble.setNomConjointAr(p.getNomConjointAr());
+		updateble.setProfConjointAr(p.getProfConjointAr());
+		updateble.setOrganismeOrigine(p.getOrganismeOrigine());
 		updateble.setDatenaissance(p.getDatenaissance());
 		updateble.setLogin(p.getLogin());
 		updateble.setMotpasse(p.getMotpasse());

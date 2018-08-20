@@ -17,7 +17,7 @@ public class ChargeAnnee implements Serializable{
    private long idChargeAnn;
    private int nbHeure;
    @ManyToOne
-   @JoinColumn(name="matricule",referencedColumnName="matricule")
+   @JoinColumn(name="idPers",referencedColumnName="idPers")
    public EnseignantFonctionnaireEtat enseignantFoncEtat;
    @ManyToOne
    @JoinColumn(name="id_annee",referencedColumnName="idAnnee")

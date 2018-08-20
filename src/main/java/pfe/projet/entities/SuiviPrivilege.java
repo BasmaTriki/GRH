@@ -19,7 +19,7 @@ public class SuiviPrivilege implements Serializable{
    @JoinColumn(name="id_priv",referencedColumnName="idP")
    public Privilege privilege;
    @ManyToOne
-   @JoinColumn(name="matricule",referencedColumnName="matricule")
+   @JoinColumn(name="idPers",referencedColumnName="idPers")
    private Administratif administratif;
 public SuiviPrivilege() {
 	super();

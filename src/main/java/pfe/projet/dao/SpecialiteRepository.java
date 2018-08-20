@@ -12,4 +12,6 @@ import pfe.projet.entities.Specialite;
 public interface SpecialiteRepository extends JpaRepository<Specialite, Long> {
 	@Query("select s from Specialite s where s.libelleSp like :x")
 	public Page<Specialite>chercher(@Param("x") String mc,Pageable pageable);
+	@Query("select s from Specialite s where s.libelleSpAr like :x")
+	public Page<Specialite>chercherAr(@Param("x") String mc,Pageable pageable);
 }

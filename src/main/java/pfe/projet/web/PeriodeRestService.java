@@ -33,6 +33,11 @@ public class PeriodeRestService {
 			@RequestParam(name="size",defaultValue="5")int size){
 		return periodeRepository.chercher(mc,new PageRequest(page,size));
 	}
+	@RequestMapping(value="/chercherPeriodePersonnel", method=RequestMethod.GET)
+	public List<Periode>chercherPersonnel(
+			@RequestParam(name="mc",defaultValue="")long mc){
+		return periodeRepository.chercherPostePersonnel(mc);
+	}
 	//Retourner une seule Periode
 	@RequestMapping(value="/Periode/{id_Periode}", method=RequestMethod.GET)
 	public Periode getPeriode(@PathVariable long id_Periode){

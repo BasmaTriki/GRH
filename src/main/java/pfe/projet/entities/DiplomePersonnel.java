@@ -19,7 +19,7 @@ public class DiplomePersonnel implements Serializable {
 	@Temporal(TemporalType.DATE)
     private Date date;
 	@ManyToOne
-	@JoinColumn(name="matricule",referencedColumnName="matricule")
+	@JoinColumn(name="idPers",referencedColumnName="idPers")
     public Personnel personnel;
 	@ManyToOne
 	@JoinColumn(name="idDip",referencedColumnName="idDip")

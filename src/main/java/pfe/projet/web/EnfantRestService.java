@@ -39,6 +39,12 @@ public class EnfantRestService {
 	{
 		return enfantRepository.chercherEnfantEnseig(mat);
 	}
+	@RequestMapping(value="/chercherNbEnfant", method=RequestMethod.GET)
+	public int chercherNbEnfant(
+			@RequestParam(name="mc",defaultValue="0")long mat)
+	{
+		return enfantRepository.chercherNbEnfant(mat);
+	}
 	//Retourner un seul enfant
 	@RequestMapping(value="/Enfant/{num}", method=RequestMethod.GET)
 	public Enfant getEnfant(@PathVariable long num){

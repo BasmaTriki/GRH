@@ -12,7 +12,8 @@ public class PosteAdministrative {
 	@Id 
 	@GeneratedValue
 	private long id;
-	private String libelle;
+	private String libellePos;
+	private String libellePosAr;
 	@OneToMany
 	private Collection<Periode> periodes;
 	public Collection<Periode> getPeriodes() {
@@ -27,12 +28,16 @@ public class PosteAdministrative {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getLibelle() {
-		return libelle;
+	public String getLibellePos() {
+		return libellePos;
 	}
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setLibellePos(String libellePos) {
+		this.libellePos = libellePos;
 	}
-	
-	
+	public String getLibellePosAr() {
+		return libellePosAr;
+	}
+	public void setLibellePosAr(String libellePosAr) {
+		this.libellePosAr = libellePosAr;
+	}	
 }

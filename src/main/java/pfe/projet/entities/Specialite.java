@@ -12,6 +12,7 @@ public class Specialite implements Serializable {
 	@GeneratedValue
     private long idSp;
     private String libelleSp;
+    private String libelleSpAr;
     @OneToMany
    public Collection<Enseignant> enseignant;
 	public Specialite() {
@@ -36,4 +37,11 @@ public class Specialite implements Serializable {
 	public void setEnseignant(Collection<Enseignant> enseignant) {
 		this.enseignant = enseignant;
 	}
+	public String getLibelleSpAr() {
+		return libelleSpAr;
+	}
+	public void setLibelleSpAr(String libelleSpAr) {
+		this.libelleSpAr = libelleSpAr;
+	}
+	
 }

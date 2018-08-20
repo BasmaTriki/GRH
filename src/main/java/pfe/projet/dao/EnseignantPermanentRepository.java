@@ -12,7 +12,7 @@ import pfe.projet.entities.EnseignantPermanent;
 public interface EnseignantPermanentRepository extends JpaRepository<EnseignantPermanent, Long> {
 	@Query("select e from EnseignantPermanent e where e.nom like :x")
 	public Page<EnseignantPermanent>chercher(@Param("x") String nom,Pageable pageable);
-	@Query("select e1 from EnseignantPermanent e1 where e1.prenom like :y")
+	@Query("select e from EnseignantPermanent e where e.prenom like :y and e.etat.idEtat=1")
 	public Page<EnseignantPermanent>chercherPrenom(@Param("y") String prenom,Pageable pageable);
 	@Query("select e from EnseignantPermanent e where e.departement.idDep = :x")
 	public Page<EnseignantPermanent>chercherEnsgDepartement(@Param("x") long id,Pageable pageable);

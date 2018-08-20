@@ -14,10 +14,11 @@ public class Enfant implements Serializable {
 	@GeneratedValue
 private long num;
 private String nom;
+private String nomAr;
 private Date dateNais;
 
 @ManyToOne
-@JoinColumn(name="matricule",referencedColumnName="matricule")
+@JoinColumn(name="idPers",referencedColumnName="idPers")
 private Personnel personnel;
 public Enfant() {
 	super();
@@ -46,6 +47,12 @@ public Personnel getPersonnel() {
 }
 public void setPersonnel(Personnel personnel) {
 	this.personnel = personnel;
+}
+public String getNomAr() {
+	return nomAr;
+}
+public void setNomAr(String nomAr) {
+	this.nomAr = nomAr;
 }
 
 }

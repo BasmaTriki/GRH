@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.ChargeAnnee;
 
 public interface ChargeAnneeRepository extends JpaRepository<ChargeAnnee, Long> {
-	//@Query("select au from AnneeUniversitaire au where au.anneeDebut = :x")
-	//public Page<AnneeUniversitaire>chercher(@Param("x") int anneeDebut,Pageable pageable);
+	@Query("select au from ChargeAnnee au where au.anneeuniversitaire.anneeDebut = :x and au.anneeuniversitaire.anneeFin=:y")
+	public Page<ChargeAnnee>chercher(@Param("x") int anneeD,@Param("y") int anneeF,Pageable pageable);
 
 }

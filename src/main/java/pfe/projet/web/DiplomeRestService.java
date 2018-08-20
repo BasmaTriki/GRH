@@ -28,7 +28,7 @@ public class DiplomeRestService {
 				@RequestParam(name="mc",defaultValue="")String mc,
 				@RequestParam(name="page",defaultValue="0") int page,
 				@RequestParam(name="size",defaultValue="5")int size){
-			return diplomeRepository.chercher("%"+mc+"%",new PageRequest(page,size));
+			return diplomeRepository.chercher(""+mc+"%",new PageRequest(page,size));
 		}
 		//Retourner un seul diplome
 		@RequestMapping(value="/Diplome/{idDip}", method=RequestMethod.GET)

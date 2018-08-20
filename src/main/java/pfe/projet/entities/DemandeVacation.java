@@ -17,12 +17,14 @@ private long idDemande;
 private long cin;
 private String nom;
 private String prenom;
+private String nomAr;
+private String prenomAr;
 private String email;
 private String telephone;
 private String adresse;
+private String adresseAr;
 private String ville;
 private int codePostal;
-private String profilRech;
 private String diplomes; 
 private String etatdemande;
 private String typeDemande;
@@ -105,19 +107,36 @@ public int getCodePostal() {
 public void setCodePostal(int codePostal) {
 	this.codePostal = codePostal;
 }
-public String getProfilRech() {
-	return profilRech;
-}
-public void setProfilRech(String profilRech) {
-	this.profilRech = profilRech;
-}
-
 public String getEtatdemande() {
 	return etatdemande;
 }
 
 public void setEtatdemande(String etatdemande) {
 	this.etatdemande = etatdemande;
+}
+
+public String getNomAr() {
+	return nomAr;
+}
+
+public void setNomAr(String nomAr) {
+	this.nomAr = nomAr;
+}
+
+public String getPrenomAr() {
+	return prenomAr;
+}
+
+public void setPrenomAr(String prenomAr) {
+	this.prenomAr = prenomAr;
+}
+
+public String getAdresseAr() {
+	return adresseAr;
+}
+
+public void setAdresseAr(String adresseAr) {
+	this.adresseAr = adresseAr;
 }
 
 }

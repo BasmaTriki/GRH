@@ -29,10 +29,10 @@ public class PosteAdministrativeRestService {
 	}
 	@RequestMapping(value="/chercherPosteAdministrative", method=RequestMethod.GET)
 	public Page<PosteAdministrative>chercher(
-			@RequestParam(required = false)Date mc,
+			@RequestParam(name="mc",defaultValue="")String mc,
 			@RequestParam(name="page",defaultValue="0") int page,
 			@RequestParam(name="size",defaultValue="5")int size){
-		return posteAdministrativeRepository.chercher(mc,new PageRequest(page,size));
+		return posteAdministrativeRepository.chercher(mc+"%",new PageRequest(page,size));
 	}
 	//Retourner une seule PosteAdministrative
 	@RequestMapping(value="/PosteAdministrative/{id_PosteAdministrative}", method=RequestMethod.GET)

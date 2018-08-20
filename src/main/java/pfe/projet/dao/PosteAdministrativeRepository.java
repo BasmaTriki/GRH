@@ -11,8 +11,9 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.PosteAdministrative;
 
 public interface PosteAdministrativeRepository  extends JpaRepository<PosteAdministrative, Long> {
-	@Query("select p from PosteAdministrative p where p.libelle like :x")
-	public Page<PosteAdministrative>chercher(@Param("x") Date date,Pageable pageable);
-
+	@Query("select p from PosteAdministrative p where p.libellePos like :x")
+	public Page<PosteAdministrative>chercher(@Param("x") String poste,Pageable pageable);
+	@Query("select p from PosteAdministrative p where p.libellePosAr like :x")
+	public Page<PosteAdministrative>chercherAr(@Param("x") String poste,Pageable pageable);
 }
 

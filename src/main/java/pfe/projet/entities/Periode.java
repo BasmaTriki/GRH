@@ -23,7 +23,7 @@ public class Periode {
 	  @JoinColumn(name="id_poste",referencedColumnName="id")
 	  private PosteAdministrative posteAdmin;
 	  @ManyToOne
-	  @JoinColumn(name="matricule",referencedColumnName="matricule")
+	  @JoinColumn(name="idPers",referencedColumnName="idPers")
 	  private Personnel personnel;
 	public Personnel getPersonnel() {
 		return personnel;

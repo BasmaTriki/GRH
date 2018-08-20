@@ -14,6 +14,6 @@ import pfe.projet.entities.DiplomePersonnel;
 public interface DiplomePersonnelRepository extends JpaRepository<DiplomePersonnel, Long> {
 	@Query("select d from DiplomePersonnel d where d.date = :x")
 	public Page<DiplomePersonnel>chercher(@Param("x") Date date,Pageable pageable);
-	@Query("select d from DiplomePersonnel d where d.personnel.matricule = :x")
+	@Query("select d from DiplomePersonnel d where d.personnel.idPers= :x")
 	public List<DiplomePersonnel>chercherDipPersonnel(@Param("x")long mat);
 }

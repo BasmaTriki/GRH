@@ -12,4 +12,6 @@ import pfe.projet.entities.Departement;
 public interface DepartementRepository extends JpaRepository<Departement, Long> {
 	@Query("select d from Departement d where d.nomDep like :x")
 	public Page<Departement>chercher(@Param("x") String mc,Pageable pageable);
+	@Query("select d from Departement d where d.nomDepAr like :x")
+	public Page<Departement>chercherAr(@Param("x") String mc,Pageable pageable);
 }

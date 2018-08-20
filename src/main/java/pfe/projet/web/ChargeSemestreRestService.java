@@ -29,10 +29,10 @@ public class ChargeSemestreRestService {
 	}
 	@RequestMapping(value="/chercherChargeSemestre", method=RequestMethod.GET)
 	public Page<ChargeSem>chercher(
-			@RequestParam(required = false)Date mc,
+			@RequestParam(name="mc",defaultValue="")String mc,
 			@RequestParam(name="page",defaultValue="0") int page,
 			@RequestParam(name="size",defaultValue="5")int size){
-		return chargeSemestreRepository.chercher(mc,new PageRequest(page,size));
+		return chargeSemestreRepository.chercher(""+mc,new PageRequest(page,size));
 	}
 	//Retourner un seul chargSemestre
 	@RequestMapping(value="/ChargeSemestre/{idChargeS}", method=RequestMethod.GET)

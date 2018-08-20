@@ -15,14 +15,14 @@ public class Mutation implements Serializable {
 	@GeneratedValue
    private long idMut;
 	   @ManyToOne
-	   @JoinColumn(name="matricule",referencedColumnName="matricule")
+	   @JoinColumn(name="idPers",referencedColumnName="idPers")
 	   private Personnel personnel;
 	   @ManyToOne
 	   @JoinColumn(name="id_type_mut",referencedColumnName="code")
 	   private TypeMutation typemutation;
 	   @ManyToOne
 	   @JoinColumn(name="id_Org",referencedColumnName="idOrg")
-	   private OrganismeAccueil organismeAccueil;
+	   private Organisme organismeAccueil;
 	   @Temporal(TemporalType.DATE)
 	   private Date date_mut;
    public Date getDate_mut() {
@@ -35,10 +35,10 @@ public Mutation() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public OrganismeAccueil getOrganismeAccueil() {
+public Organisme getOrganismeAccueil() {
 	return organismeAccueil;
 }
-public void setOrganismeAccueil(OrganismeAccueil organismeAccueil) {
+public void setOrganismeAccueil(Organisme organismeAccueil) {
 	this.organismeAccueil = organismeAccueil;
 }
 public TypeMutation getTypemutation() {

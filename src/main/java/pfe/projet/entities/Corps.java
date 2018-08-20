@@ -12,20 +12,13 @@ public class Corps implements Serializable{
 	@Id 
 	@GeneratedValue
     private long idcps;
-	private String libelle;
-	@OneToMany
-	private Collection<Enseignant> enseignant;
-    public Collection<Enseignant> getEnseignant() {
-		return enseignant;
-	}
-
-	public void setEnseignant(Collection<Enseignant> enseignant) {
-		this.enseignant = enseignant;
-	}
-	public Corps(long idcps, Collection<Enseignant> enseignant) {
+	private String libelleCps;
+	private String libelleCpsAr;
+	
+	public Corps(String libelleCps, String libelleCpsAr) {
 		super();
-		this.idcps = idcps;
-		this.enseignant = enseignant;
+		this.libelleCps = libelleCps;
+		this.libelleCpsAr = libelleCpsAr;
 	}
 
 	public long getIdcps() {
@@ -41,11 +34,20 @@ public class Corps implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getLibelle() {
-		return libelle;
+	public String getLibelleCps() {
+		return libelleCps;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setLibelleCps(String libelleCps) {
+		this.libelleCps = libelleCps;
 	}
+
+	public String getLibelleCpsAr() {
+		return libelleCpsAr;
+	}
+
+	public void setLibelleCpsAr(String libelleCpsAr) {
+		this.libelleCpsAr = libelleCpsAr;
+	}
+
 }

@@ -8,33 +8,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 @Entity
 public class ChargeSem implements Serializable {
 	@Id 
 	@GeneratedValue
    private long idChargeS;
-   private int nbHeure;
-   @Temporal(TemporalType.DATE)
-   private Date dateDebut;
-   @Temporal(TemporalType.DATE)
-   private Date dateFin; 
+    public int nbrHeuresTD;
+   public int nbrHeuresTP;
+   public int nbrHeuresCR;
    @ManyToOne
-   @JoinColumn(name="matricule",referencedColumnName="matricule")
-   public EnseignantLibre enseignantLibreB;
-
-public int getNbHeure() {
-	return nbHeure;
-}
-
-public void setNbHeure(int nbHeure) {
-	this.nbHeure = nbHeure;
-}
-
-public Date getDateDebut() {
-	return dateDebut;
-}
+   @JoinColumn(name="idPers",referencedColumnName="idPers")
+   public EnseignantVacataire enseignantvacataire;
+   @ManyToOne
+   @JoinColumn(name="id_annee",referencedColumnName="idAnnee")
+   private AnneeUniversitaire anneeuniversitaire;
+   @ManyToOne
+   @JoinColumn(name="id_sem",referencedColumnName="idSem")
+   private Semestre semestre;
 public long getIdChargeS() {
 	return idChargeS;
 }
@@ -42,25 +32,52 @@ public long getIdChargeS() {
 public void setIdChargeS(long idChargeS) {
 	this.idChargeS = idChargeS;
 }
-
-public void setDateDebut(Date dateDebut) {
-	this.dateDebut = dateDebut;
+public AnneeUniversitaire getAnneeuniversitaire() {
+	return anneeuniversitaire;
 }
 
-public Date getDateFin() {
-	return dateFin;
+public void setAnneeuniversitaire(AnneeUniversitaire anneeuniversitaire) {
+	this.anneeuniversitaire = anneeuniversitaire;
 }
 
-public void setDateFin(Date dateFin) {
-	this.dateFin = dateFin;
+public Semestre getSemestre() {
+	return semestre;
 }
 
-public EnseignantLibre getEnseignantLibreB() {
-	return enseignantLibreB;
+public void setSemestre(Semestre semestre) {
+	this.semestre = semestre;
 }
 
-public void setEnseignantLibreB(EnseignantLibre enseignantLibreB) {
-	this.enseignantLibreB = enseignantLibreB;
+public EnseignantVacataire getEnseignantvacataire() {
+	return enseignantvacataire;
+}
+
+public void setEnseignantvacataire(EnseignantVacataire enseignantvacataire) {
+	this.enseignantvacataire = enseignantvacataire;
+}
+
+public int getNbrHeuresTD() {
+	return nbrHeuresTD;
+}
+
+public void setNbrHeuresTD(int nbrHeuresTD) {
+	this.nbrHeuresTD = nbrHeuresTD;
+}
+
+public int getNbrHeuresTP() {
+	return nbrHeuresTP;
+}
+
+public void setNbrHeuresTP(int nbrHeuresTP) {
+	this.nbrHeuresTP = nbrHeuresTP;
+}
+
+public int getNbrHeuresCR() {
+	return nbrHeuresCR;
+}
+
+public void setNbrHeuresCR(int nbrHeuresCR) {
+	this.nbrHeuresCR = nbrHeuresCR;
 }
 
 }

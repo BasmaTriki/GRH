@@ -12,8 +12,8 @@ public class EnseignantPermanent extends Enseignant implements Serializable {
 	   public Date dateRecrutement;
 		@Temporal(TemporalType.DATE)
 	   public Date dateTitularisation;
-		@OneToMany
-		public Collection<AnneeUniversitaire> anneeUniversitaire;
+		//@OneToMany
+		//public Collection<AnneeUniversitaire> anneeUniversitaire;
    public Date getDateRecrutement() {
 		return dateRecrutement;
 	}
@@ -28,14 +28,6 @@ public class EnseignantPermanent extends Enseignant implements Serializable {
 
 	public void setDateTitularisation(Date dateTitularisation) {
 		this.dateTitularisation = dateTitularisation;
-	}
-
-	public Collection<AnneeUniversitaire> getAnneeUniversitaire() {
-		return anneeUniversitaire;
-	}
-
-	public void setAnneeUniversitaire(Collection<AnneeUniversitaire> anneeUniversitaire) {
-		this.anneeUniversitaire = anneeUniversitaire;
 	}
 
 }

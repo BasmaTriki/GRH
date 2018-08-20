@@ -9,12 +9,7 @@ import javax.persistence.OneToMany;
 public class EnseignantFonctionnaireEtat extends EnseignantVacataire implements Serializable {
    public String autorisation;
    public int nbreMaxHeures;
-   @OneToMany
-   public Collection<AnneeUniversitaire> anneeUniversitaire;
-   public String getAutorisation() {
-	return autorisation;
-}
-
+  
 public void setAutorisation(String autorisation) {
 	this.autorisation = autorisation;
 }
@@ -26,14 +21,4 @@ public int getNbreMaxHeures() {
 public void setNbreMaxHeures(int nbreMaxHeures) {
 	this.nbreMaxHeures = nbreMaxHeures;
 }
-
-public Collection<AnneeUniversitaire> getAnneeUniversitaire() {
-	return anneeUniversitaire;
-}
-
-public void setAnneeUniversitaire(Collection<AnneeUniversitaire> anneeUniversitaire) {
-	this.anneeUniversitaire = anneeUniversitaire;
-}
-
-
 }

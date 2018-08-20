@@ -10,6 +10,7 @@ public class Privilege implements Serializable {
 	@GeneratedValue
    private int idP;
    private String designation;
+   private String designationAr;
    private int qtestock;
    
 public int getQtestock() {
@@ -29,6 +30,12 @@ public String getDesignation() {
 }
 public void setDesignation(String designation) {
 	this.designation = designation;
+}
+public String getDesignationAr() {
+	return designationAr;
+}
+public void setDesignationAr(String designationAr) {
+	this.designationAr = designationAr;
 }
 
 }

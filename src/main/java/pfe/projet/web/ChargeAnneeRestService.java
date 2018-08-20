@@ -24,13 +24,14 @@ public class ChargeAnneeRestService {
 	public List<ChargeAnnee> getChargeAnnee(){
 		return chargeAnneeRepository.findAll();
 	}
-	/*@RequestMapping(value="/chercherChargeAnnee", method=RequestMethod.GET)
+	@RequestMapping(value="/chercherChargeAnnee", method=RequestMethod.GET)
 	public Page<ChargeAnnee>chercher(
-			@RequestParam(required=false)Date date,
+			@RequestParam(name="mc",defaultValue="0")int anneD,
+			@RequestParam(name="mp",defaultValue="0")int anneF,
 			@RequestParam(name="page",defaultValue="0") int page,
 			@RequestParam(name="size",defaultValue="5")int size){
-		return chargeAnneeRepository.chercher(date,new PageRequest(page,size));
-	}*/
+		return chargeAnneeRepository.chercher(anneD,anneF,new PageRequest(page,size));
+	}
 	//Retourner une seule ChargeAnnee
 	@RequestMapping(value="/chargeAnnee/{idChargeAnn}", method=RequestMethod.GET)
 	public ChargeAnnee getOneChargeAnnee(@PathVariable long idChargeAnn){

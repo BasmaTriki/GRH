@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.EnseignantLibre;
 
 public interface EnseignantLibreRepository  extends JpaRepository<EnseignantLibre, Long> {
-	@Query("select e from EnseignantLibre e where e.nom = :x")
+	@Query("select e from EnseignantLibre e where e.nom like :x")
 	public Page<EnseignantLibre>chercher(@Param("x") String nom,Pageable pageable);
 }

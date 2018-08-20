@@ -19,11 +19,11 @@ public class SemestreRestService {
 	@Autowired
 	private SemestreRepository semestreRepository;
 	//Retourner la liste des Semestres
-	@RequestMapping(value="/Semestre", method=RequestMethod.GET)
+	@RequestMapping(value="/Semestres", method=RequestMethod.GET)
 	public List<Semestre> getEnseignants(){
 		return semestreRepository.findAll();
 	}
-	@RequestMapping(value="/chercherSemestret", method=RequestMethod.GET)
+	@RequestMapping(value="/chercherSemestre", method=RequestMethod.GET)
 	public Page<Semestre>chercher(
 			@RequestParam(name="mc",defaultValue="")String mc,
 			@RequestParam(name="page",defaultValue="0") int page,
@@ -32,9 +32,9 @@ public class SemestreRestService {
 	}
 
 	//Retourner un seul Semestre
-	@RequestMapping(value="/Semestre/{num_sem}", method=RequestMethod.GET)
-	public Semestre getEnseignant(@PathVariable long num_sem){
-	return semestreRepository.findOne(num_sem);
+	@RequestMapping(value="/Semestre/{idSem}", method=RequestMethod.GET)
+	public Semestre getEnseignant(@PathVariable int idSem){
+	return semestreRepository.findOne(idSem);
 	}
 	//Ajouter un Semestre
 	@RequestMapping(value="/AjouterSemestre", method=RequestMethod.POST)
@@ -42,15 +42,15 @@ public class SemestreRestService {
 	return semestreRepository.save(sem);
 	}
 	//Supprimer un Semestre
-	@RequestMapping(value="/Semestre/{num_sem}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long num_sem){
-		semestreRepository.delete(num_sem);
+	@RequestMapping(value="/SupprimerSemestre/{idSem}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable int idSem){
+		semestreRepository.delete(idSem);
 		return true;
 	}
 	//mettre à jour un Semestre
-	@RequestMapping(value="/Semestre/{num_sem}", method=RequestMethod.PUT)
-	public Semestre save(@PathVariable  int num_sem,@RequestBody Semestre sem){
-	    sem.setIdSem(num_sem);
+	@RequestMapping(value="/ModifierSemestre/{idSem}", method=RequestMethod.PUT)
+	public Semestre save(@PathVariable int idSem,@RequestBody Semestre sem){
+	    sem.setIdSem(idSem);
 		return semestreRepository.save(sem);
 	}
 	

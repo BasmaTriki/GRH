@@ -25,9 +25,10 @@ public class Conge implements Serializable {
    private Date dateFin;
    private boolean reprise;
    private String valide;
+   private String valideAr;
    private int nbJour;
    @ManyToOne
-   @JoinColumn(name="matricule",referencedColumnName="matricule")
+   @JoinColumn(name="idPers",referencedColumnName="idPers")
    private Personnel personnel;
    @ManyToOne
    @JoinColumn(name="id_typeCng",referencedColumnName="idCg")
@@ -38,6 +39,7 @@ public class Conge implements Serializable {
    @Temporal(TemporalType.TIMESTAMP)
    private Calendar dateCreationConge;
    private String adresseConge;
+   private String adresseCongeAr;
    private String telephoneConge;
 
 public Calendar getDateCreationConge() {
@@ -118,6 +120,18 @@ public String getCertaficat() {
 }
 public void setCertaficat(String certaficat) {
 	this.certaficat = certaficat;
+}
+public String getValideAr() {
+	return valideAr;
+}
+public void setValideAr(String valideAr) {
+	this.valideAr = valideAr;
+}
+public String getAdresseCongeAr() {
+	return adresseCongeAr;
+}
+public void setAdresseCongeAr(String adresseCongeAr) {
+	this.adresseCongeAr = adresseCongeAr;
 }
 
 }

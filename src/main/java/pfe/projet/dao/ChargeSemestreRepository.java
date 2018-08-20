@@ -11,8 +11,8 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.ChargeSem;;
 
 public interface ChargeSemestreRepository extends JpaRepository<ChargeSem, Long> {
-	@Query("select cs from ChargeSem cs where cs.dateDebut = :x")
-	public Page<ChargeSem>chercher(@Param("x")Date dateDebut,Pageable pageable);
+	@Query("select cs from ChargeSem cs where cs.semestre.descriptionSem like :x")
+	public Page<ChargeSem>chercher(@Param("x")String semestre,Pageable pageable);
 
 
 }

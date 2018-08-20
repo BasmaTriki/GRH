@@ -12,6 +12,7 @@ public class Departement  implements Serializable {
 	@GeneratedValue
    private long idDep;
    private String nomDep;
+   private String nomDepAr;
    @OneToMany
    public Collection<Enseignant> enseignant;
    public Collection<Enseignant> getEnseignant() {
@@ -31,6 +32,12 @@ public String getNomDep() {
 }
 public void setNomDep(String nomDep) {
 	this.nomDep = nomDep;
+}
+public String getNomDepAr() {
+	return nomDepAr;
+}
+public void setNomDepAr(String nomDepAr) {
+	this.nomDepAr = nomDepAr;
 }
 
 }

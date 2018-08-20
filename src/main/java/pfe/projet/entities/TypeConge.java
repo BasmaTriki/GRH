@@ -13,13 +13,23 @@ public class TypeConge implements Serializable {
 	@Id 
 	@GeneratedValue
    private long idCg;
-   private String libelle;
+   private String libelleType;
+   private String libelleTypeAr;
    private int nbMaxJrs;
    private boolean autorisation;
 
 
-@OneToMany(cascade={CascadeType.ALL})
-   public Collection<Conge>conges;
+public TypeConge() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+public TypeConge(String libelleType, String libelleTypeAr, int nbMaxJrs, boolean autorisation) {
+	super();
+	this.libelleType = libelleType;
+	this.libelleTypeAr = libelleTypeAr;
+	this.nbMaxJrs = nbMaxJrs;
+	this.autorisation = autorisation;
+}
 
 public long getIdCg() {
 	return idCg;
@@ -27,15 +37,6 @@ public long getIdCg() {
 
 public void setIdCg(long idCg) {
 	this.idCg = idCg;
-}
-
-
-public String getLibelle() {
-	return libelle;
-}
-
-public void setLibelle(String libelle) {
-	this.libelle = libelle;
 }
 
 public int getNbMaxJrs() {
@@ -46,14 +47,6 @@ public void setNbMaxJrs(int nbMaxJrs) {
 	this.nbMaxJrs = nbMaxJrs;
 }
 
-public Collection<Conge> getConges() {
-	return conges;
-}
-
-public void setConges(Collection<Conge> conges) {
-	this.conges = conges;
-}
-
 public boolean isAutorisation() {
 	return autorisation;
 }
@@ -61,4 +54,21 @@ public boolean isAutorisation() {
 public void setAutorisation(boolean autorisation) {
 	this.autorisation = autorisation;
 }
+
+public String getLibelleType() {
+	return libelleType;
+}
+
+public void setLibelleType(String libelleType) {
+	this.libelleType = libelleType;
+}
+
+public String getLibelleTypeAr() {
+	return libelleTypeAr;
+}
+
+public void setLibelleTypeAr(String libelleTypeAr) {
+	this.libelleTypeAr = libelleTypeAr;
+}
+
 }
