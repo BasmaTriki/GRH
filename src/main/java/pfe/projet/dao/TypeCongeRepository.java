@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.TypeConge;
 
 public interface TypeCongeRepository extends JpaRepository<TypeConge, Long> {
-	@Query("select tc from TypeConge tc where tc.libelleType like :x")
+	@Query("select tc from TypeConge tc where tc.libelleType like :x or tc.libelleTypeAr like :x")
 	public Page<TypeConge>chercher(@Param("x") String nomCng,Pageable pageable);
 	@Query("select tc from TypeConge tc where tc.libelleTypeAr like :x")
 	public Page<TypeConge>chercherAr(@Param("x") String nomCng,Pageable pageable);

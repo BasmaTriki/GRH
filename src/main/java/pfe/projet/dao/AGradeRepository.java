@@ -15,4 +15,6 @@ public interface AGradeRepository extends JpaRepository<AGrade, Long> {
 	public Page<AGrade>chercher(@Param("x") String mc,Pageable pageable);
 	@Query("select g from AGrade g where g.personnel.idPers = :x ORDER BY g.dateEvaluation ASC")
 	public List<AGrade>chercherGrade(@Param("x") long mat);
+	@Query("select g, MAX(g.dateEvaluation) from AGrade g where g.personnel.idPers = :x")
+	public List<AGrade>chercherGradeActuel(@Param("x") long mat);
 }

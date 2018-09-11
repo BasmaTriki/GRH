@@ -38,17 +38,14 @@ public class EnseignantPermanentRestService {
 				@RequestParam(name="size",defaultValue="5")int size){
 			return enseignantRepository.chercherPrenom("%"+mp+"%",new PageRequest(page,size));
 		}
-		@RequestMapping(value="/chercherEnseignantDepartement", method=RequestMethod.GET)
-		public Page<EnseignantPermanent>chercherDepartement(
-				@RequestParam(name="mc",defaultValue="0")long mc,
-				@RequestParam(name="page",defaultValue="0") int page,
-				@RequestParam(name="size",defaultValue="5")int size){
-			return enseignantRepository.chercherEnsgDepartement(mc,new PageRequest(page,size));
+		@RequestMapping(value="/chercherEnseignantSansCompte", method=RequestMethod.GET)
+		public List<EnseignantPermanent>chercherCompte(){
+			return enseignantRepository.chercherEnsgSansCompte();
 		}
 		//Retourner une seul personne
-		@RequestMapping(value="/EnseignantPermanent/{matricule}", method=RequestMethod.GET)
-		public EnseignantPermanent getEnseignant(@PathVariable long matricule){
-		return enseignantRepository.findOne(matricule);
+		@RequestMapping(value="/EnseignantPermanent/{idPers}", method=RequestMethod.GET)
+		public EnseignantPermanent getEnseignant(@PathVariable long idPers){
+		return enseignantRepository.findOne(idPers);
 		}
 		//Ajouter une personnel
 		@RequestMapping(value="/AjouterEnseignantPermanent", method=RequestMethod.POST)
@@ -56,15 +53,15 @@ public class EnseignantPermanentRestService {
 		return enseignantRepository.save(e);
 		}
 		//Supprimer une Personnel
-		@RequestMapping(value="/SupprimerEnseignantPermanent/{matricule}", method=RequestMethod.DELETE)
-		public boolean supprimer(@PathVariable long matricule){
-			enseignantRepository.delete(matricule);
+		@RequestMapping(value="/SupprimerEnseignantPermanent/{idPers}", method=RequestMethod.DELETE)
+		public boolean supprimer(@PathVariable long idPers){
+			enseignantRepository.delete(idPers);
 			return true;
 		}
 		//mettre à jour une Personnel
-		@RequestMapping(value="/ModifierEnseignantPermanent/{matricule}", method=RequestMethod.PUT)
-		public EnseignantPermanent save(@PathVariable  long matricule,@RequestBody EnseignantPermanent e){
-		    e.setMatricule(matricule);
+		@RequestMapping(value="/ModifierEnseignantPermanent/{idPers}", method=RequestMethod.PUT)
+		public EnseignantPermanent save(@PathVariable  long idPers,@RequestBody EnseignantPermanent e){
+		    e.setIdPers(idPers);
 			return enseignantRepository.save(e);
 		}
 		

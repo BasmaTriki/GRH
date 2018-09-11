@@ -9,8 +9,10 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.Grade;
 
 public interface GradeRepository extends JpaRepository<Grade, Long> {
-	@Query("select g from Grade g where g.titre like :x")
+	@Query("select g from Grade g where g.titre like :x or g.titreAr like :x")
 	public Page<Grade>chercher(@Param("x") String nom,Pageable pageable);
 	@Query("select g from Grade g where g.titreAr like :x")
 	public Page<Grade>chercherAr(@Param("x") String nom,Pageable pageable);
+	@Query("select g from Grade g where g.titreAr like :x")
+	public Grade chercherOneAr(@Param("x") String nom);
 }

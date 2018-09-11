@@ -18,8 +18,10 @@ public class Personnel implements Serializable {
 	@Id
 	@GeneratedValue
    private long idPers;
-   private long matricule;
-   private long cin;
+	@Column(unique=true)
+   private String matricule;
+   @Column(unique=true)
+   private String cin;
    private String nom;
    private String nomAr;
    private String prenom;
@@ -44,6 +46,9 @@ public class Personnel implements Serializable {
    private String etatCivilAr;
    private String nomConjointAr;
    private String profConjointAr;
+   private String societConj;
+   private String societConjAr;
+   @ManyToOne
    @JoinColumn(name="id_Org",referencedColumnName="idOrg")
    private Organisme organismeOrigine;
    @Temporal(TemporalType.DATE)
@@ -66,6 +71,8 @@ public class Personnel implements Serializable {
    @ManyToOne
    @JoinColumn(name="id_etat",referencedColumnName="idEtat")
    private Etat etat;
+   private String gradeActuel;
+   private String gradeActuelAr;
    @Lob
    private byte[]photo; 
   
@@ -99,19 +106,19 @@ public String getProfConjoint() {
 public void setProfConjoint(String profConjoint) {
 	this.profConjoint = profConjoint;
 }
-public long getMatricule() {
+public String getMatricule() {
 	return matricule;
 }
 
-public void setMatricule(long matricule) {
+public void setMatricule(String matricule) {
 	this.matricule = matricule;
 }
 
-public long getCin() {
+public String getCin() {
 	return cin;
 }
 
-public void setCin(long cin) {
+public void setCin(String cin) {
 	this.cin = cin;
 }
 
@@ -320,6 +327,30 @@ public Date getDateEntree() {
 }
 public void setDateEntree(Date dateEntree) {
 	this.dateEntree = dateEntree;
+}
+public String getGradeActuel() {
+	return gradeActuel;
+}
+public void setGradeActuel(String gradeActuel) {
+	this.gradeActuel = gradeActuel;
+}
+public String getGradeActuelAr() {
+	return gradeActuelAr;
+}
+public void setGradeActuelAr(String gradeActuelAr) {
+	this.gradeActuelAr = gradeActuelAr;
+}
+public String getSocietConj() {
+	return societConj;
+}
+public void setSocietConj(String societConj) {
+	this.societConj = societConj;
+}
+public String getSocietConjAr() {
+	return societConjAr;
+}
+public void setSocietConjAr(String societConjAr) {
+	this.societConjAr = societConjAr;
 }
 
 }

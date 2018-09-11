@@ -35,9 +35,9 @@ public class EnseignantVacataireRestService {
 	}
 
 	//Retourner un seul enseignant Vacataire
-	@RequestMapping(value="/EnseignantVacataire/{id}", method=RequestMethod.GET)
-	public EnseignantVacataire getEnseignant(@PathVariable long matricule){
-	return enseignantvacataireRepository.findOne(matricule);
+	@RequestMapping(value="/EnseignantVacataire/{idPers}", method=RequestMethod.GET)
+	public EnseignantVacataire getEnseignant(@PathVariable long idPers){
+	return enseignantvacataireRepository.findOne(idPers);
 	}
 	//Ajouter un enseignant Vacataire
 	@RequestMapping(value="/AjouterEnseignantVacataire", method=RequestMethod.POST)
@@ -45,15 +45,15 @@ public class EnseignantVacataireRestService {
 	return enseignantvacataireRepository.save(p);
 	}
 	//Supprimer un enseignant Vacataire
-	@RequestMapping(value="/EnseignantVacataire/{matricule}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long matricule){
-		enseignantvacataireRepository.delete(matricule);
+	@RequestMapping(value="/EnseignantVacataire/{idPers}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idPers){
+		enseignantvacataireRepository.delete(idPers);
 		return true;
 	}
 	//mettre à jour un Enseignant Vacataire
-	@RequestMapping(value="/EnseignantVacataire/{matricule}", method=RequestMethod.PUT)
-	public EnseignantVacataire save(@PathVariable  long matricule,@RequestBody EnseignantVacataire e){
-	    e.setMatricule(matricule);
+	@RequestMapping(value="/EnseignantVacataire/{idPers}", method=RequestMethod.PUT)
+	public EnseignantVacataire save(@PathVariable  long idPers,@RequestBody EnseignantVacataire e){
+	    e.setIdPers(idPers);
 		return enseignantvacataireRepository.save(e);
 	}
 	

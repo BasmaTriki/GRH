@@ -20,6 +20,7 @@ public class Grade implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idcps",referencedColumnName="idcps")
     public Corps corps;
+	
 public Grade() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -60,4 +61,5 @@ public String getTitreAr() {
 public void setTitreAr(String titreAr) {
 	this.titreAr = titreAr;
 }
+
 }

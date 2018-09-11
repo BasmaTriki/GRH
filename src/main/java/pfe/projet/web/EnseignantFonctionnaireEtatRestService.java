@@ -31,13 +31,13 @@ public class EnseignantFonctionnaireEtatRestService {
 			@RequestParam(name="mc",defaultValue="")String mc,
 			@RequestParam(name="page",defaultValue="0") int page,
 			@RequestParam(name="size",defaultValue="5")int size){
-		return enseignantFonctionnaireEtatRepository.chercher("%"+mc+"%",new PageRequest(page,size));
+		return enseignantFonctionnaireEtatRepository.chercher(""+mc+"%",new PageRequest(page,size));
 	}
 
 	//Retourner un seul enseignant FonctionnaireEtat
-	@RequestMapping(value="/EnseignantFonctionnaireEtat/{cin}", method=RequestMethod.GET)
-	public EnseignantFonctionnaireEtat getEnseignant(@PathVariable long cin){
-	return enseignantFonctionnaireEtatRepository.findOne(cin);
+	@RequestMapping(value="/EnseignantFonctionnaireEtat/{idPers}", method=RequestMethod.GET)
+	public EnseignantFonctionnaireEtat getEnseignant(@PathVariable long idPers){
+	return enseignantFonctionnaireEtatRepository.findOne(idPers);
 	}
 	//Ajouter un enseignant FonctionnaireEtat
 	@RequestMapping(value="/AjouterEnseignantFonctionnaireEtat", method=RequestMethod.POST)
@@ -45,15 +45,15 @@ public class EnseignantFonctionnaireEtatRestService {
 	return enseignantFonctionnaireEtatRepository.save(p);
 	}
 	//Supprimer un enseignant FonctionnaireEtat
-	@RequestMapping(value="/SupprimerEnseignantFonctionnaireEtat/{cin}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long cin){
-		enseignantFonctionnaireEtatRepository.delete(cin);
+	@RequestMapping(value="/SupprimerEnseignantFonctionnaireEtat/{idPers}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idPers){
+		enseignantFonctionnaireEtatRepository.delete(idPers);
 		return true;
 	}
 	//mettre à jour un Enseignant FonctionnaireEtat
-	@RequestMapping(value="/ModifierEnseignantFonctionnaireEtat/{cin}", method=RequestMethod.PUT)
-	public EnseignantFonctionnaireEtat save(@PathVariable  long cin,@RequestBody EnseignantFonctionnaireEtat e){
-	    e.setMatricule(cin);
+	@RequestMapping(value="/ModifierEnseignantFonctionnaireEtat/{idPers}", method=RequestMethod.PUT)
+	public EnseignantFonctionnaireEtat save(@PathVariable  long idPers,@RequestBody EnseignantFonctionnaireEtat e){
+	    e.setIdPers(idPers);
 		return enseignantFonctionnaireEtatRepository.save(e);
 	}
 }

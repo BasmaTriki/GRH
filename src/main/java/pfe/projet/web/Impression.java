@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationHome;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,8 +32,9 @@ import pfe.projet.entities.Personnel;
 @RestController
 @CrossOrigin("*")
 public class Impression {
-	
-	private Connection connection=null;
+	  String mois[] = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"};
+	  String moisAr[] = {"جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"};
+	  private Connection connection=null;
 	JasperReport jasperReport;
 	JasperPrint jasperPrint;
 
@@ -116,6 +120,7 @@ JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/etatCong
 	             mesParametres.put("pmois", pmois);
 	             mesParametres.put("pannee", pannee);
 	             mesParametres.put("idtype", idtype);
+	             mesParametres.put("mois", mois[pmois-1]);
 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 	             	//export pdf
 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/etatCongeType.pdf");
@@ -129,6 +134,60 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
           // TODO Auto-generated catch block
                  e.printStackTrace();
              }
+		 } catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+	        
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JRException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 }
+	@RequestMapping(value="/ListeCongeParTypeAr")
+	 private void CongeParMoisTypeAr(
+			 @RequestParam(name="mc",defaultValue="0")int pmois,
+			 @RequestParam(name="mp",defaultValue="0")int pannee,
+			 @RequestParam(name="mt",defaultValue="0")long idtype){
+		 try{
+			 //connexion
+			 Class.forName("com.mysql.jdbc.Driver");
+			 connection = DriverManager.getConnection(
+	                    "jdbc:mysql://localhost:3306/iset_sf","root", "");			 
+ JasperReportsViewResolver resolver = new JasperReportsViewResolver();
+	 	       resolver.setViewClass(JasperReportsMultiFormatView.class);
+	 	     
+	 	      ApplicationHome home = new ApplicationHome(this.getClass());
+	 	    
+	 	     File jarDir = home.getDir();
+	 	     File RepDir = new File(jarDir, "pfe/projet/web/reports/");
+	 	     File reportsPDF = new File(jarDir, "pfe/projet/web/reports/");
+
+	 	       System.out.println("uploadDir"+RepDir);
+
+	 	       //compiler le rapport
+JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/etatCongeTypeAr.jrxml");
+	             //parametre du rapport
+	             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
+	             mesParametres.put("pmois", pmois);
+	             mesParametres.put("pannee", pannee);
+	             mesParametres.put("idtype", idtype);
+	             mesParametres.put("mois", moisAr[pmois-1]);
+JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
+	             	//export pdf
+JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/etatCongeTypeAr.pdf");
+
+    	   	     //execution du rapport dans le navigateur
+			    Runtime runtime = Runtime.getRuntime();
+String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/etatCongetypeAr.pdf" };
+            try {
+                final Process process = runtime.exec(args);
+            } catch (IOException e) {
+         // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 		 } catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -266,7 +325,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		             //parametre du rapport
 		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
 		             String type;
-		             if(sexe.equals("Femme"))
+		             if(sexe.equals("Femme")||sexe.equals("انثى"))
 		             {
 		            	type="تعمل";
 		             }
@@ -280,6 +339,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 		             	//export pdf
 	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/AttestationTravail.pdf");
+	 //JasperExportManager.exportReportToXslFile(jasperPrint, reportsPDF+"/AttestationTravail.pdf");
 	 
 	      	   	     //execution du rapport dans le navigateur
 				    Runtime runtime = Runtime.getRuntime();
@@ -353,7 +413,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		 }
 		//demandeStage 
 		@RequestMapping(value="/RepriseConge")
-		 private void RepriseConge(@RequestParam(name="mc",defaultValue="0")long idPers){
+		 private void RepriseConge(@RequestParam(name="mc",defaultValue="0")long idCng){
 			 try{
 				 //connexion
 				 Class.forName("com.mysql.jdbc.Driver");
@@ -374,7 +434,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 	 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/FicheRepriseAr.jrxml");
 		             //parametre du rapport
 		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
-		             mesParametres.put("idPers",idPers);
+		             mesParametres.put("idCng",idCng);
 	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 		             	//export pdf
 	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/FicheRepriseAr.pdf");
@@ -400,5 +460,303 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 					e.printStackTrace();
 				}
 		 }
+		@RequestMapping(value="/FichePersonnel")
+		 private void FichePersonnel(@RequestParam(name="mc",defaultValue="0")long idPers){
+			 try{
+				 //connexion
+				 Class.forName("com.mysql.jdbc.Driver");
+	 			 connection = DriverManager.getConnection(
+	 	                    "jdbc:mysql://localhost:3306/iset_sf","root", "");			 
+	   JasperReportsViewResolver resolver = new JasperReportsViewResolver();
+		 	       resolver.setViewClass(JasperReportsMultiFormatView.class);
+		 	     
+		 	      ApplicationHome home = new ApplicationHome(this.getClass());
+		 	    
+		 	     File jarDir = home.getDir();
+		 	     File RepDir = new File(jarDir, "pfe/projet/web/reports/");
+		 	     File reportsPDF = new File(jarDir, "pfe/projet/web/reports/");
+	 
+		 	       System.out.println("uploadDir"+RepDir);
+
+		 	       //compiler le rapport
+	 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/FichePersonnelAr.jrxml");
+		             //parametre du rapport
+		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
+		             mesParametres.put("idPers",idPers);
+	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
+		             	//export pdf
+	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/FichePersonnelAr.pdf");
+	 
+	      	   	     //execution du rapport dans le navigateur
+				    Runtime runtime = Runtime.getRuntime();
+	String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/FichePersonnelAr.pdf" };
+	              try {
+	                  final Process process = runtime.exec(args);
+	              } catch (IOException e) {
+	           // TODO Auto-generated catch block
+	                  e.printStackTrace();
+	              }
+			 } catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+		        
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 }
+		@RequestMapping(value="/ListeEnseignantDepartement")
+		 private void ListeEnseignantDepartement(@RequestParam(name="mc",defaultValue="0")long idDep){
+			 try{
+				 //connexion
+				 Class.forName("com.mysql.jdbc.Driver");
+	 			 connection = DriverManager.getConnection(
+	 	                    "jdbc:mysql://localhost:3306/iset_sf","root", "");			 
+	   JasperReportsViewResolver resolver = new JasperReportsViewResolver();
+		 	       resolver.setViewClass(JasperReportsMultiFormatView.class);
+		 	     
+		 	      ApplicationHome home = new ApplicationHome(this.getClass());
+		 	    
+		 	     File jarDir = home.getDir();
+		 	     File RepDir = new File(jarDir, "pfe/projet/web/reports/");
+		 	     File reportsPDF = new File(jarDir, "pfe/projet/web/reports/");
+	 
+		 	       System.out.println("uploadDir"+RepDir);
+
+		 	       //compiler le rapport
+	 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/ListeEnseignantParDepartement.jrxml");
+		             //parametre du rapport
+		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
+		             mesParametres.put("idDep",idDep);
+	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
+		             	//export pdf
+	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantParDepartement.pdf");
+	 
+	      	   	     //execution du rapport dans le navigateur
+				    Runtime runtime = Runtime.getRuntime();
+	String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/ListeEnseignantParDepartement.pdf" };
+	              try {
+	                  final Process process = runtime.exec(args);
+	              } catch (IOException e) {
+	           // TODO Auto-generated catch block
+	                  e.printStackTrace();
+	              }
+			 } catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+		        
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 }
+		//Liste des enseignants par Grade
+		@RequestMapping(value="/ListeEnseignantGrade")
+		 private void ListeEnseignantGrade(@RequestParam(name="mc",defaultValue="0")long idGrade){
+			 try{
+				 //connexion
+				 Class.forName("com.mysql.jdbc.Driver");
+	 			 connection = DriverManager.getConnection(
+	 	                    "jdbc:mysql://localhost:3306/iset_sf","root", "");			 
+	   JasperReportsViewResolver resolver = new JasperReportsViewResolver();
+		 	       resolver.setViewClass(JasperReportsMultiFormatView.class);
+		 	     
+		 	      ApplicationHome home = new ApplicationHome(this.getClass());
+		 	    
+		 	     File jarDir = home.getDir();
+		 	     File RepDir = new File(jarDir, "pfe/projet/web/reports/");
+		 	     File reportsPDF = new File(jarDir, "pfe/projet/web/reports/");
+	 
+		 	       System.out.println("uploadDir"+RepDir);
+
+		 	       //compiler le rapport
+	 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/ListeEnseignantParGrade.jrxml");
+		             //parametre du rapport
+		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
+		             mesParametres.put("idGrade",idGrade);
+	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
+		             	//export pdf
+	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantParGrade.pdf");
+	 
+	      	   	     //execution du rapport dans le navigateur
+				    Runtime runtime = Runtime.getRuntime();
+	String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/ListeEnseignantParGrade.pdf" };
+	              try {
+	                  final Process process = runtime.exec(args);
+	              } catch (IOException e) {
+	           // TODO Auto-generated catch block
+	                  e.printStackTrace();
+	              }
+			 } catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+		        
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 }
+		//Listes des enseignants par corps
+		@RequestMapping(value="/ListeEnseignantCorps")
+		 private void ListeEnseignantCorps(@RequestParam(name="mc",defaultValue="0")long idCps){
+			 try{
+				 //connexion
+				 Class.forName("com.mysql.jdbc.Driver");
+	 			 connection = DriverManager.getConnection(
+	 	                    "jdbc:mysql://localhost:3306/iset_sf","root", "");			 
+	   JasperReportsViewResolver resolver = new JasperReportsViewResolver();
+		 	       resolver.setViewClass(JasperReportsMultiFormatView.class);
+		 	     
+		 	      ApplicationHome home = new ApplicationHome(this.getClass());
+		 	    
+		 	     File jarDir = home.getDir();
+		 	     File RepDir = new File(jarDir, "pfe/projet/web/reports/");
+		 	     File reportsPDF = new File(jarDir, "pfe/projet/web/reports/");
+	 
+		 	       System.out.println("uploadDir"+RepDir);
+
+		 	       //compiler le rapport
+	 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/ListeEnseignantParCorps.jrxml");
+		             //parametre du rapport
+		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
+		             mesParametres.put("idCps",idCps);
+	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
+		             	//export pdf
+	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantParCorps.pdf");
+	 
+	      	   	     //execution du rapport dans le navigateur
+				    Runtime runtime = Runtime.getRuntime();
+	String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/ListeEnseignantParCorps.pdf" };
+	              try {
+	                  final Process process = runtime.exec(args);
+	              } catch (IOException e) {
+	           // TODO Auto-generated catch block
+	                  e.printStackTrace();
+	              }
+			 } catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+		        
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 }
+		//Liste des enseignants Actif
+		@RequestMapping(value="/ListeEnseignantActif")
+		 private void ListeEnseignantActif(){
+			 try{
+				 //connexion
+				 Class.forName("com.mysql.jdbc.Driver");
+	 			 connection = DriverManager.getConnection(
+	 	                    "jdbc:mysql://localhost:3306/iset_sf","root", "");			 
+	   JasperReportsViewResolver resolver = new JasperReportsViewResolver();
+		 	       resolver.setViewClass(JasperReportsMultiFormatView.class);
+		 	     
+		 	      ApplicationHome home = new ApplicationHome(this.getClass());
+		 	    
+		 	     File jarDir = home.getDir();
+		 	     File RepDir = new File(jarDir, "pfe/projet/web/reports/");
+		 	     File reportsPDF = new File(jarDir, "pfe/projet/web/reports/");
+	 
+		 	       System.out.println("uploadDir"+RepDir);
+
+		 	       //compiler le rapport
+	 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/ListeEnseignantActif.jrxml");
+		             //parametre du rapport
+	 Date d=new Date();
+	 int anne1=d.getYear();
+	 String annee=anne1+1+"/"+anne1;
+		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
+		             mesParametres.put("annUniv",annee);
+	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
+		             	//export pdf
+	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantActif.pdf");
+	 
+	      	   	     //execution du rapport dans le navigateur
+				    Runtime runtime = Runtime.getRuntime();
+	String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/ListeEnseignantActif.pdf" };
+	              try {
+	                  final Process process = runtime.exec(args);
+	              } catch (IOException e) {
+	           // TODO Auto-generated catch block
+	                  e.printStackTrace();
+	              }
+			 } catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+		        
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 }
+		//Liste des enseignants Inactif
+				@RequestMapping(value="/ListeEnseignantInactif")
+				 private void ListeEnseignantInactif(){
+					 try{
+						 //connexion
+						 Class.forName("com.mysql.jdbc.Driver");
+			 			 connection = DriverManager.getConnection(
+			 	                    "jdbc:mysql://localhost:3306/iset_sf","root", "");			 
+			   JasperReportsViewResolver resolver = new JasperReportsViewResolver();
+				 	       resolver.setViewClass(JasperReportsMultiFormatView.class);
+				 	     
+				 	      ApplicationHome home = new ApplicationHome(this.getClass());
+				 	    
+				 	     File jarDir = home.getDir();
+				 	     File RepDir = new File(jarDir, "pfe/projet/web/reports/");
+				 	     File reportsPDF = new File(jarDir, "pfe/projet/web/reports/");
+			 
+				 	       System.out.println("uploadDir"+RepDir);
+
+				 	       //compiler le rapport
+			 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/ListeEnseignantInactif.jrxml");
+				             //parametre du rapport
+			 Date d=new Date();
+			 final int anne1=d.getYear();
+			String annee=anne1+"/"+anne1+1;
+				             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
+				             mesParametres.put("annUniv",annee);
+			 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
+				             	//export pdf
+			 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantInactif.pdf");
+			 
+			      	   	     //execution du rapport dans le navigateur
+						    Runtime runtime = Runtime.getRuntime();
+			String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/ListeEnseignantInactif.pdf" };
+			              try {
+			                  final Process process = runtime.exec(args);
+			              } catch (IOException e) {
+			           // TODO Auto-generated catch block
+			                  e.printStackTrace();
+			              }
+					 } catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+				        
+						} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (JRException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				 }
 }
 

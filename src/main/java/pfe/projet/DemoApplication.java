@@ -12,6 +12,7 @@ import pfe.projet.entities.Etat;
 import pfe.projet.entities.Personnel;
 import pfe.projet.entities.Role;
 import pfe.projet.entities.Semestre;
+import pfe.projet.web.ImportationRestServices;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner  {
@@ -57,8 +58,8 @@ private EtatRepository etatRepository;
 		roleRepository.save(r3);
 		roleRepository.save(r4);
 		Personnel p1=new Personnel();
-		p1.setMatricule(232445684);
-		p1.setCin(99013453);
+		p1.setMatricule("232445684");
+		p1.setCin("099013453");
 		p1.setEtat(e1);
 		p1.setLogin("Ahmed");
 		p1.setMotpasse("Ahmed");

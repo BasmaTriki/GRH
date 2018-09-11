@@ -23,6 +23,7 @@ public class AGrade implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_pers",referencedColumnName="idPers")
 	private Personnel personnel;
+	private boolean gradeActuel=false;
 	public long getId_agrade() {
 		return id_agrade;
 	}
@@ -56,4 +57,13 @@ public Personnel getPersonnel() {
 public void setPersonnel(Personnel personnel) {
 	this.personnel = personnel;
 }
+
+public boolean isGradeActuel() {
+	return gradeActuel;
+}
+
+public void setGradeActuel(boolean gradeActuel) {
+	this.gradeActuel = gradeActuel;
+}
+
 }

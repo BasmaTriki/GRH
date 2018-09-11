@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.EnseignantVacataire;
 
 public interface EnseignantVacataireRepository extends JpaRepository<EnseignantVacataire, Long> {
-	@Query("select e from EnseignantVacataire e where e.nom = :x")
+	@Query("select e from EnseignantVacataire e where e.nom like :x")
 	public Page<EnseignantVacataire>chercher(@Param("x") String nom,Pageable pageable);
 }
 

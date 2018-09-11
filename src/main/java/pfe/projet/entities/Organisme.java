@@ -1,6 +1,8 @@
 package pfe.projet.entities;
 import java.io.Serializable;
 import java.util.*;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ public class Organisme implements Serializable{
 	@GeneratedValue
    private long idOrg;
    private String libelleOrg;
+   @Column(length=1000)
    private String libelleOrgAr;
    @OneToMany
    private Collection<Mutation> mutation;

@@ -15,4 +15,6 @@ public interface EtatRepository extends JpaRepository<Etat, Integer> {
 	public Page<Etat>chercher(@Param("x") String mc,Pageable pageable);
 	@Query("select e from Etat e where e.libelleEtatAr like :x")
 	public Page<Etat>chercherAr(@Param("x") String mc,Pageable pageable);
+	@Query("select e from Etat e where e.libelleEtatAr like :x")
+	public Etat chercherOneAr(@Param("x") String mc);
 }

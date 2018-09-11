@@ -35,9 +35,9 @@ public class EnsignantLibreRestService {
 	}
 
 	//Retourner un seul enseignant Libre
-	@RequestMapping(value="/EnseignantLibre/{cin}", method=RequestMethod.GET)
-	public EnseignantLibre getEnseignant(@PathVariable long cin){
-	return enseignantLibreRepository.findOne(cin);
+	@RequestMapping(value="/EnseignantLibre/{idPers}", method=RequestMethod.GET)
+	public EnseignantLibre getEnseignant(@PathVariable long idPers){
+	return enseignantLibreRepository.findOne(idPers);
 	}
 	//Ajouter un enseignant Libre
 	@RequestMapping(value="/AjouterEnseignantLibre", method=RequestMethod.POST)
@@ -45,15 +45,15 @@ public class EnsignantLibreRestService {
 	return enseignantLibreRepository.save(p);
 	}
 	//Supprimer un enseignant Libre
-	@RequestMapping(value="/SupprimerEnseignantLibre/{cin}", method=RequestMethod.DELETE)
-	public boolean supprimer(@PathVariable long cin){
-		enseignantLibreRepository.delete(cin);
+	@RequestMapping(value="/SupprimerEnseignantLibre/{idPers}", method=RequestMethod.DELETE)
+	public boolean supprimer(@PathVariable long idPers){
+		enseignantLibreRepository.delete(idPers);
 		return true;
 	}
 	//mettre à jour un Enseignant Libre
-	@RequestMapping(value="/ModifierEnseignantLibre/{cin}", method=RequestMethod.PUT)
-	public EnseignantLibre save(@PathVariable  long matricule,@RequestBody EnseignantLibre e){
-	    e.setMatricule(matricule);
+	@RequestMapping(value="/ModifierEnseignantLibre/{idPers}", method=RequestMethod.PUT)
+	public EnseignantLibre save(@PathVariable  long idPers,@RequestBody EnseignantLibre e){
+	    e.setIdPers(idPers);
 		return enseignantLibreRepository.save(e);
 	}
 }

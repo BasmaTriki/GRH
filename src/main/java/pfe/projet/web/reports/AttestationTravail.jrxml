@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AttestationTravail" pageWidth="615" pageHeight="842" columnWidth="575" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9af079d3-1431-4af3-b81c-65de75a81e4d">
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[aXNldF9zZi5wZXJzb25uZWwgLDE1LDE1LDEyNDM2MWUyLTE2ZDQtNGY1YS1iOGQxLTQ0MDZkZDVk
-ZDRjODtpc2V0X3NmLmdyYWRlICwzMTAsNDU0LDgyZTVlZDkzLTdjYTctNDFmMy1hOTllLWNkZGUz
-M2RlZjFhYztpc2V0X3NmLmNvcnBzICwxNzUsNDgwLDNkM2U4MDQ4LTliODMtNDkxZS1hOGE4LWM4
-Njg0YTkwZjBhZDtpc2V0X3NmLmFncmFkZSAsNDEyLDU0OCxkMDc2YTc2My0xMjkxLTQyY2YtYTk3
-Yi1kNmEyZGJiOGM2NzQ7]]>
-	</property>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
 	<parameter name="idPers" class="java.lang.Long"/>
 	<parameter name="typePers" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT iset_sf.personnel.cin,
+		<![CDATA[SELECT iset_sf.personnel.cin,Max(iset_sf.agrade.date_evaluation),
 	iset_sf.personnel.sexe,
 	iset_sf.personnel.datenaissance,
 	iset_sf.personnel.matricule,
@@ -33,7 +27,8 @@ Yi1kNmEyZGJiOGM2NzQ7]]>
 	iset_sf.personnel.lieu_naissance,
 	iset_sf.personnel.nom,
 	iset_sf.personnel.telephone,
-	iset_sf.personnel.lieu_naissance_ar
+	iset_sf.personnel.lieu_naissance_ar,
+	iset_sf.personnel.grade_actuel_ar
 FROM iset_sf.agrade
 	INNER JOIN iset_sf.grade ON 
 	 iset_sf.grade.id = iset_sf.agrade.id_grade 
@@ -44,7 +39,7 @@ FROM iset_sf.agrade
 WHERE 
 	 iset_sf.personnel.id_pers = $P{idPers}]]>
 	</queryString>
-	<field name="cin" class="java.lang.Long">
+	<field name="cin" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="cin"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
 	</field>
@@ -132,28 +127,39 @@ WHERE
 		<property name="com.jaspersoft.studio.field.label" value="lieu_naissance_ar"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
 	</field>
+	<field name="grade_actuel_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grade_actuel_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="171" splitType="Stretch">
-			<staticText>
-				<reportElement x="350" y="62" width="210" height="44" uuid="059320ce-7103-42fa-8a41-b51d0385f9ba"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Andalus" size="12" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[الإدارة العامة للدراسات التكنولوجية المعهد العالي للدراسات التكنولوجية بصاقس]]></text>
-			</staticText>
+		<band height="132" splitType="Stretch">
 			<image>
 				<reportElement x="367" y="-6" width="190" height="73" uuid="80cc777a-4c6d-40b0-b42c-d8ef46d06640"/>
 				<imageExpression><![CDATA["images/ministereTunisienne.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="211" y="6" width="80" height="60" uuid="812a649c-7997-44d4-a62a-9fdb2af16916"/>
+				<reportElement x="194" y="5" width="80" height="60" uuid="812a649c-7997-44d4-a62a-9fdb2af16916"/>
 				<imageExpression><![CDATA["images/logoMinistere.JPG"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="370" y="97" width="179" height="30" uuid="6772263f-af9c-4862-a7a4-be799bb6406a"/>
+				<reportElement x="357" y="54" width="211" height="26" uuid="01b889f7-e954-46a4-9511-c6efe6fef37a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الإدارة العامة للدراسات التكنولوجية ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="76" width="190" height="19" uuid="1bb4ffe5-ae44-4d6c-895b-cfa5bc561471"/>
+				<textElement textAlignment="Center">
+					<font fontName="Andalus" size="12" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصاقس]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="91" width="157" height="23" uuid="48b38752-0220-49be-98fc-925933ff20e5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="12" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -164,127 +170,131 @@ WHERE
 	<pageHeader>
 		<band height="131" splitType="Stretch">
 			<staticText>
-				<reportElement x="142" y="30" width="291" height="41" uuid="09882bc8-fa37-4e5a-b08c-77954ae55664"/>
+				<reportElement x="90" y="40" width="291" height="41" uuid="09882bc8-fa37-4e5a-b08c-77954ae55664"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="33" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="33" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[شهــادة عمــل]]></text>
 			</staticText>
 			<image>
-				<reportElement x="550" y="60" width="45" height="50" uuid="fa17dbf3-57d9-41af-bb4d-5a04cee6d392"/>
+				<reportElement x="501" y="64" width="45" height="50" uuid="fa17dbf3-57d9-41af-bb4d-5a04cee6d392"/>
 				<imageExpression><![CDATA["images/imgMinistere.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="511" y="5" width="23" height="71" uuid="5c82ac99-3242-446f-9c63-d9299828a067"/>
+				<imageExpression><![CDATA["images/imgReport.JPG"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
 	<detail>
 		<band height="351" splitType="Stretch">
 			<staticText>
-				<reportElement x="192" y="11" width="351" height="30" uuid="fc708ff5-78d2-47c4-8a6d-a1ec5da19f0d"/>
+				<reportElement x="134" y="10" width="351" height="30" uuid="fc708ff5-78d2-47c4-8a6d-a1ec5da19f0d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[يشهد(*): مدير المعهد العالي للدراسات التكنولوجية بصفاقس أن]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="480" y="41" width="63" height="31" uuid="ae2c92b0-2ab7-44d4-b495-6e8fdcde2c89"/>
+				<reportElement x="422" y="41" width="63" height="31" uuid="ae2c92b0-2ab7-44d4-b495-6e8fdcde2c89"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[السيد (ة): ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="393" y="70" width="150" height="31" uuid="3889a223-7faf-423e-a8da-45b4b3635454"/>
+				<reportElement x="335" y="70" width="150" height="31" uuid="3889a223-7faf-423e-a8da-45b4b3635454"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[صاحب(ة)  المعرف الوحيد:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="474" y="100" width="68" height="31" uuid="0df6cd1a-813d-4a8c-9dd3-6387cfbc72f4"/>
+				<reportElement x="416" y="100" width="68" height="31" uuid="0df6cd1a-813d-4a8c-9dd3-6387cfbc72f4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المولود (ة): ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="474" y="130" width="68" height="31" uuid="fc253675-c393-4704-ae73-da53975f1488"/>
+				<reportElement x="416" y="130" width="68" height="31" uuid="fc253675-c393-4704-ae73-da53975f1488"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[صنفه (ها): ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="478" y="161" width="64" height="31" uuid="4d1a8d92-1df6-4d0b-a5c4-f674c046ce36"/>
+				<reportElement x="420" y="161" width="64" height="31" uuid="4d1a8d92-1df6-4d0b-a5c4-f674c046ce36"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[رتبته (ها): ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="220" width="422" height="31" uuid="73296165-aace-41ca-ab28-3a6899ea80d4"/>
+				<reportElement x="62" y="220" width="422" height="31" uuid="73296165-aace-41ca-ab28-3a6899ea80d4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[سلمت هذه الشهادة بطلب منه(ها) للإدلاء بها لدى من يهمه الأمر.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="270" y="41" width="206" height="30" uuid="3b613a4b-21cb-418f-9784-ea00aadd408f"/>
+				<reportElement x="212" y="41" width="206" height="30" uuid="3b613a4b-21cb-418f-9784-ea00aadd408f"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenom_ar}+" "+$F{nom_ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="245" y="70" width="146" height="30" uuid="ae989d90-b931-4634-9a6a-3ae20c7c5f5a"/>
+				<reportElement x="187" y="70" width="146" height="30" uuid="ae989d90-b931-4634-9a6a-3ae20c7c5f5a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
 			</textField>
 			<textField pattern="yyyy/MM/dd">
-				<reportElement x="145" y="100" width="222" height="30" uuid="eb70787d-281e-4a1d-9b8c-018fc15de0e7"/>
+				<reportElement x="87" y="100" width="222" height="30" uuid="eb70787d-281e-4a1d-9b8c-018fc15de0e7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lieu_naissance_ar}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="140" y="320" width="130" height="31" uuid="208d12d9-28d4-446d-a9db-7523b831a6c4"/>
+				<reportElement x="112" y="320" width="130" height="31" uuid="208d12d9-28d4-446d-a9db-7523b831a6c4"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[حرر بـــــ صفاقس في :]]></text>
 			</staticText>
 			<textField pattern="yyyy/MM/dd">
-				<reportElement x="7" y="320" width="138" height="30" uuid="24f629c0-c2ed-4b9c-96ba-ae862d78a1c7"/>
+				<reportElement x="-21" y="320" width="138" height="30" uuid="24f629c0-c2ed-4b9c-96ba-ae862d78a1c7"/>
 				<textElement textAlignment="Right">
 					<font fontName="Serif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="364" y="131" width="114" height="30" uuid="f1659a55-5c3b-4884-a8c9-dd2ec85d42ff"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="306" y="131" width="114" height="30" uuid="f1659a55-5c3b-4884-a8c9-dd2ec85d42ff"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{libelle_cps_ar}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="378" y="162" width="100" height="30" uuid="8c90342b-3373-4fb5-9605-45fa6f9f8daf"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="292" y="162" width="128" height="30" uuid="8c90342b-3373-4fb5-9605-45fa6f9f8daf"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{titre_ar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{grade_actuel_ar}]]></textFieldExpression>
 			</textField>
 			<textField pattern="yyyy/MM/dd">
-				<reportElement x="364" y="100" width="110" height="30" uuid="2a9a37c2-1ba1-4de7-b281-f6ed96d5b2c9"/>
+				<reportElement x="306" y="100" width="110" height="30" uuid="2a9a37c2-1ba1-4de7-b281-f6ed96d5b2c9"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Serif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{datenaissance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="120" y="190" width="422" height="30" uuid="75ee1189-4380-47e9-b834-39d16d985ff5"/>
+				<reportElement x="62" y="190" width="422" height="30" uuid="75ee1189-4380-47e9-b834-39d16d985ff5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="16" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>

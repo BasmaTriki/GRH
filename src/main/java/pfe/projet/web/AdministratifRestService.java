@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pfe.projet.dao.AdministratifRepository;
 import pfe.projet.entities.Administratif;
+import pfe.projet.entities.EnseignantPermanent;
 @RestController
 @CrossOrigin("*")
 public class AdministratifRestService {
@@ -28,7 +29,7 @@ public class AdministratifRestService {
 				@RequestParam(name="mc",defaultValue="")String mc,
 				@RequestParam(name="page",defaultValue="0") int page,
 				@RequestParam(name="size",defaultValue="5")int size){
-			return administratifRepository.chercher("%"+mc+"%",new PageRequest(page,size));
+			return administratifRepository.chercher(""+mc+"%",new PageRequest(page,size));
 		}
 		@RequestMapping(value="/chercherAdministratifPrenom", method=RequestMethod.GET)
 		public Page<Administratif>chercherPrenom(
@@ -36,6 +37,10 @@ public class AdministratifRestService {
 				@RequestParam(name="page",defaultValue="0") int page,
 				@RequestParam(name="size",defaultValue="5")int size){
 			return administratifRepository.chercherPrenom("%"+mp+"%",new PageRequest(page,size));
+		}
+		@RequestMapping(value="/chercherAdminSansCompte", method=RequestMethod.GET)
+		public List<Administratif>chercherCompte(){
+			return administratifRepository.chercherAdminSansCompte();
 		}
 		//Retourner une seul personne
 		@RequestMapping(value="/Administratif/{idPers}", method=RequestMethod.GET)

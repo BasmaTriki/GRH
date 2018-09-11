@@ -34,8 +34,8 @@ public class Conge implements Serializable {
    @JoinColumn(name="id_typeCng",referencedColumnName="idCg")
    private TypeConge typeconge;
    private String certaficat;
-   @Temporal(TemporalType.DATE)
-   private Date dateReprise;
+   @Temporal(TemporalType.TIMESTAMP)
+   private Calendar dateReprise;
    @Temporal(TemporalType.TIMESTAMP)
    private Calendar dateCreationConge;
    private String adresseConge;
@@ -73,10 +73,10 @@ public void setValide(String valide) {
 	this.valide = valide;
 }
 
-public Date getDateReprise() {
+public Calendar getDateReprise() {
 	return dateReprise;
 }
-public void setDateReprise(Date dateReprise) {
+public void setDateReprise(Calendar dateReprise) {
 	this.dateReprise = dateReprise;
 }
 public TypeConge getTypeconge() {

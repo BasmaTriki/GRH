@@ -11,20 +11,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 public class EnseignantVacataire extends Enseignant implements Serializable {
-	/*@Temporal(TemporalType.DATE)
-	public Date dateDebut;
-	@Temporal(TemporalType.DATE)
-	public Date dateFin;*/
-	@ManyToOne
-	@JoinColumn(name="id_annee",referencedColumnName="idAnnee")
-	public AnneeUniversitaire anneUnv;
 
-	public AnneeUniversitaire getAnneUnv() {
-		return anneUnv;
-	}
-
-	public void setAnneUnv(AnneeUniversitaire anneUnv) {
-		this.anneUnv = anneUnv;
-	}
 
 }
