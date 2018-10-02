@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Enfants" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="6e123864-be38-44f3-add7-38d59ef6fe53">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[aXNldF9zZi5lbmZhbnQgLDE1LDE1LDQzNjg5MmQzLTU0Y2QtNDYwMS1iZTkyLWQ1NTlkZjZmZjc0
+Yjs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
+	<parameter name="idPers" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT iset_sf.enfant.nom,
+	iset_sf.enfant.nom_ar,
+	iset_sf.enfant.date_nais,
+	iset_sf.enfant.num,
+	iset_sf.enfant.id_pers
+FROM iset_sf.enfant
+WHERE 
+	 iset_sf.enfant.id_pers = $P{idPers}]]>
+	</queryString>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enfant"/>
+	</field>
+	<field name="nom_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enfant"/>
+	</field>
+	<field name="date_nais" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="date_nais"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enfant"/>
+	</field>
+	<field name="num" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="num"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enfant"/>
+	</field>
+	<field name="id_pers" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enfant"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="205" y="1" width="110" height="20" uuid="797378a5-2607-4453-a52c-ef7653df5f0e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_nais}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="81" y="1" width="120" height="20" uuid="6222607a-3e6c-4cac-88b3-5dae2cb05447"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="316" y="1" width="100" height="20" uuid="8b5a60b8-90d6-4428-b2cf-2cbf495f2ce4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_ar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

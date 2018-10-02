@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListeCongeP" pageWidth="615" pageHeight="842" columnWidth="575" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b5185de7-cd79-455f-8d90-102275f79598">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="idPers" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT iset_sf.conge.adresse_conge,
+	iset_sf.conge.adresse_conge_ar,
+	iset_sf.conge.date_creation_conge,
+	iset_sf.conge.date_debut,
+	iset_sf.conge.date_fin,
+	iset_sf.conge.date_reprise,
+	iset_sf.conge.nb_jour,
+	iset_sf.conge.reprise,
+	iset_sf.conge.telephone_conge,
+	iset_sf.conge.valide,
+	iset_sf.conge.valide_ar,
+	iset_sf.conge.id_pers,
+	iset_sf.conge.id_type_cng,
+	iset_sf.type_conge.nb_max_jrs,
+	iset_sf.type_conge.libelle_type_ar,
+	iset_sf.type_conge.libelle_type,
+	iset_sf.type_conge.autorisation
+FROM iset_sf.conge
+	INNER JOIN iset_sf.type_conge ON 
+	 iset_sf.type_conge.id_cg = iset_sf.conge.id_type_cng 
+WHERE 
+	 iset_sf.conge.id_pers = $P{idPers}
+	 AND (iset_sf.conge.valide like "validé" OR iset_sf.conge.valide like "accepté" )]]>
+	</queryString>
+	<field name="adresse_conge" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse_conge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="adresse_conge_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse_conge_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_creation_conge" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="date_creation_conge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_debut" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_debut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_fin" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_fin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_reprise" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_reprise"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="nb_jour" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="nb_jour"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="reprise" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="reprise"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="telephone_conge" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="telephone_conge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="valide" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="valide"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="valide_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="valide_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="id_pers" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="id_type_cng" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_type_cng"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="nb_max_jrs" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="nb_max_jrs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<field name="libelle_type_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="libelle_type_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<field name="libelle_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="libelle_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<field name="autorisation" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="autorisation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-10" y="12" width="591" height="30" backcolor="#EDEDED" uuid="5833682c-dfec-496d-afc9-1bdb4c293641"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="518" y="12" width="63" height="30" uuid="01790ea7-c625-4a9c-8da5-1bf901212ef7"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[السنة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="12" width="80" height="30" uuid="ee2eb681-df46-4f16-a5cb-876fc3f4bd74"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المدة المطلوبة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="12" width="202" height="30" uuid="c8df3fe2-e4a4-48f5-95f6-dd3a66c57969"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ العطلة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="12" width="108" height="30" uuid="bf5b8d97-9c46-41f8-9d77-c4332b42153d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الإستئناف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="12" width="137" height="30" uuid="e30cbc13-6ff3-45af-aa6d-d432e9851050"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[نوع العطلة]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="-1" width="202" height="30" uuid="8fe7fee5-d147-413c-a916-0df4ef5371aa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f38b11e-888f-4c7a-ab70-9789310e2b86"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="302" y="-1" width="79" height="30" uuid="d1fa3be2-dbe7-4ea9-ac48-983f097c8b86"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nb_jour}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy" isBlankWhenNull="true">
+				<reportElement x="518" y="-1" width="63" height="30" uuid="cdf24882-b9f5-4b39-9815-03e6c305e3d7"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_debut}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="-10" y="-1" width="108" height="30" uuid="4fbe774f-35b9-41a9-a648-445a46d3f2a6"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_reprise}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="3" width="14" height="22" uuid="f2fa96f1-b4bb-450b-a38d-bf7596c55355"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[من]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="190" y="3" width="88" height="22" uuid="1ce971e6-e651-443b-afd0-6a57a7b091d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd76e430-9489-40e7-bb6d-15af0d838329"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_debut}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="185" y="3" width="14" height="22" uuid="3aa54669-a226-40d9-98fe-c9f2309908b7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[إلى]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="100" y="3" width="80" height="22" uuid="8f42f0b2-90ff-4ee8-8afb-64ab62027a9b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b6d29cb8-95f5-4234-bacd-a3487ea57b10"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_fin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="381" y="-1" width="137" height="30" uuid="04d14069-4571-4eec-bd04-decffcaeccdb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="23d46673-e49a-4c22-8fc4-c729f62a61ca"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["عطلة "+$F{libelle_type_ar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

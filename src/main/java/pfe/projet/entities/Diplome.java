@@ -5,6 +5,8 @@ import java.util.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 @Entity
 public class Diplome implements Serializable {
 	@Id 
@@ -15,7 +17,6 @@ public class Diplome implements Serializable {
 public long getIdDip() {
 	return idDip;
 }
-
 public void setIdDip(long idDip) {
 	this.idDip = idDip;
 }
@@ -40,6 +41,7 @@ public String getTitreDipAr() {
 public void setTitreDipAr(String titreDipAr) {
 	this.titreDipAr = titreDipAr;
 }
+
 
 
 }

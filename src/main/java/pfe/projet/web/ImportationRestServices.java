@@ -313,8 +313,6 @@ public class ImportationRestServices {
 					enp.setSpecialite(specialite);
 					enp.setGradeActuelAr(grade.getTitreAr());
 					enp.setDatenaissance(dateNais);
-					enp.setDateRecrutement(dateRecrutement);
-					enp.setDateTitularisation(dateTitularisation);
 					enp.setLieuNaissanceAr(lieuNaisAr);
 					enp.setDepartement(departement);
 					enp.setEtat(etat);
@@ -326,6 +324,8 @@ public class ImportationRestServices {
 						agrade.setGrade(grade);
 						agrade.setPersonnel(enp);
 						agrade.setDateEvaluation(new Date());
+						agrade.setDateRecrutement(dateRecrutement);
+						agrade.setDateTitularisation(dateTitularisation);
 						agrade.setGradeActuel(true);
 						agradeRepo.save(agrade);
 					}

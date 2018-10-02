@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listeConge" pageWidth="749" pageHeight="842" columnWidth="709" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5e312bfa-2e45-44af-ad6d-3bc4aa8eddec">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
+	<parameter name="idPers" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT iset_sf.personnel.adresse,
+	iset_sf.personnel.adresse_ar,
+	iset_sf.personnel.cin,
+	iset_sf.personnel.codepostal,
+	iset_sf.personnel.datenaissance,
+	iset_sf.personnel.email,
+	iset_sf.personnel.etat_civil,
+	iset_sf.personnel.etat_civil_ar,
+	iset_sf.personnel.lieu_naissance,
+	iset_sf.personnel.lieu_naissance_ar,
+	iset_sf.personnel.matricule,
+	iset_sf.personnel.nom,
+	iset_sf.personnel.nom_ar,
+	iset_sf.personnel.nom_conjoint,
+	iset_sf.personnel.nom_conjoint_ar,
+	iset_sf.personnel.nompere,
+	iset_sf.personnel.nompere_ar,
+	iset_sf.personnel.prenom,
+	iset_sf.personnel.prenom_ar,
+	iset_sf.personnel.sexe,
+	iset_sf.personnel.rib,
+	iset_sf.personnel.telephone,
+	iset_sf.personnel.grade_actuel,
+	iset_sf.personnel.grade_actuel_ar,
+	iset_sf.personnel.sexe_ar,
+	iset_sf.personnel.date_recrutement,
+	iset_sf.personnel.id_pers,
+	iset_sf.conge.id_pers,
+	iset_sf.conge.adresse_conge,
+	iset_sf.conge.id_cong,
+	iset_sf.conge.adresse_conge_ar,
+	iset_sf.conge.certaficat,
+	iset_sf.conge.date_creation_conge,
+	iset_sf.conge.date_debut,
+	iset_sf.conge.date_fin,
+	iset_sf.conge.date_reprise,
+	iset_sf.conge.nb_jour,
+	iset_sf.conge.reprise,
+	iset_sf.conge.telephone_conge,
+	iset_sf.conge.valide,
+	iset_sf.conge.valide_ar,
+	iset_sf.type_conge.autorisation,
+	iset_sf.type_conge.libelle_type,
+	iset_sf.type_conge.libelle_type_ar,
+	iset_sf.type_conge.nb_max_jrs
+FROM iset_sf.conge
+	INNER JOIN iset_sf.personnel ON 
+	 iset_sf.personnel.id_pers = iset_sf.conge.id_pers 
+	INNER JOIN iset_sf.type_conge ON 
+	 iset_sf.type_conge.id_cg = iset_sf.conge.id_type_cng
+	 WHERE 
+	 iset_sf.personnel.id_pers = $P{idPers}]]>
+	</queryString>
+	<field name="adresse" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="adresse_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="cin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="codepostal" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="codepostal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="datenaissance" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="datenaissance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="etat_civil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="etat_civil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="etat_civil_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="etat_civil_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="lieu_naissance" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lieu_naissance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="lieu_naissance_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lieu_naissance_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="matricule" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="nom_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="nom_conjoint" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_conjoint"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="nom_conjoint_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_conjoint_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="nompere" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nompere"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="nompere_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nompere_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="prenom_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prenom_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="sexe" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sexe"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="rib" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="rib"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="telephone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="telephone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="grade_actuel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grade_actuel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="grade_actuel_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grade_actuel_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="sexe_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sexe_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="date_recrutement" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_recrutement"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="id_pers" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="COLUMN_28" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="adresse_conge" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse_conge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="id_cong" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_cong"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="adresse_conge_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse_conge_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="certaficat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="certaficat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_creation_conge" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="date_creation_conge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_debut" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_debut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_fin" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_fin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="date_reprise" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_reprise"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="nb_jour" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="nb_jour"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="reprise" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="reprise"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="telephone_conge" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="telephone_conge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="valide" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="valide"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="valide_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="valide_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="conge"/>
+	</field>
+	<field name="autorisation" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="autorisation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<field name="libelle_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="libelle_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<field name="libelle_type_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="libelle_type_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<field name="nb_max_jrs" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="nb_max_jrs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="type_conge"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="93" splitType="Stretch">
+			<textField pattern="yyyy">
+				<reportElement x="578" y="63" width="101" height="30" uuid="f52dc964-896f-4036-8646-c45342c7e7a7"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_debut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="63" width="100" height="30" uuid="050812e8-3d19-4540-aab7-eb4e59e580bf"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nb_jour}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="63" width="252" height="30" uuid="1e200a35-9ebd-4040-96ad-b0b5e0d7644f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f38b11e-888f-4c7a-ab70-9789310e2b86"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["من "+$F{date_debut}+" إلى "+$F{date_fin}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="36" y="63" width="190" height="30" uuid="f49218b6-97de-40fe-bcb9-22d5d692d8b1"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_reprise}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="32" width="190" height="30" uuid="7513c4d1-4bfd-456c-98aa-66a437879be7"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.tt" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الإستئناف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="32" width="252" height="30" uuid="9f3f6db8-2640-4b82-9887-067a051fee71"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.tt" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ العطلة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="32" width="100" height="30" uuid="278b985e-300c-4125-95df-f917d12f6617"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.tt" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المدة المطلوبة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="578" y="32" width="100" height="30" uuid="edd312b4-bec4-4383-a1b9-d0cfa178ed63"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.tt" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[السنة]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="498" y="1" width="180" height="30" uuid="e331d6a2-7b92-4a76-b2e2-4ccbeb56bbe1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a264c4b-7f51-4206-8748-384749f66d07"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.tt" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["عطل "+$F{libelle_type_ar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

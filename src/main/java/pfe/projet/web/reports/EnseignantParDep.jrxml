@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EnseignantParDep" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f692f8f0-ee4f-467b-ab0d-d6bec6eba824">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[aXNldF9zZi5kZXBhcnRlbWVudCBBUyAsNTEsMTA2NiwzMTQ1YWM3MS03MDQwLTQ4OGEtYTMwYy1i
+MTU1YWNmZjcwZmE7aXNldF9zZi5wZXJzb25uZWwgQVMgLDE2OCwyMyw2MmFiOThjNy04NjkwLTQ2
+MTQtYWI0Mi00MGRiYWQyNTQzNTc7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
+	<parameter name="AnneeUniv" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT iset_sf.departement.id_dep,
+	COUNT(iset_sf.personnel.id_dep) AS nbrE,
+	iset_sf.departement.nom_dep_ar,
+	iset_sf.personnel.id_pers,
+	iset_sf.personnel.dtype,
+	iset_sf.personnel.matricule
+FROM iset_sf.personnel
+	INNER JOIN iset_sf.departement ON 
+	 iset_sf.departement.id_dep = iset_sf.personnel.id_dep
+	 GROUP BY iset_sf.departement.nom_dep_ar]]>
+	</queryString>
+	<field name="id_dep" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_dep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="departement"/>
+	</field>
+	<field name="nbrE" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="nbrE"/>
+	</field>
+	<field name="nom_dep_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_dep_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="departement"/>
+	</field>
+	<field name="id_pers" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="dtype" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dtype"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="matricule" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<variable name="somme" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbrE}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="59" splitType="Stretch">
+			<rectangle>
+				<reportElement x="150" y="30" width="296" height="29" backcolor="#EBEBEB" uuid="748a15a2-6095-4f03-9d57-ad9a7b58ec7e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="250" y="30" width="196" height="29" backcolor="#00AEFF" uuid="07292f19-5640-48fd-8185-3c090a4b1afc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae093f0-7758-4828-bfb0-1148f8a1f0eb"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[القسم]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="30" width="100" height="29" uuid="504aed9d-1144-406a-a6a7-28d2a5d577a3"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{AnneeUniv}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="252" y="3" width="228" height="26" uuid="e66b6c99-c443-4381-89ff-8f3a271c978d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Andalus" size="16" isBold="true" pdfFontName="Font/Andalus.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[العدد الجملي للأساتذة حسب الأقسام :]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="250" y="0" width="196" height="30" uuid="1e14e126-eb4f-4c23-af84-94fab8d06d77"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["قسم "+$F{nom_dep_ar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="100" height="30" uuid="3ed072c9-e665-44c6-b826-9cc9bdb131c5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea4288ae-c94f-4e25-91bc-03044c73cf20"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbrE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="250" y="0" width="196" height="29" backcolor="#00AEFF" uuid="b908d57f-1644-460b-b72f-eb0363accd65">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae093f0-7758-4828-bfb0-1148f8a1f0eb"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المجموع:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="0" width="100" height="30" uuid="564e3f00-7f56-4d62-bad7-580982b48886"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{somme}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

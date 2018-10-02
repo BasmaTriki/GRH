@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AGrade" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f556b7db-dfd7-4634-bddf-d78f2063e946">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
+	<parameter name="idPers" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT iset_sf.grade.titre,
+	iset_sf.grade.titre_ar,
+	iset_sf.grade.id,
+	iset_sf.agrade.date_evaluation,
+	iset_sf.agrade.id_agrade,
+	iset_sf.agrade.id_grade,
+	iset_sf.agrade.id_pers,
+	iset_sf.agrade.date_recrutement,
+	iset_sf.agrade.date_titularisation
+FROM iset_sf.agrade
+	INNER JOIN iset_sf.grade ON 
+	 iset_sf.grade.id = iset_sf.agrade.id_grade
+	 WHERE iset_sf.agrade.id_pers=$P{idPers}]]>
+	</queryString>
+	<field name="titre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="titre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="grade"/>
+	</field>
+	<field name="titre_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="titre_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="grade"/>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="grade"/>
+	</field>
+	<field name="date_evaluation" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_evaluation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="id_agrade" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_agrade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="id_grade" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_grade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="id_pers" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="date_recrutement" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_recrutement"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="date_titularisation" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_titularisation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="510" y="0" width="47" height="31" backcolor="#00AEFF" uuid="835e5118-fb79-4bb7-b3d2-1064f48bbebd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="FONT/ARIALBD.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الرتبة:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="410" y="0" width="100" height="30" uuid="b24c7332-962d-48b2-8a01-8ab14a7141d5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="FONT/ARIAL.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titre_ar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="0" width="67" height="31" backcolor="#00AEFF" uuid="a467ea25-6dcb-48c0-ab16-e9a6963ee758">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="FONT/ARIALBD.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الإنتداب :]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="200" y="1" width="110" height="30" uuid="21c688ab-c9d0-4eb5-a314-50f1c71567f0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_recrutement}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="113" y="1" width="67" height="29" backcolor="#00AEFF" uuid="3fc08f88-c6b1-4574-b5f6-abd15cf9fda9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="FONT/ARIALBD.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الترسيم :]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="113" height="30" uuid="473075d6-311c-431b-863d-0be9219e8785"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_titularisation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="32" width="67" height="31" backcolor="#00AEFF" uuid="40411997-15de-488a-b113-b25d28ec4046">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="FONT/ARIALBD.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ التسمية :]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="190" y="31" width="121" height="31" uuid="f623a736-463f-462b-94bb-f324e091535d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_evaluation}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

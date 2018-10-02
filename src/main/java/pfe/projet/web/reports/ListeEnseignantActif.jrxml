@@ -318,9 +318,9 @@ WHERE
 	<pageHeader>
 		<band height="166" splitType="Stretch">
 			<textField>
-				<reportElement x="50" y="120" width="440" height="30" uuid="e8405a51-7c35-46c6-af37-d33bb4bb7e74"/>
+				<reportElement x="50" y="100" width="440" height="50" uuid="e8405a51-7c35-46c6-af37-d33bb4bb7e74"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="26" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Andalus" size="22" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["قائمة الأساتذة المباشرين  "+$P{annUniv}]]></textFieldExpression>
 			</textField>
@@ -340,7 +340,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصاقس]]></text>
+				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصفاقس]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="360" y="0" width="211" height="22" uuid="2103b46b-fb0e-44b6-a025-a6a9631a8954"/>
@@ -367,6 +367,9 @@ WHERE
 	</pageHeader>
 	<columnHeader>
 		<band height="33" splitType="Stretch">
+			<rectangle>
+				<reportElement x="34" y="0" width="512" height="33" backcolor="#DEDCDC" uuid="e1ab9b15-f910-4644-8ee9-77b157418d3f"/>
+			</rectangle>
 			<staticText>
 				<reportElement x="494" y="0" width="52" height="31" backcolor="#00AEFF" uuid="b564b68d-5e2b-4bfe-b78a-1f0b17745a34">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="165fae44-f3a4-4e55-986b-ef62ee9d8c48"/>
@@ -378,7 +381,7 @@ WHERE
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[ع/ر]]></text>
 			</staticText>
@@ -393,12 +396,12 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[الإسم و اللقب]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="162" y="0" width="143" height="31" backcolor="#00AEFF" uuid="dafb07ff-bb79-4d64-8d64-dc6bfb83a9a7">
+				<reportElement x="181" y="0" width="125" height="31" backcolor="#00AEFF" uuid="dafb07ff-bb79-4d64-8d64-dc6bfb83a9a7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5ea12b2-8319-4fb2-b84e-2a05ece6c3ba"/>
 				</reportElement>
 				<box>
@@ -408,12 +411,12 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المعرف الوحيد]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="14" y="0" width="147" height="31" backcolor="#00AEFF" uuid="68856b1c-251a-4551-93d6-4cccedda8c24">
+				<reportElement x="34" y="0" width="147" height="31" backcolor="#00AEFF" uuid="68856b1c-251a-4551-93d6-4cccedda8c24">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
 				</reportElement>
 				<box>
@@ -423,7 +426,7 @@ WHERE
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true" pdfFontName="FONT/arialbd.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[الرتبة]]></text>
 			</staticText>
@@ -439,12 +442,12 @@ WHERE
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Serif" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="305" y="-1" width="189" height="30" uuid="1a726b57-fe7f-4adf-baad-9d39ceb46ed3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cfb1db49-5ce1-48ec-bd57-a315e24e5a6a"/>
 				</reportElement>
@@ -454,13 +457,14 @@ WHERE
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5" spacingBefore="0"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenom_ar}+" "+$F{nom_ar}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="162" y="-1" width="144" height="30" uuid="3aaeb8d5-9413-4faa-ab25-68552bbc6a4e">
+				<reportElement x="180" y="-1" width="125" height="30" uuid="3aaeb8d5-9413-4faa-ab25-68552bbc6a4e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4340620-7b02-488e-980a-bc211fd13e13"/>
 				</reportElement>
 				<box>
@@ -469,13 +473,14 @@ WHERE
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="14" y="-1" width="147" height="30" uuid="d264599a-7505-4d1d-a667-ac31ace5be75">
+				<reportElement x="34" y="-1" width="146" height="30" uuid="d264599a-7505-4d1d-a667-ac31ace5be75">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1627eda-5223-4c32-ba9a-04705e72382d"/>
 				</reportElement>
 				<box>
@@ -484,15 +489,24 @@ WHERE
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{grade_actuel_ar}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="30" splitType="Stretch"/>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="280" y="14" width="40" height="16" uuid="25f6a0ba-fb7f-455a-8077-ddd8645a7ade"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="30" splitType="Stretch">
@@ -510,10 +524,6 @@ WHERE
 				</textElement>
 				<text><![CDATA[ طريق المهدية كلم 2.5 البستان ص.ب.  3099  A88 صفاقس                               الهاتف: 431425- 431493- 431495 (74) الفاكس 431386 (74)]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="290" y="7" width="40" height="16" uuid="25f6a0ba-fb7f-455a-8077-ddd8645a7ade"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>

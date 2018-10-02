@@ -14,7 +14,7 @@ import pfe.projet.entities.EnseignantPermanent;
 public interface AdministratifRepository extends JpaRepository<Administratif, Long> {
 	@Query("select a from Administratif a where a.nom like :x or a.nomAr like :x")
 	public Page<Administratif>chercher(@Param("x") String nom,Pageable pageable);
-	@Query("select a from Administratif a where a.prenom like :y and a.etat.idEtat=1")
+	@Query("select a from Administratif a where (a.prenom like :y or a.prenomAr like :y) and a.etat.idEtat=1")
 	public Page<Administratif>chercherPrenom(@Param("y") String prenom,Pageable pageable);
 	@Query("select a from Administratif a where a.etat.idEtat=1 and (a.login like '' or a.login=null)")
 	public List<Administratif>chercherAdminSansCompte();

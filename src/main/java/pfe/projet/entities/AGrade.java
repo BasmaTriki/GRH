@@ -24,6 +24,10 @@ public class AGrade implements Serializable {
 	@JoinColumn(name="id_pers",referencedColumnName="idPers")
 	private Personnel personnel;
 	private boolean gradeActuel=false;
+	@Temporal(TemporalType.DATE)
+	   public Date dateRecrutement;
+		@Temporal(TemporalType.DATE)
+	   public Date dateTitularisation;
 	public long getId_agrade() {
 		return id_agrade;
 	}
@@ -64,6 +68,22 @@ public boolean isGradeActuel() {
 
 public void setGradeActuel(boolean gradeActuel) {
 	this.gradeActuel = gradeActuel;
+}
+
+public Date getDateRecrutement() {
+	return dateRecrutement;
+}
+
+public void setDateRecrutement(Date dateRecrutement) {
+	this.dateRecrutement = dateRecrutement;
+}
+
+public Date getDateTitularisation() {
+	return dateTitularisation;
+}
+
+public void setDateTitularisation(Date dateTitularisation) {
+	this.dateTitularisation = dateTitularisation;
 }
 
 }

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListeContractuelle" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f1d6e34-4057-43f2-8097-d8956c691507">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
+	<parameter name="annee" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT iset_sf.specialite.id_sp,
+	iset_sf.specialite.libelle_sp_ar,
+	iset_sf.specialite.libelle_sp,
+	iset_sf.personnel.matricule,
+	iset_sf.personnel.nom_ar,
+	iset_sf.personnel.prenom_ar,
+	iset_sf.personnel.telephone,
+	iset_sf.contrat.date_debut_cont,
+	iset_sf.contrat.date_fin_cont,
+	iset_sf.contrat.id_contrat,
+	iset_sf.contrat.id_pers
+FROM iset_sf.contrat
+	INNER JOIN iset_sf.personnel ON 
+	 iset_sf.personnel.id_pers = iset_sf.contrat.id_pers 
+	INNER JOIN iset_sf.specialite ON 
+	 iset_sf.specialite.id_sp = iset_sf.personnel.id_sp
+	 WHERE YEAR(iset_sf.contrat.date_fin_cont)=$P{annee}]]>
+	</queryString>
+	<field name="id_sp" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_sp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="specialite"/>
+	</field>
+	<field name="libelle_sp_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="libelle_sp_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="specialite"/>
+	</field>
+	<field name="libelle_sp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="libelle_sp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="specialite"/>
+	</field>
+	<field name="matricule" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="nom_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="prenom_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prenom_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="telephone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="telephone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<field name="date_debut_cont" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_debut_cont"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contrat"/>
+	</field>
+	<field name="date_fin_cont" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_fin_cont"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contrat"/>
+	</field>
+	<field name="id_contrat" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_contrat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contrat"/>
+	</field>
+	<field name="id_pers" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contrat"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="76" splitType="Stretch">
+			<rectangle>
+				<reportElement x="82" y="47" width="439" height="29" backcolor="#EDE6E6" uuid="f5760819-cc9f-420d-b10d-b21666de3550"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="200" y="13" width="345" height="24" uuid="7fe695aa-473a-4c2f-8409-fccf7256a997"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" pdfFontName="Font/ARIALbd.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[قائمة في المساعدين التكنولوجين الذين استوفوا حقهم في التعاقد: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="47" width="196" height="29" backcolor="#00AEFF" uuid="a2ab6fe9-8a0b-4eaf-9992-2a07d4f2739d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae093f0-7758-4828-bfb0-1148f8a1f0eb"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الإسم و اللقب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="47" width="120" height="29" backcolor="#00AEFF" uuid="1811faf9-3ccc-45a6-bacb-7eee03f847d2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5ea12b2-8319-4fb2-b84e-2a05ece6c3ba"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المعرف الوحيد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="47" width="123" height="29" backcolor="#00AEFF" uuid="95840ade-bc53-4e9a-955f-cc6200e9760e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الإختصاص]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="325" y="0" width="196" height="30" uuid="a48ac23a-f3b9-4433-a0b7-ecbf089b32cd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cfb1db49-5ce1-48ec-bd57-a315e24e5a6a"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prenom_ar}+" "+$F{nom_ar}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="205" y="0" width="120" height="30" uuid="f807cc58-5c0d-4f44-9bdb-7dfe453611a7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4340620-7b02-488e-980a-bc211fd13e13"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="0" width="123" height="30" uuid="7a84d1a5-ed66-4af2-a163-a241cc7fd187">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1627eda-5223-4c32-ba9a-04705e72382d"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle_sp_ar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

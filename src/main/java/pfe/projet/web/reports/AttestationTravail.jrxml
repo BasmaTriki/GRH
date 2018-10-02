@@ -156,7 +156,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font fontName="Andalus" size="12" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصاقس]]></text>
+				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصفاقس]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="385" y="91" width="157" height="23" uuid="48b38752-0220-49be-98fc-925933ff20e5"/>

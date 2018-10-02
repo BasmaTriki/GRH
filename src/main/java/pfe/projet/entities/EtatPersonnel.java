@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 public class EtatPersonnel implements Serializable {
 	@Id 
@@ -21,10 +23,14 @@ public class EtatPersonnel implements Serializable {
 	@JoinColumn(name="id_pers",referencedColumnName="idPers")
 	private Personnel personnel;
     private String etatInactive;
-    private String lieuDetachement;
     private String etatInactiveAr;
-    private String lieuDetachementAr;
-   
+    @ManyToOne
+    @JoinColumn(name="id_Org",referencedColumnName="idOrg")
+    private Organisme lieuDetachement;
+    @Temporal(TemporalType.DATE)
+    private Date dateDebutDet;
+    @Temporal(TemporalType.DATE)
+    private Date dateFinDet;
 public EtatPersonnel() {
 	super();
 	// TODO Auto-generated constructor stub
@@ -61,15 +67,6 @@ public String getEtatInactive() {
 public void setEtatInactive(String etatInactive) {
 	this.etatInactive = etatInactive;
 }
-
-public String getLieuDetachement() {
-	return lieuDetachement;
-}
-
-public void setLieuDetachement(String lieuDetachement) {
-	this.lieuDetachement = lieuDetachement;
-}
-
 public String getEtatInactiveAr() {
 	return etatInactiveAr;
 }
@@ -78,12 +75,28 @@ public void setEtatInactiveAr(String etatInactiveAr) {
 	this.etatInactiveAr = etatInactiveAr;
 }
 
-public String getLieuDetachementAr() {
-	return lieuDetachementAr;
+public Organisme getLieuDetachement() {
+	return lieuDetachement;
 }
 
-public void setLieuDetachementAr(String lieuDetachementAr) {
-	this.lieuDetachementAr = lieuDetachementAr;
+public void setLieuDetachement(Organisme lieuDetachement) {
+	this.lieuDetachement = lieuDetachement;
+}
+
+public Date getDateDebutDet() {
+	return dateDebutDet;
+}
+
+public void setDateDebutDet(Date dateDebutDet) {
+	this.dateDebutDet = dateDebutDet;
+}
+
+public Date getDateFinDet() {
+	return dateFinDet;
+}
+
+public void setDateFinDet(Date dateFinDet) {
+	this.dateFinDet = dateFinDet;
 }
 
 }

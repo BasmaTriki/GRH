@@ -14,8 +14,6 @@ public class AnneeUniversitaire implements Serializable {
    private long idAnnee;
    private int anneeDebut;
    private int anneeFin;
-   @OneToMany
-   public Collection<Semestre> semestres;
 public long getIdAnnee() {
 	return idAnnee;
 }
@@ -39,11 +37,6 @@ public int getAnneeFin() {
 public void setAnneeFin(int anneeFin) {
 	this.anneeFin = anneeFin;
 }
-public Collection<Semestre> getSemestres() {
-	return semestres;
-}
-public void setSemestres(Collection<Semestre> semestres) {
-	this.semestres = semestres;
-}
+
 
 }

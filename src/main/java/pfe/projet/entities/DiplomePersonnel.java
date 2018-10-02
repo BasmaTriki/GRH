@@ -23,7 +23,9 @@ public class DiplomePersonnel implements Serializable {
     public Personnel personnel;
 	@ManyToOne
 	@JoinColumn(name="idDip",referencedColumnName="idDip")
-     public Diplome diplome;
+     public Diplome diplome;  @ManyToOne
+     @JoinColumn(name="id_Org",referencedColumnName="idOrg")
+     public Organisme organisme;
 public Date getDate() {
 	return date;
 }
@@ -52,6 +54,12 @@ public void setDiplome(Diplome diplome) {
 public DiplomePersonnel() {
 	super();
 	// TODO Auto-generated constructor stub
+}
+public Organisme getOrganisme() {
+	return organisme;
+}
+public void setOrganisme(Organisme organisme) {
+	this.organisme = organisme;
 }
 
 }

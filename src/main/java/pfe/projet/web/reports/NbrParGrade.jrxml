@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NbrParGrade" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba93eb0a-13b9-488a-a2eb-7295ab15c8ca">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
+	<parameter name="AnneeUniv" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT iset_sf.grade.titre_ar,MAX(iset_sf.agrade.date_evaluation),COUNT(iset_sf.agrade.id_pers)AS nbrG,
+	iset_sf.grade.titre,
+	iset_sf.grade.id,
+	iset_sf.agrade.date_evaluation,
+	iset_sf.agrade.date_recrutement,
+	iset_sf.agrade.date_titularisation,
+	iset_sf.agrade.grade_actuel,
+	iset_sf.agrade.id_agrade,
+	iset_sf.agrade.id_grade,
+	iset_sf.agrade.id_pers,
+	 iset_sf.personnel.dtype 
+FROM iset_sf.agrade
+	INNER JOIN iset_sf.grade ON 
+	 iset_sf.grade.id = iset_sf.agrade.id_grade 
+	INNER JOIN iset_sf.personnel ON 
+	 iset_sf.personnel.id_pers = iset_sf.agrade.id_pers
+	 WHERE  iset_sf.personnel.dtype like 'EnseignantPermanent'
+	 GROUP BY iset_sf.grade.titre_ar]]>
+	</queryString>
+	<field name="titre_ar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="titre_ar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="grade"/>
+	</field>
+	<field name="MAX(iset_sf.agrade.date_evaluation)" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="MAX(iset_sf.agrade.date_evaluation)"/>
+	</field>
+	<field name="nbrG" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="nbrG"/>
+	</field>
+	<field name="titre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="titre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="grade"/>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="grade"/>
+	</field>
+	<field name="date_evaluation" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_evaluation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="date_recrutement" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_recrutement"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="date_titularisation" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_titularisation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="grade_actuel" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="grade_actuel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="id_agrade" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_agrade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="id_grade" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_grade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="id_pers" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_pers"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agrade"/>
+	</field>
+	<field name="dtype" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dtype"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personnel"/>
+	</field>
+	<variable name="som" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbrG}]]></variableExpression>
+		<initialValueExpression><![CDATA["0"]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement x="112" y="1" width="341" height="29" backcolor="#EBEBEB" uuid="5c3bfe02-1dc2-46d7-adb9-63ea7ddd8e11"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="257" y="1" width="196" height="29" backcolor="#00AEFF" uuid="c4490b01-bb7b-473d-b5f4-f7562ad0a15f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae093f0-7758-4828-bfb0-1148f8a1f0eb"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الرتبة]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="1" width="145" height="29" uuid="c9a230cc-6c11-4d8a-a98b-a6e8c162d809"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{AnneeUniv}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="257" y="0" width="196" height="30" uuid="4c0ceb5f-1a9c-4756-b3fa-d13c81fcf5cc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="63f5e450-fb80-4349-b78d-918f7d355802"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titre_ar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="0" width="145" height="30" uuid="e60fb210-091d-40bd-a4e0-09bf64847ea5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3aed2107-ca02-45d7-b6aa-1136dc7d7204"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbrG}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="29">
+			<textField>
+				<reportElement x="112" y="0" width="145" height="29" uuid="8b8888f0-fc4b-478c-a94f-0632f8af6eaf"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{som}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="257" y="0" width="196" height="29" backcolor="#00AEFF" uuid="34630f42-6b9b-41b2-bf1e-7f0c2a2a23a8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae093f0-7758-4828-bfb0-1148f8a1f0eb"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Andalus" size="12" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المجموع:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>
