@@ -4,14 +4,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import pfe.projet.dao.DemandeVacationRepository;
 import pfe.projet.dao.EtatRepository;
 import pfe.projet.dao.PersonnelRepository;
 import pfe.projet.dao.RoleRepository;
 import pfe.projet.dao.SemestreRepository;
+import pfe.projet.entities.DemandeVacation;
 import pfe.projet.entities.Etat;
 import pfe.projet.entities.Personnel;
 import pfe.projet.entities.Role;
 import pfe.projet.entities.Semestre;
+import pfe.projet.web.EmailRestServices;
 import pfe.projet.web.ImportationRestServices;
 
 @SpringBootApplication
@@ -24,6 +27,8 @@ private RoleRepository roleRepository;
 private SemestreRepository semestreRepository;
 @Autowired
 private EtatRepository etatRepository;
+@Autowired
+private DemandeVacationRepository demandeRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
@@ -67,7 +72,7 @@ private EtatRepository etatRepository;
 		p1.setNom("Jmal");
 		p1.setPrenomAr("أحمد");
 		p1.setNomAr("الجمل");
-		p1.setRole(r1);
+		p1.setRole(r1);		
 		//personnelRepository.save(p1);
 		//userRepository.save(new User("Basma","Triki","directeur",df.parse("12/01/2018"),"BT@gmail.com"));
 		personnelRepository.findAll().forEach(c->{

@@ -7,7 +7,6 @@
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="275"/>
 	<parameter name="pmois" class="java.lang.Integer"/>
 	<parameter name="pannee" class="java.lang.Integer"/>
-	<parameter name="idtype" class="java.lang.Long"/>
 	<parameter name="mois" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT iset_sf.conge.adresse_conge,
@@ -54,7 +53,6 @@ FROM iset_sf.personnel
 	 WHERE (MONTH(iset_sf.conge.date_debut) =$P{pmois} 
 	 OR MONTH(iset_sf.conge.date_fin) =$P{pmois} )
 	 AND YEAR (iset_sf.conge.date_debut) =$P{pannee} AND iset_sf.etat.libelle_etat like 'actif' 
-	 AND iset_sf.type_conge.id_cg=$P{idtype}
 	 AND(iset_sf.conge.valide like 'validé' OR iset_sf.conge.valide like 'accepte')]]>
 	</queryString>
 	<field name="adresse_conge" class="java.lang.String">
@@ -203,46 +201,53 @@ FROM iset_sf.personnel
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="118" splitType="Stretch">
+		<band height="119" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<staticText>
-				<reportElement x="774" y="6" width="151" height="21" uuid="a5635e7a-20ad-4acc-8e0e-6590923dcdf2"/>
+				<reportElement x="806" y="6" width="151" height="21" uuid="c1e00d6d-54ac-48a9-9bda-ba0e2771b6d4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[وزارة التعليم العالي و البحث العلمي ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="738" y="26" width="211" height="22" uuid="edf84652-4bd7-4ad9-91b2-01501fd33777"/>
+				<reportElement x="770" y="26" width="211" height="22" uuid="128c4449-6957-48f8-b60d-aed7eca7a3af"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[الإدارة العامة للدراسات التكنولوجية ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="750" y="40" width="199" height="29" uuid="6697e939-240c-45ab-8246-4379e6c63b8b"/>
+				<reportElement x="782" y="40" width="199" height="29" uuid="39a2e626-2cca-4a86-98c3-1934103abdf0"/>
 				<textElement textAlignment="Center">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصفاقس]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="764" y="58" width="157" height="23" uuid="a2842bdc-d3f9-4b74-8338-b0baf6daf6e9"/>
+				<reportElement x="796" y="58" width="157" height="23" uuid="27a78cd9-d91d-442f-8d2f-c4621efa24ea"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[صادر عن : مصلحة الشؤون الإدارية]]></text>
 			</staticText>
 			<image hAlign="Right" vAlign="Middle">
-				<reportElement x="832" y="81" width="30" height="30" uuid="829e6ce6-c6c3-43c9-8895-0ca3cbf1c48b"/>
+				<reportElement x="864" y="81" width="30" height="30" uuid="f06cae30-9066-4f57-ba99-3272b7c24a9b"/>
 				<imageExpression><![CDATA["images/iset.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="109" splitType="Stretch">
+			<staticText>
+				<reportElement x="319" y="0" width="401" height="44" uuid="ad1be20d-32d3-4afa-80e3-320fbb00bc26"/>
+				<textElement textAlignment="Center">
+					<font fontName="Andalus" size="24" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[قائمة في الرخص الخالصة الأجر]]></text>
+			</staticText>
 			<textField pattern="MMMMM" isBlankWhenNull="true">
-				<reportElement x="352" y="45" width="310" height="30" uuid="2ca02f8e-a61f-4522-9b4b-aeffafc0bc4e">
+				<reportElement x="352" y="46" width="310" height="30" uuid="2ca02f8e-a61f-4522-9b4b-aeffafc0bc4e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5043705a-500a-4406-bc51-c4857f3c1012"/>
 				</reportElement>
 				<box>
@@ -256,53 +261,16 @@ FROM iset_sf.personnel
 				</textElement>
 				<textFieldExpression><![CDATA["الراجعة لشهر "+$P{mois}+" لسنة "+$P{pannee}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="394" y="72" width="235" height="30" uuid="7d9849b1-15ee-4466-9c90-796db60214f3">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6b74d25-a4cc-4b37-a199-8fe648b1679e"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="18" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["عطل "+$F{libelle_type_ar}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="319" y="0" width="401" height="44" uuid="ef90b5e5-5e65-41a0-8e52-2331f8e13c09"/>
-				<textElement textAlignment="Center">
-					<font fontName="Andalus" size="24" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[قائمة في الرخص الخالصة الأجر]]></text>
-			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="33" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<rectangle>
-				<reportElement x="0" y="2" width="974" height="30" backcolor="#F2F2F2" uuid="20536ff1-9e26-465a-81cc-6ca67b9a5bdd"/>
+				<reportElement x="101" y="2" width="873" height="30" backcolor="#F0F0F0" uuid="70fbfd93-7ace-487f-93ce-876d260af41b"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="130" y="2" width="122" height="30" backcolor="#00AEFF" uuid="be41051f-9c97-498b-a9e1-891be47814fe">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4340620-7b02-488e-980a-bc211fd13e13"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Andalus" size="12" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[الملاحظات]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="336" y="2" width="187" height="30" backcolor="#00AEFF" uuid="d2cddc8b-52a2-452f-adde-1febe9139f70">
+				<reportElement x="185" y="2" width="188" height="30" backcolor="#00AEFF" uuid="d2cddc8b-52a2-452f-adde-1febe9139f70">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5043705a-500a-4406-bc51-c4857f3c1012"/>
 				</reportElement>
 				<box>
@@ -332,7 +300,7 @@ FROM iset_sf.personnel
 				<text><![CDATA[الرتبة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="619" y="2" width="143" height="30" backcolor="#00AEFF" uuid="bf5f45ed-2722-4acb-bebd-0a8a346a8328">
+				<reportElement x="618" y="2" width="144" height="30" backcolor="#00AEFF" uuid="bf5f45ed-2722-4acb-bebd-0a8a346a8328">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5ea12b2-8319-4fb2-b84e-2a05ece6c3ba"/>
 				</reportElement>
 				<box>
@@ -361,7 +329,7 @@ FROM iset_sf.personnel
 				<text><![CDATA[ع/ر]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="763" y="2" width="160" height="30" backcolor="#00AEFF" uuid="982ae9da-a68c-47cc-a864-21fbc1ee806c">
+				<reportElement x="762" y="2" width="162" height="30" backcolor="#00AEFF" uuid="982ae9da-a68c-47cc-a864-21fbc1ee806c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae093f0-7758-4828-bfb0-1148f8a1f0eb"/>
 				</reportElement>
 				<box>
@@ -374,7 +342,7 @@ FROM iset_sf.personnel
 				<text><![CDATA[الإسم و اللقب]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="252" y="2" width="84" height="30" backcolor="#00AEFF" uuid="8ab40280-1f0d-4968-8c7e-d84d4de82d5b">
+				<reportElement x="101" y="2" width="84" height="30" backcolor="#00AEFF" uuid="8ab40280-1f0d-4968-8c7e-d84d4de82d5b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c647df0c-c75d-420a-8de8-1d209e9b636d"/>
 				</reportElement>
 				<box>
@@ -389,7 +357,9 @@ FROM iset_sf.personnel
 				<text><![CDATA[عدد الأيام]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="2" width="130" height="30" uuid="a8f0aa16-0be1-4ffe-a1a2-f4ae3ff4e6b7"/>
+				<reportElement x="373" y="2" width="150" height="30" backcolor="#00AEFF" uuid="5c4e0051-8356-42c8-911a-3692a23c477a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5043705a-500a-4406-bc51-c4857f3c1012"/>
+				</reportElement>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -399,12 +369,12 @@ FROM iset_sf.personnel
 				<textElement textAlignment="Center">
 					<font fontName="Andalus" size="12" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[قرار مصلحة الرخص]]></text>
+				<text><![CDATA[نوع العطلة]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="30" splitType="Stretch">
+		<band height="29" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<textField isBlankWhenNull="true">
 				<reportElement x="618" y="-1" width="144" height="30" uuid="f23c2668-fe86-42f1-9e0e-19ecd9461417">
@@ -422,7 +392,7 @@ FROM iset_sf.personnel
 				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="252" y="-1" width="84" height="30" uuid="79f70605-0642-4690-9022-606307af62b6">
+				<reportElement x="101" y="-1" width="84" height="30" uuid="79f70605-0642-4690-9022-606307af62b6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
 				</reportElement>
 				<box>
@@ -467,7 +437,7 @@ FROM iset_sf.personnel
 				<textFieldExpression><![CDATA[$F{prenom_ar}+" "+$F{nom_ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="336" y="-1" width="187" height="30" uuid="a223aefd-85b6-407b-a383-e0e9fd42736d">
+				<reportElement x="185" y="-1" width="188" height="30" uuid="a223aefd-85b6-407b-a383-e0e9fd42736d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f38b11e-888f-4c7a-ab70-9789310e2b86"/>
 				</reportElement>
 				<box>
@@ -481,32 +451,23 @@ FROM iset_sf.personnel
 				</textElement>
 				<textFieldExpression><![CDATA["من "+$F{date_debut}+" إلى "+$F{date_fin}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="130" y="-1" width="122" height="30" uuid="fdfe1d81-c011-4dc6-b6f8-623d71ba7995"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="-1" width="130" height="30" uuid="85791880-396f-4f9a-8e4a-86fe479d47ee">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51f7d1b0-a825-4d55-aebc-76ea615a718e"/>
+			<textField>
+				<reportElement x="373" y="-1" width="150" height="30" uuid="7d9849b1-15ee-4466-9c90-796db60214f3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6b74d25-a4cc-4b37-a199-8fe648b1679e"/>
 				</reportElement>
 				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle_type_ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="924" y="-1" width="50" height="30" uuid="9bd8fcc2-11a1-40e8-9bb0-3022bf7bc6f3"/>
+				<reportElement x="924" y="-1" width="50" height="30" uuid="7db6f13f-33d1-478e-880f-2c25b5123f1d"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>

@@ -13,7 +13,9 @@ public class EnseignantFonctionnaireEtat extends EnseignantVacataire implements 
 public void setAutorisation(String autorisation) {
 	this.autorisation = autorisation;
 }
-
+public String getAutorisation() {
+	return autorisation;
+}
 public int getNbreMaxHeures() {
 	return nbreMaxHeures;
 }

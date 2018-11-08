@@ -31,6 +31,8 @@ public class EtatPersonnel implements Serializable {
     private Date dateDebutDet;
     @Temporal(TemporalType.DATE)
     private Date dateFinDet;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar dateInactif;
 public EtatPersonnel() {
 	super();
 	// TODO Auto-generated constructor stub
@@ -97,6 +99,14 @@ public Date getDateFinDet() {
 
 public void setDateFinDet(Date dateFinDet) {
 	this.dateFinDet = dateFinDet;
+}
+
+public Calendar getDateInactif() {
+	return dateInactif;
+}
+
+public void setDateInactif(Calendar dateInactif) {
+	this.dateInactif = dateInactif;
 }
 
 }

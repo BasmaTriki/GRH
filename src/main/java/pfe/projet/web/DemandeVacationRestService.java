@@ -22,6 +22,8 @@ public class DemandeVacationRestService {
 
 	@Autowired
 	private DemandeVacationRepository demandeVacationRepository;
+	@Autowired
+	private EmailRestServices emailServices;
 	//Retourner la liste des demandeVacations
 	@RequestMapping(value="/demandeVacations", method=RequestMethod.GET)
 	public List<DemandeVacation> getdemandeVacation(){
@@ -61,6 +63,14 @@ public class DemandeVacationRestService {
 	@RequestMapping(value="/ModifierdemandeVacation/{idDemande}", method=RequestMethod.PUT)
 	public DemandeVacation save(@PathVariable  long idDemande,@RequestBody DemandeVacation d){
 	    d.setIdDemande(idDemande);
+	    if(d.getEtatdemande().equals("accepter"))
+	    {
+	    	emailServices.SendEmailAccepter(d);
+	    }
+	    if(d.getEtatdemande().equals("refuser"))
+	    {
+	    	emailServices.SendEmailRefuser(d);
+	    }
 		return demandeVacationRepository.save(d);
 	}
 	

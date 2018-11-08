@@ -430,14 +430,15 @@ GROUP BY iset_sf.conge.id_pers]]>
 	<pageFooter>
 		<band height="32" splitType="Stretch">
 			<textField>
-				<reportElement x="-20" y="1" width="690" height="30" uuid="2db2ae5c-570c-4d70-8d4a-86698d737c55"/>
+				<reportElement x="-10" y="1" width="680" height="30" uuid="2db2ae5c-570c-4d70-8d4a-86698d737c55"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph leftIndent="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" السداسي الأول من السنة الجامعية "+$P{annUniv}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{annUniv}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

@@ -122,24 +122,20 @@ public class ImportationRestServices {
 	      //congeServices.save(idCong, conge);
 	      chemin=filechemin+"/"+filepath;
 	      stream.close();
-	      treatDocument(chemin);
+	      //treatDocument(chemin);
 	}
 	    catch (Exception e) {
 	      System.out.println(e.getMessage());
 	      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	    }
 	
-	    return new ResponseEntity<>(HttpStatus.OK);
-	  } // method uploadFile
-	@RequestMapping(value="/ImportationExcel")
-	public void treatDocument(@RequestParam(name="mc",defaultValue="")String documentPath) {
-		
+	   
 
-		if (documentPath != null) {
+		if (chemin != null) {
 			try {
 //"D:/PFE-2018/base-Ahlem10avril.xlsx"
 				//PreparedStatement pstm = null;
-				FileInputStream inputStream = new FileInputStream(new File(documentPath));
+				FileInputStream inputStream = new FileInputStream(new File(chemin));
 				XSSFWorkbook fs = new XSSFWorkbook(inputStream);
 				XSSFSheet sheet = (XSSFSheet) fs.getSheetAt(0);
 				Row row;
@@ -348,6 +344,8 @@ public class ImportationRestServices {
 				System.out.println(ioe);
 
 		}
+			
+}
+		 return new ResponseEntity<>(HttpStatus.OK);
+}
 	}
-}
-}

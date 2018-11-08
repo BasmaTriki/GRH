@@ -411,7 +411,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="22" isBold="true" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["العطل للأستاذ(ة) "+$F{prenom_ar}+" "+$F{nom_ar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["بطاقة عطل الأستاذ(ة) "+$F{prenom_ar}+" "+$F{nom_ar}]]></textFieldExpression>
 			</textField>
 			<textField pattern="yyyy/MM/dd">
 				<reportElement x="-20" y="0" width="100" height="26" uuid="371b6d43-e7e1-44cf-9fca-62b9c56267cb"/>
@@ -430,7 +430,7 @@ WHERE
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="272" splitType="Stretch">
+		<band height="210" splitType="Stretch">
 			<textField isBlankWhenNull="true">
 				<reportElement x="400" y="14" width="168" height="30" uuid="713a7b0b-3b63-4d6f-9f67-63e10a087fa1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7edd3a2-6b36-4f2f-85ba-2c12c4a8abbb"/>
@@ -561,10 +561,21 @@ WHERE
 			</subreport>
 		</band>
 	</detail>
+	<columnFooter>
+		<band height="31">
+			<textField>
+				<reportElement x="320" y="1" width="40" height="30" uuid="0c3a0255-5e92-460e-af41-aea8cfec4b4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
 	<pageFooter>
-		<band height="60" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement x="-19" y="37" width="748" height="23" uuid="09cee938-a0d8-4b22-8dda-0bc52d09f66c"/>
+				<reportElement x="-20" y="1" width="749" height="23" uuid="09cee938-a0d8-4b22-8dda-0bc52d09f66c"/>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -575,15 +586,8 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[طريق المهدية كلم 2.5 البستان ص.ب.  3099 A88 صفاقس                           الهاتف: 431425- 431493- 431495 (74) الفاكس 431386 (74)]]></text>
+				<text><![CDATA[طريق المهدية كلم 2.5 البستان ص.ب.  3099 A88 صفاقس                                         الهاتف: 431425- 431493- 431495 (74) الفاكس 431386 (74)]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="340" y="10" width="100" height="30" uuid="0c3a0255-5e92-460e-af41-aea8cfec4b4f"/>
-				<textElement>
-					<font fontName="Serif" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageFooter>
 	<summary>

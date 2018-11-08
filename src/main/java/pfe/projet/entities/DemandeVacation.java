@@ -1,6 +1,8 @@
 package pfe.projet.entities;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,13 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class DemandeVacation implements Serializable {
 @Id 
 @GeneratedValue
 private long idDemande;
-private long cin;
+private String cin;
 private String nom;
 private String prenom;
 private String nomAr;
@@ -25,9 +29,21 @@ private String adresse;
 private String adresseAr;
 private String ville;
 private int codePostal;
+@Temporal(TemporalType.DATE)
+private Date datenaissance;
+private String nompere;
+private String nompereAr;
+private String lieuNaissance;
+private String lieuNaissanceAr;
+private String rib;
+private String etatCivil;
 private String diplomes; 
 private String etatdemande;
 private String typeDemande;
+@Temporal(TemporalType.TIMESTAMP)
+private Calendar dateCreationDem;
+@Lob
+private byte[]photo; 
 @ManyToOne
 @JoinColumn(name="id_Sp",referencedColumnName="idSp")
 public Specialite specialite;
@@ -59,10 +75,10 @@ public String getDiplomes() {
 public void setDiplomes(String diplomes) {
 	this.diplomes = diplomes;
 }
-public long getCin() {
+public String getCin() {
 	return cin;
 }
-public void setCin(long cin) {
+public void setCin(String cin) {
 	this.cin = cin;
 }
 public String getNom() {
@@ -137,6 +153,78 @@ public String getAdresseAr() {
 
 public void setAdresseAr(String adresseAr) {
 	this.adresseAr = adresseAr;
+}
+
+public Calendar getDateCreationDem() {
+	return dateCreationDem;
+}
+
+public void setDateCreationDem(Calendar dateCreationDem) {
+	this.dateCreationDem = dateCreationDem;
+}
+
+public Date getDatenaissance() {
+	return datenaissance;
+}
+
+public void setDatenaissance(Date datenaissance) {
+	this.datenaissance = datenaissance;
+}
+
+public String getNompere() {
+	return nompere;
+}
+
+public void setNompere(String nompere) {
+	this.nompere = nompere;
+}
+
+public String getNompereAr() {
+	return nompereAr;
+}
+
+public void setNompereAr(String nompereAr) {
+	this.nompereAr = nompereAr;
+}
+
+public String getLieuNaissance() {
+	return lieuNaissance;
+}
+
+public void setLieuNaissance(String lieuNaissance) {
+	this.lieuNaissance = lieuNaissance;
+}
+
+public String getLieuNaissanceAr() {
+	return lieuNaissanceAr;
+}
+
+public void setLieuNaissanceAr(String lieuNaissanceAr) {
+	this.lieuNaissanceAr = lieuNaissanceAr;
+}
+
+public String getRib() {
+	return rib;
+}
+
+public void setRib(String rib) {
+	this.rib = rib;
+}
+
+public String getEtatCivil() {
+	return etatCivil;
+}
+
+public void setEtatCivil(String etatCivil) {
+	this.etatCivil = etatCivil;
+}
+
+public byte[] getPhoto() {
+	return photo;
+}
+
+public void setPhoto(byte[] photo) {
+	this.photo = photo;
 }
 
 }

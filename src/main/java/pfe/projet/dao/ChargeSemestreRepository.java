@@ -1,6 +1,7 @@
 package pfe.projet.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,7 @@ import pfe.projet.entities.ChargeSem;;
 public interface ChargeSemestreRepository extends JpaRepository<ChargeSem, Long> {
 	@Query("select cs from ChargeSem cs where cs.semestre.descriptionSem like :x")
 	public Page<ChargeSem>chercher(@Param("x")String semestre,Pageable pageable);
-
+	@Query("select cs from ChargeSem cs where cs.enseignantvacataire.idPers=:x")
+	public List<ChargeSem> chercherSemesPers(@Param("x")Long idPers);
 
 }

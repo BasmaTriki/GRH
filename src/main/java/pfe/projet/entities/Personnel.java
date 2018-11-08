@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
@@ -48,7 +49,7 @@ public class Personnel implements Serializable {
    private String profConjointAr;
    private String societConj;
    private String societConjAr;
-   @ManyToOne
+   @OneToOne
    @JoinColumn(name="id_Org",referencedColumnName="idOrg")
    private Organisme organismeOrigine;
    @Temporal(TemporalType.DATE)

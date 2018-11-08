@@ -18,6 +18,7 @@ public class Enseignant extends Personnel implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_Sp",referencedColumnName="idSp")
     public Specialite specialite;
+	public String Diplomes;
 public Departement getDepartement() {
 		return departement;
 	}
@@ -29,6 +30,12 @@ public Specialite getSpecialite() {
 	}
 	public void setSpecialite(Specialite specialite) {
 		this.specialite = specialite;
+	}
+	public String getDiplomes() {
+		return Diplomes;
+	}
+	public void setDiplomes(String diplomes) {
+		Diplomes = diplomes;
 	}
 
 }

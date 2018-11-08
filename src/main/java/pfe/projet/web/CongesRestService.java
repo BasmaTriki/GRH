@@ -39,13 +39,18 @@ public class CongesRestService {
 			@RequestParam(name="page",defaultValue="0") int page,
 			@RequestParam(name="size",defaultValue="5")int size){
 		return congeRepository.chercherPerso(mc,new PageRequest(page,size));
+	}	@RequestMapping(value="/chercherPersonnelConge", method=RequestMethod.GET)
+	public List<Conge>chercherPersoConge(
+			@RequestParam(name="mc",defaultValue="0")long mc){
+		return congeRepository.chercherPersoConge(mc);
 	}
 	@RequestMapping(value="/chercherNbJourParType", method=RequestMethod.GET)
 	public int chercherNbJour(
 			@RequestParam(name="mc",defaultValue="0")long mc,
-			@RequestParam(name="mt",defaultValue="0")long mt)
+			@RequestParam(name="mt",defaultValue="0")long mt,
+			@RequestParam(name="year",defaultValue="0")int year)
 	{
-		return congeRepository.chercherNbJour(mc,mt);
+		return congeRepository.chercherNbJour(mc,mt,year);
 	}
 	@RequestMapping(value="/chercherCongeAutoriser", method=RequestMethod.GET)
 	public Page<Conge>chercherCongeAutoriser(

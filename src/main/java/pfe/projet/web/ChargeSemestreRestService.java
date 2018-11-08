@@ -34,6 +34,11 @@ public class ChargeSemestreRestService {
 			@RequestParam(name="size",defaultValue="5")int size){
 		return chargeSemestreRepository.chercher(""+mc,new PageRequest(page,size));
 	}
+	@RequestMapping(value="/chercherChargeEnseignant", method=RequestMethod.GET)
+	public List<ChargeSem> chercherCharge(
+			@RequestParam(name="eng",defaultValue="")long idPers){
+		return chargeSemestreRepository.chercherSemesPers(idPers);
+	}
 	//Retourner un seul chargSemestre
 	@RequestMapping(value="/ChargeSemestre/{idChargeS}", method=RequestMethod.GET)
 	public ChargeSem getOneChargeSemestre(@PathVariable long idChargeS){

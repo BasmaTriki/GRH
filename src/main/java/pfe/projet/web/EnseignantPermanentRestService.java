@@ -1,4 +1,5 @@
 package pfe.projet.web;
+import java.sql.Array;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pfe.projet.dao.EnseignantPermanentRepository;
+import pfe.projet.entities.Departement;
 import pfe.projet.entities.Enseignant;
 import pfe.projet.entities.EnseignantPermanent;
 @RestController
@@ -41,6 +43,18 @@ public class EnseignantPermanentRestService {
 		@RequestMapping(value="/chercherEnseignantSansCompte", method=RequestMethod.GET)
 		public List<EnseignantPermanent>chercherCompte(){
 			return enseignantRepository.chercherEnsgSansCompte();
+		}
+		@RequestMapping(value="/NomberDesEnseignant", method=RequestMethod.GET)
+		public List<Long>NomberEnseignant(){
+			return enseignantRepository.NombreEnseignant();
+		}
+		@RequestMapping(value="/ListeDepartement", method=RequestMethod.GET)
+		public List<String>ListeDepartement(){
+			return enseignantRepository.ListeDepartement();
+		}
+		@RequestMapping(value="/ListeDepartementFr", method=RequestMethod.GET)
+		public List<String>ListeDepartementFr(){
+			return enseignantRepository.ListeDepartementFr();
 		}
 		//Retourner une seul personne
 		@RequestMapping(value="/EnseignantPermanent/{idPers}", method=RequestMethod.GET)

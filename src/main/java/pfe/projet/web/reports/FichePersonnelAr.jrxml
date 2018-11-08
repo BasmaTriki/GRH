@@ -286,30 +286,30 @@ FROM iset_sf.enfant
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="87" splitType="Stretch">
+		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="601" y="4" width="151" height="21" uuid="4c6ee91e-8053-41e6-be86-2a338c3688a2"/>
+				<reportElement x="601" y="2" width="151" height="21" uuid="4c6ee91e-8053-41e6-be86-2a338c3688a2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[وزارة التعليم العالي و البحث العلمي ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="570" y="37" width="211" height="22" uuid="7a351458-ccb3-4d86-9eab-902cc666193f"/>
+				<reportElement x="570" y="19" width="211" height="22" uuid="7a351458-ccb3-4d86-9eab-902cc666193f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[الإدارة العامة للدراسات التكنولوجية ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="582" y="51" width="199" height="29" uuid="788d678f-982b-40ba-85c0-72580eeecfd8"/>
+				<reportElement x="582" y="33" width="199" height="29" uuid="788d678f-982b-40ba-85c0-72580eeecfd8"/>
 				<textElement textAlignment="Center">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصفاقس]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="596" y="59" width="157" height="27" uuid="fa72b712-dd1b-4e35-b7ae-f554db6a5a7e"/>
+				<reportElement x="597" y="46" width="157" height="27" uuid="fa72b712-dd1b-4e35-b7ae-f554db6a5a7e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -701,10 +701,21 @@ FROM iset_sf.enfant
 			</textField>
 		</band>
 	</detail>
+	<columnFooter>
+		<band height="22">
+			<textField>
+				<reportElement x="383" y="0" width="81" height="22" uuid="e03e8d95-0e9e-462e-a440-b55b33d2aaac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
 	<pageFooter>
-		<band height="41" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="-20" y="22" width="824" height="18" uuid="e951e706-146a-4157-81d2-6c26fc1dcd83"/>
+				<reportElement x="-20" y="1" width="824" height="18" uuid="e951e706-146a-4157-81d2-6c26fc1dcd83"/>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -715,15 +726,8 @@ FROM iset_sf.enfant
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[طريق المهدية كلم 2.5 البستان ص.ب. 3099 A88   صفاقس                                        الهاتف:  431425 - 431493 - 431495 (74) الفاكس 431386 (74)]]></text>
+				<text><![CDATA[طريق المهدية كلم 2.5 البستان ص.ب. 3099 A88   صفاقس                                                       الهاتف:  431425 - 431493 - 431495 (74) الفاكس 431386 (74)]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="383" y="0" width="81" height="20" uuid="e03e8d95-0e9e-462e-a440-b55b33d2aaac"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Serif" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>

@@ -17,7 +17,7 @@ public class TypeConge implements Serializable {
    private String libelleTypeAr;
    private int nbMaxJrs;
    private boolean autorisation;
-
+   private boolean actifPers;
 
 public TypeConge() {
 	super();
@@ -70,5 +70,12 @@ public String getLibelleTypeAr() {
 public void setLibelleTypeAr(String libelleTypeAr) {
 	this.libelleTypeAr = libelleTypeAr;
 }
+public boolean isActifPers() {
+	return actifPers;
+}
+public void setActifPers(boolean actifPers) {
+	this.actifPers = actifPers;
+}
+
 
 }

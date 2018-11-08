@@ -221,18 +221,19 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		 	       System.out.println("uploadDir"+RepDir);
 
 		 	       //compiler le rapport
-	JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/etatCongeMois.jrxml");
+	JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/etatCongeParMois.jrxml");
 		             //parametre du rapport
 		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
 		             mesParametres.put("pmois", pmois);
 		             mesParametres.put("pannee", pannee);
+		             mesParametres.put("mois", moisAr[pmois-1]);
 	JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 		             	//export pdf
-	JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/etatCongeMois.pdf");
+	JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/etatCongeParMois.pdf");
 
 	     	   	     //execution du rapport dans le navigateur
 				    Runtime runtime = Runtime.getRuntime();
-	String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/etatCongeMois.pdf" };
+	String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe", reportsPDF+"/etatCongeParMois.pdf" };
 	             try {
 	                 final Process process = runtime.exec(args);
 	             } catch (IOException e) {
@@ -481,10 +482,6 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		 	       //compiler le rapport
 	 JasperReport jasperReport = JasperCompileManager.compileReport(RepDir+"/FichePersonnelAr.jrxml");
 		             //parametre du rapport
-	 JasperReport subReport = JasperCompileManager.compileReport(RepDir+"/Enfants.jrxml");
-    
-     System.out.println(subReport);
-     //String subReport="Enfants.jasper";
 		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
 		             mesParametres.put("idPers",idPers);
 		            // mesParametres.put("subReport", subReport);
@@ -514,7 +511,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 				}
 		 }
 		@RequestMapping(value="/ListeEnseignantDepartement")
-		 private void ListeEnseignantDepartement(@RequestParam(name="mc",defaultValue="0")long idDep){
+		 private void ListeEnseignantDepartement(@RequestParam(name="mc",defaultValue="0")long idDep,@RequestParam(name="mp",defaultValue="")String annUniv){
 			 try{
 				 //connexion
 				 Class.forName("com.mysql.jdbc.Driver");
@@ -536,6 +533,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		             //parametre du rapport
 		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
 		             mesParametres.put("idDep",idDep);
+		             mesParametres.put("anneeUniv",annUniv);
 	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 		             	//export pdf
 	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantParDepartement.pdf");
@@ -563,7 +561,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		 }
 		//Liste des enseignants par Grade
 		@RequestMapping(value="/ListeEnseignantGrade")
-		 private void ListeEnseignantGrade(@RequestParam(name="mc",defaultValue="0")long idGrade){
+		 private void ListeEnseignantGrade(@RequestParam(name="mc",defaultValue="0")long idGrade,@RequestParam(name="mp",defaultValue="")String annUniv){
 			 try{
 				 //connexion
 				 Class.forName("com.mysql.jdbc.Driver");
@@ -585,6 +583,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		             //parametre du rapport
 		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
 		             mesParametres.put("idGrade",idGrade);
+		             mesParametres.put("anneeUniv",annUniv);
 	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 		             	//export pdf
 	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantParGrade.pdf");
@@ -612,7 +611,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		 }
 		//Listes des enseignants par corps
 		@RequestMapping(value="/ListeEnseignantCorps")
-		 private void ListeEnseignantCorps(@RequestParam(name="mc",defaultValue="0")long idCps){
+		 private void ListeEnseignantCorps(@RequestParam(name="mc",defaultValue="0")long idCps,@RequestParam(name="mp",defaultValue="")String annUniv){
 			 try{
 				 //connexion
 				 Class.forName("com.mysql.jdbc.Driver");
@@ -634,6 +633,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		             //parametre du rapport
 		             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
 		             mesParametres.put("idCps",idCps);
+		             mesParametres.put("anneeUniv",annUniv);
 	 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 		             	//export pdf
 	 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantParCorps.pdf");
@@ -710,7 +710,8 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 		 }
 		//Liste des enseignants Inactif
 				@RequestMapping(value="/ListeEnseignantInactif")
-				 private void ListeEnseignantInactif(@RequestParam(name="mc",defaultValue="")String annUniv){
+				 private void ListeEnseignantInactif(@RequestParam(name="mc",defaultValue="")String annUniv,
+						 @RequestParam(name="mp",defaultValue="0")int annee){
 					 try{
 						 //connexion
 						 Class.forName("com.mysql.jdbc.Driver");
@@ -732,6 +733,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 				             //parametre du rapport
 				             HashMap<String, Object> mesParametres = new HashMap<String, Object>();
 				             mesParametres.put("annUniv",annUniv);
+				             mesParametres.put("annee",annee);
 			 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mesParametres, connection);
 				             	//export pdf
 			 JasperExportManager.exportReportToPdfFile(jasperPrint, reportsPDF+"/ListeEnseignantInactif.pdf");
@@ -808,7 +810,7 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 						}
 				 }
 				//Liste des enseignants par departement et par grade
-				@RequestMapping(value="/ListeEnseigParDep")
+				@RequestMapping(value="/NomberEnseigParDep")
 				 private void ListeDeEnseig(@RequestParam(name="mc",defaultValue="")String annUniv){
 					 try{
 						 //connexion
@@ -907,5 +909,6 @@ String[] args = { "C:/Program Files (x86)/Google/Chrome/Application/Chrome.exe",
 							e.printStackTrace();
 						}
 				 }
+				
 }
 
