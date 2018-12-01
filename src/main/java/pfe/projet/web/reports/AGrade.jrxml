@@ -127,7 +127,7 @@ FROM iset_sf.agrade
 				<textFieldExpression><![CDATA[$F{date_titularisation}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="311" y="32" width="67" height="31" backcolor="#00AEFF" uuid="40411997-15de-488a-b113-b25d28ec4046">
+				<reportElement x="311" y="26" width="67" height="31" backcolor="#00AEFF" uuid="40411997-15de-488a-b113-b25d28ec4046">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
 				</reportElement>
 				<box>
@@ -142,7 +142,7 @@ FROM iset_sf.agrade
 				<text><![CDATA[تاريخ التسمية :]]></text>
 			</staticText>
 			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
-				<reportElement x="190" y="31" width="121" height="31" uuid="f623a736-463f-462b-94bb-f324e091535d"/>
+				<reportElement x="190" y="25" width="121" height="31" uuid="f623a736-463f-462b-94bb-f324e091535d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Serif" size="12"/>
 				</textElement>

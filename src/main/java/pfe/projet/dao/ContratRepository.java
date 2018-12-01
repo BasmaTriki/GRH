@@ -12,8 +12,8 @@ import org.springframework.data.repository.query.Param;
 import pfe.projet.entities.Contrat;
 
 public interface ContratRepository extends JpaRepository<Contrat, Long> {
-	@Query("select c from Contrat c where c.enseignantPermanent.nom like :x or c.enseignantPermanent.nomAr like :x")
+	@Query("select c from Contrat c where c.enseignantContractuel.nom like :x or c.enseignantContractuel.nomAr like :x")
 	public Page<Contrat>chercher(@Param("x") String nom,Pageable pageable);
-	@Query("select  c from Contrat c where c.enseignantPermanent.idPers = :x")
+	@Query("select  c from Contrat c where c.enseignantContractuel.idPers = :x")
 	public List<Contrat>chercherContrat(@Param("x") long mat);
 }

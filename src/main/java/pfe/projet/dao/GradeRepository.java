@@ -1,6 +1,8 @@
 package pfe.projet.dao;
 
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +17,5 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
 	public Page<Grade>chercherAr(@Param("x") String nom,Pageable pageable);
 	@Query("select g from Grade g where g.titreAr like :x")
 	public Grade chercherOneAr(@Param("x") String nom);
+	
 }

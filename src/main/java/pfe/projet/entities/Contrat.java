@@ -21,7 +21,7 @@ public class Contrat implements Serializable {
    public Date dateFinCont;
    @ManyToOne
    @JoinColumn(name="id_pers",referencedColumnName="idPers")
-   private EnseignantPermanent enseignantPermanent;
+   private EnseignantContractuel enseignantContractuel;
    
 public Contrat() {
 	super();
@@ -46,10 +46,11 @@ public Date getDateFinCont() {
 public void setDateFinCont(Date dateFinCont) {
 	this.dateFinCont = dateFinCont;
 }
-public EnseignantPermanent getEnseignantPermanent() {
-	return enseignantPermanent;
+public EnseignantContractuel getEnseignantContractuel() {
+	return enseignantContractuel;
 }
-public void setEnseignantPermanent(EnseignantPermanent enseignantPermanent) {
-	this.enseignantPermanent = enseignantPermanent;
-} 
+public void setEnseignantContractuel(EnseignantContractuel enseignantContractuel) {
+	this.enseignantContractuel = enseignantContractuel;
+}
+
 }

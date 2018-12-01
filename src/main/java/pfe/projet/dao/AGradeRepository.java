@@ -17,4 +17,10 @@ public interface AGradeRepository extends JpaRepository<AGrade, Long> {
 	public List<AGrade>chercherGrade(@Param("x") long mat);
 	@Query("select g, MAX(g.dateEvaluation) from AGrade g where g.personnel.idPers = :x")
 	public List<AGrade>chercherGradeActuel(@Param("x") long mat);
+	@Query("select COUNT(g.personnel.idPers) as Nbr from AGrade g GROUP BY g.grade.corps.idcps")
+	public List<Long>NombreGrade();
+	@Query("select g.grade.corps.libelleCps from AGrade g  GROUP BY g.grade.corps.idcps")
+	public List<String>ListeGradeCp();
+	@Query("select g.grade.corps.libelleCpsAr from AGrade g  GROUP BY g.grade.corps.idcps")
+	public List<String>ListeGradeCpAr();
 }

@@ -35,6 +35,18 @@ public class AGradeRestService {
 				@RequestParam(name="mc",defaultValue="0")long mat){
 			return agradeRepository.chercherGradeActuel(mat);
 		}
+		@RequestMapping(value="/NomberEnseignantCps", method=RequestMethod.GET)
+		public List<Long>NomberEnseignant(){
+			return agradeRepository.NombreGrade();
+		}
+		@RequestMapping(value="/ListeCorps", method=RequestMethod.GET)
+		public List<String>ListeCorps(){
+			return agradeRepository.ListeGradeCp();
+		}
+		@RequestMapping(value="/ListeCorpsAr", method=RequestMethod.GET)
+		public List<String>ListeCorpsAr(){
+			return agradeRepository.ListeGradeCpAr();
+		}
 		@RequestMapping(value="/chercherAGrade", method=RequestMethod.GET)
 		public Page<AGrade>chercher(
 				@RequestParam(name="mc",defaultValue="")String mc,

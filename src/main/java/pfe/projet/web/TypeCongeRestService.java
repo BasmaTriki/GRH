@@ -34,7 +34,11 @@ public class TypeCongeRestService {
 			@RequestParam(name="size",defaultValue="5")int size){
 		return typeCongeRepository.chercher("%"+mc+"%",new PageRequest(page,size));
 	}
-	
+	@RequestMapping(value="/ListeParType", method=RequestMethod.GET)
+	public List<TypeConge>chercherParType(
+			@RequestParam(name="mc",defaultValue="")String mc){
+		return typeCongeRepository.chercherParType(mc+"%");
+	}
 	//Retourner un seul TypeConge
 	@RequestMapping(value="/TypeConge/{idCg}", method=RequestMethod.GET)
 	public TypeConge getTypeConge(@PathVariable long idCg){

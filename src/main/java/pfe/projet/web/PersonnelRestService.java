@@ -19,6 +19,8 @@ import pfe.projet.entities.Personnel;
 public class PersonnelRestService {
 	@Autowired
 	private PersonnelRepository personnelRepository;
+	@Autowired
+	private EmailRestServices emailServices;
 	//Retourner la list des Personnels
 	@RequestMapping(value="/Personnels", method=RequestMethod.GET)
 	public List<Personnel> getPersonnel(){
@@ -37,10 +39,10 @@ public class PersonnelRestService {
 	{
 		return personnelRepository.chercherPersonnelLogin(log+"", motpass+"");
 	}
-	@RequestMapping(value="/chercherTypePersonnel", method=RequestMethod.GET)
-	public String chercherType(
-			@RequestParam(name="mc",defaultValue="0") long mat){
-		return personnelRepository.chercherType(mat);
+	@RequestMapping(value="/chercherMatriculePersonnel", method=RequestMethod.GET)
+	public Personnel chercherMatricule(
+			@RequestParam(name="mc",defaultValue="") String mat){
+		return personnelRepository.chercherPersMat(mat+"");
 	}
 	@RequestMapping(value="/chercherPersonnelActif", method=RequestMethod.GET)
 	public Page<Personnel> chercherPers(
@@ -66,6 +68,21 @@ public class PersonnelRestService {
 		personnelRepository.delete(idPers);
 		return true;
 	}
+	//Envoyer un email nouvelle compte
+		@RequestMapping(value="/NouvelleComptePersonnel/{idPers}", method=RequestMethod.GET)
+		public boolean MailNouvelleCompte(@PathVariable long idPers){
+			Personnel p=personnelRepository.findOne(idPers);
+		    emailServices.SendLoginMotPass(p);
+			return true;
+		}
+		//Envoyer un email nouvelle compte
+				@RequestMapping(value="/MotPassOblierPersonnel", method=RequestMethod.GET)
+				public boolean MailMotPassOblier(@RequestParam(name="id",defaultValue="")long idPers,
+						@RequestParam(name="mail",defaultValue="")String mail){
+					Personnel p=personnelRepository.findOne(idPers);
+				    emailServices.SendMotPassOblier(p,mail);
+					return true;
+				}
 	//mettre à jour une Personnel
 	@RequestMapping(value="/ModifierPersonnel/{idPers}", method=RequestMethod.PUT)
 	public Personnel save(@PathVariable  long idPers,@RequestBody Personnel p){

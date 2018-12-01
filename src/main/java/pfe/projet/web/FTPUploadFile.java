@@ -32,7 +32,7 @@ import pfe.projet.entities.EnseignantVacataire;
 @RestController
 @CrossOrigin("*")
 public class FTPUploadFile {
-	 String serveur = "localhost";
+	 String serveur = "192.168.43.152";
 	  int port = 21;
 	  String user = "iset";
 	  String password = "isetsf";
@@ -103,7 +103,7 @@ public ResponseEntity<?> transferFichier(@RequestParam(name="upload") MultipartF
 
 		System.out.println("Start uploading first file");
 		boolean done = ftpClient.storeFile(firstRemoteFile, inputStream);
-		inputStream.close();
+		//inputStream.close();
 		if (done) {
 			System.out.println("The first file is uploaded successfully.");
 			  conge=congeServices.getOneConge(idCong);
@@ -172,7 +172,7 @@ public ResponseEntity<?> transferDiplome(@RequestParam(name="upload") MultipartF
 	      BufferedOutputStream stream =
 	          new BufferedOutputStream(new FileOutputStream(filechemin+"/"+filepath));
 	      stream.write(uploadfile.getBytes());
-	      stream.close();
+	     // stream.close();
 	      chemin=filechemin+"/"+filepath;
 	}
 	    catch (Exception e) {
@@ -196,7 +196,7 @@ public ResponseEntity<?> transferDiplome(@RequestParam(name="upload") MultipartF
 
 		System.out.println("Start uploading first file");
 		boolean done = ftpClient.storeFile(firstRemoteFile, inputStream);
-		inputStream.close();
+		//inputStream.close();
 		if (done) {
 			System.out.println("The first file is uploaded successfully.");
 			demande.setDiplomes(firstRemoteFile);
@@ -267,7 +267,7 @@ public ResponseEntity<?> transferAutorisation(@RequestParam(name="upload") Multi
 
 		System.out.println("Start uploading first file");
 		boolean done = ftpClient.storeFile(firstRemoteFile, inputStream);
-		inputStream.close();
+		//inputStream.close();
 		if (done) {
 			System.out.println("The first file is uploaded successfully.");
 			enseignantF.setAutorisation(firstRemoteFile);
@@ -338,7 +338,7 @@ public ResponseEntity<?> transferDeclaration(@RequestParam(name="upload") Multip
 
 		System.out.println("Start uploading first file");
 		boolean done = ftpClient.storeFile(firstRemoteFile, inputStream);
-		inputStream.close();
+		//inputStream.close();
 		if (done) {
 			System.out.println("The first file is uploaded successfully.");
 			enseignantL.setDeclarationH(firstRemoteFile);
@@ -419,7 +419,7 @@ public void telechargerFichier(@PathVariable long idCong)
 		File downloadFile1 = new File("D:\\"+remoteFile1);
 		OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
 		boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
-		outputStream1.close();
+		//outputStream1.close();
 
 		if (success) {
 			System.out.println("File #1 has been downloaded successfully.");
@@ -457,7 +457,7 @@ public void telechargerAutorisation(@PathVariable long idPers)
 		File downloadFile1 = new File("D:\\"+remoteFile1);
 		OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
 		boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
-		outputStream1.close();
+		//outputStream1.close();
 
 		if (success) {
 			System.out.println("File #1 has been downloaded successfully.");
@@ -495,7 +495,7 @@ public void telechargerDeclartion(@PathVariable long idPers)
 		File downloadFile1 = new File("D:\\"+remoteFile1);
 		OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
 		boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
-		outputStream1.close();
+		//outputStream1.close();
 
 		if (success) {
 			System.out.println("File #1 has been downloaded successfully.");
@@ -533,7 +533,7 @@ public void telechargerDiplomesEnsg(@PathVariable long idPers)
 		File downloadFile1 = new File("D:\\"+remoteFile1);
 		OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
 		boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
-		outputStream1.close();
+		//outputStream1.close();
 
 		if (success) {
 			System.out.println("File #1 has been downloaded successfully.");

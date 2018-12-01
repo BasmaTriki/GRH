@@ -18,7 +18,14 @@ public class TypeConge implements Serializable {
    private int nbMaxJrs;
    private boolean autorisation;
    private boolean actifPers;
+   private String typePers;
 
+public String getTypePers() {
+	return typePers;
+}
+public void setTypePers(String typePers) {
+	this.typePers = typePers;
+}
 public TypeConge() {
 	super();
 	// TODO Auto-generated constructor stub

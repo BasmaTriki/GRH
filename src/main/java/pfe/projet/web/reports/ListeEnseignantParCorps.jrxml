@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListeEnseignantParDepartement" pageWidth="734" pageHeight="855" columnWidth="694" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="105c4368-59bb-4933-8ff8-4295a68ab6e2">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListeEnseignantParDepartement" pageWidth="615" pageHeight="855" columnWidth="575" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="105c4368-59bb-4933-8ff8-4295a68ab6e2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (7)"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="550"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="436"/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="idCps" class="java.lang.Long"/>
 	<parameter name="anneeUniv" class="java.lang.String"/>
 	<queryString language="SQL">
@@ -181,30 +172,34 @@ FROM iset_sf.agrade
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="124" splitType="Stretch">
+		<band height="145" splitType="Stretch">
+			<image>
+				<reportElement x="375" y="3" width="190" height="73" uuid="f7483c89-6f34-401d-a3c6-0b9d15ae9b45"/>
+				<imageExpression><![CDATA["images/ministereTunisienne.jpg"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="482" y="34" width="157" height="23" uuid="a8693d73-3340-48f8-bcf2-de1ccf3ffd3f"/>
+				<reportElement x="388" y="88" width="157" height="23" uuid="a8693d73-3340-48f8-bcf2-de1ccf3ffd3f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[صادر عن : مصلحة الشؤون الإدارية]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="468" y="16" width="199" height="29" uuid="22970d58-6f93-4df2-9545-ff84467f2241"/>
+				<reportElement x="374" y="70" width="199" height="29" uuid="22970d58-6f93-4df2-9545-ff84467f2241"/>
 				<textElement textAlignment="Center">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المعهد العالي للدراسات التكنولوجية بصفاقس]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="456" y="2" width="211" height="22" uuid="2103b46b-fb0e-44b6-a025-a6a9631a8954"/>
+				<reportElement x="362" y="56" width="211" height="22" uuid="2103b46b-fb0e-44b6-a025-a6a9631a8954"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="13" isBold="false" pdfFontName="Font/ANDALUS.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[الإدارة العامة للدراسات التكنولوجية ]]></text>
 			</staticText>
 			<image hAlign="Right" vAlign="Middle">
-				<reportElement x="550" y="57" width="30" height="30" uuid="46cb3c33-31bc-40f9-8c44-d7c77d8bf4d6"/>
+				<reportElement x="456" y="111" width="30" height="30" uuid="46cb3c33-31bc-40f9-8c44-d7c77d8bf4d6"/>
 				<imageExpression><![CDATA["images/iset.png"]]></imageExpression>
 			</image>
 			<staticText>
@@ -221,12 +216,16 @@ FROM iset_sf.agrade
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="215" y="14" width="80" height="60" uuid="4247bffa-34f4-4baf-b4b7-ed9da5409dd7"/>
+				<imageExpression><![CDATA["images/logoMinistere.JPG"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="92" splitType="Stretch">
+		<band height="68" splitType="Stretch">
 			<textField>
-				<reportElement x="84" y="6" width="531" height="50" uuid="e8405a51-7c35-46c6-af37-d33bb4bb7e74"/>
+				<reportElement x="14" y="9" width="531" height="50" uuid="e8405a51-7c35-46c6-af37-d33bb4bb7e74"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Andalus" size="22" isBold="true" pdfFontName="FONT/Andalus.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -237,10 +236,10 @@ FROM iset_sf.agrade
 	<columnHeader>
 		<band height="33" splitType="Stretch">
 			<rectangle>
-				<reportElement x="26" y="0" width="659" height="31" backcolor="#E6E3E3" uuid="c8eb0bcf-d4f2-4fa9-bf41-0a07b8dcc244"/>
+				<reportElement x="-14" y="0" width="596" height="31" backcolor="#E6E3E3" uuid="c8eb0bcf-d4f2-4fa9-bf41-0a07b8dcc244"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="633" y="0" width="52" height="31" backcolor="#00AEFF" uuid="b564b68d-5e2b-4bfe-b78a-1f0b17745a34">
+				<reportElement x="538" y="0" width="44" height="31" backcolor="#00AEFF" uuid="b564b68d-5e2b-4bfe-b78a-1f0b17745a34">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="165fae44-f3a4-4e55-986b-ef62ee9d8c48"/>
 				</reportElement>
 				<box>
@@ -255,7 +254,7 @@ FROM iset_sf.agrade
 				<text><![CDATA[ع/ر]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="445" y="0" width="188" height="31" backcolor="#00AEFF" uuid="7ec6bc4c-9f30-4fd9-8188-dacce0ccfcd9">
+				<reportElement x="361" y="0" width="177" height="31" backcolor="#00AEFF" uuid="7ec6bc4c-9f30-4fd9-8188-dacce0ccfcd9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae093f0-7758-4828-bfb0-1148f8a1f0eb"/>
 				</reportElement>
 				<box>
@@ -270,7 +269,7 @@ FROM iset_sf.agrade
 				<text><![CDATA[الإسم و اللقب]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="321" y="0" width="124" height="31" backcolor="#00AEFF" uuid="dafb07ff-bb79-4d64-8d64-dc6bfb83a9a7">
+				<reportElement x="251" y="0" width="110" height="31" backcolor="#00AEFF" uuid="dafb07ff-bb79-4d64-8d64-dc6bfb83a9a7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5ea12b2-8319-4fb2-b84e-2a05ece6c3ba"/>
 				</reportElement>
 				<box>
@@ -285,7 +284,7 @@ FROM iset_sf.agrade
 				<text><![CDATA[المعرف الوحيد]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="173" y="0" width="147" height="31" backcolor="#00AEFF" uuid="68856b1c-251a-4551-93d6-4cccedda8c24">
+				<reportElement x="116" y="0" width="134" height="31" backcolor="#00AEFF" uuid="68856b1c-251a-4551-93d6-4cccedda8c24">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
 				</reportElement>
 				<box>
@@ -300,7 +299,7 @@ FROM iset_sf.agrade
 				<text><![CDATA[القسم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="26" y="0" width="147" height="31" backcolor="#00AEFF" uuid="816d3ffe-cdce-4c28-82cc-ba74d8c46b20">
+				<reportElement x="-14" y="0" width="130" height="31" backcolor="#00AEFF" uuid="816d3ffe-cdce-4c28-82cc-ba74d8c46b20">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15b49739-11e8-4628-a53c-235b3325aae2"/>
 				</reportElement>
 				<box>
@@ -319,7 +318,7 @@ FROM iset_sf.agrade
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField>
-				<reportElement x="445" y="-1" width="188" height="30" uuid="1a726b57-fe7f-4adf-baad-9d39ceb46ed3">
+				<reportElement x="361" y="-1" width="177" height="30" uuid="1a726b57-fe7f-4adf-baad-9d39ceb46ed3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cfb1db49-5ce1-48ec-bd57-a315e24e5a6a"/>
 				</reportElement>
 				<box>
@@ -335,7 +334,7 @@ FROM iset_sf.agrade
 				<textFieldExpression><![CDATA[$F{prenom_ar}+" "+$F{nom_ar}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="321" y="-1" width="124" height="30" uuid="3aaeb8d5-9413-4faa-ab25-68552bbc6a4e">
+				<reportElement x="251" y="-1" width="110" height="30" uuid="3aaeb8d5-9413-4faa-ab25-68552bbc6a4e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4340620-7b02-488e-980a-bc211fd13e13"/>
 				</reportElement>
 				<box>
@@ -344,14 +343,14 @@ FROM iset_sf.agrade
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="173" y="-1" width="147" height="30" uuid="d264599a-7505-4d1d-a667-ac31ace5be75">
+				<reportElement x="116" y="-1" width="134" height="30" uuid="d264599a-7505-4d1d-a667-ac31ace5be75">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1627eda-5223-4c32-ba9a-04705e72382d"/>
 				</reportElement>
 				<box>
@@ -360,14 +359,14 @@ FROM iset_sf.agrade
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_dep_ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="26" y="-1" width="147" height="30" uuid="5d24c1d7-f68e-48bc-a45f-1fc9138cd194">
+				<reportElement x="-14" y="-1" width="130" height="30" uuid="5d24c1d7-f68e-48bc-a45f-1fc9138cd194">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f1627eda-5223-4c32-ba9a-04705e72382d"/>
 				</reportElement>
 				<box>
@@ -376,14 +375,14 @@ FROM iset_sf.agrade
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="Font/ARIAL.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{grade_actuel_ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="633" y="-1" width="52" height="30" uuid="11d731bd-032a-41b7-a2ea-86eba6b86745"/>
+				<reportElement x="538" y="-1" width="44" height="30" uuid="11d731bd-032a-41b7-a2ea-86eba6b86745"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -400,7 +399,7 @@ FROM iset_sf.agrade
 	<pageFooter>
 		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="-11" y="0" width="711" height="30" uuid="cfc75baf-6a37-4ac1-8ca7-94e0dd70efa6"/>
+				<reportElement x="-20" y="0" width="615" height="30" uuid="cfc75baf-6a37-4ac1-8ca7-94e0dd70efa6"/>
 				<box leftPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -414,7 +413,7 @@ FROM iset_sf.agrade
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="633" y="7" width="64" height="16" uuid="25f6a0ba-fb7f-455a-8077-ddd8645a7ade"/>
+				<reportElement x="510" y="7" width="64" height="16" uuid="25f6a0ba-fb7f-455a-8077-ddd8645a7ade"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="11" isBold="true"/>
 				</textElement>

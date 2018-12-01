@@ -1,5 +1,7 @@
 package pfe.projet.dao;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +15,6 @@ public interface TypeCongeRepository extends JpaRepository<TypeConge, Long> {
 	public Page<TypeConge>chercher(@Param("x") String nomCng,Pageable pageable);
 	@Query("select tc from TypeConge tc where tc.libelleTypeAr like :x")
 	public Page<TypeConge>chercherAr(@Param("x") String nomCng,Pageable pageable);
+	@Query("select tc from TypeConge tc where tc.typePers like :x")
+	public List<TypeConge>chercherParType(@Param("x") String typeCng);
 }
